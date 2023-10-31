@@ -1,5 +1,5 @@
 {
-  "name": "stratimux-template",
+  "name": "logistux",
   "license": "GPL-3.0",
   "version": "0.0.01",
   "description": "Unified Turing Machine",
@@ -66,6 +66,6 @@
   },
   "dependencies": {
     "rxjs": "^7.8.1",
-    "stratimux": "^0.0.59"
+    "stratimux": "^0.0.60"
   }
 }
