@@ -13,6 +13,8 @@ src/ concepts / uX / qualities / qOfUX.quality.ts
 ### uX.concept.ts
 ```typescript
 import { Action, Mode, Quality, createConcept, PrincipleFunction } from 'stratimux';
+import { uXqOfUXQuality } from './qualities/qOfUx.quality'
+import { uXPrinciple } from './uX.principle'
 
 export type UXState = {
   //
@@ -26,16 +28,23 @@ export const createUXState = (): ExperimentState => {
   };
 };
 
+// Pass any arguments needed for your concept
 export const createUXConcept = (
-  state: Record<string, unknown>,
-  qualities?: Quality[],
-  principles?: PrincipleFunction[],
-  mode?: Mode[]) => {
+//  state: Record<string, unknown>,
+//  qualities?: Quality[],
+//  principles?: PrincipleFunction[],
+//  mode?: Mode[]
+) => {
   return createConcept(
     uXName,
-    state,
-    qualities,
-    principles,
+    createUXState(),
+    [
+      uXqOfUXQuality
+    ],
+    [
+
+      uXPrinciple,
+    ],
     mode
   );
 };
@@ -119,7 +128,7 @@ import { Subscriber } from 'rxjs';
 import { Action, Concepts, PrincipleFunction, UnifiedSubject, registerPrincipleSubscription, selectUnifiedState } from '../../model/concept';
 import { UXSTATE, uXName } from './uX.concept';
 
-export const chainPrinciple: PrincipleFunction = (
+export const uXPrinciple: PrincipleFunction = (
   observer: Subscriber<Action>,
   _concepts: Concepts,
   concepts$: UnifiedSubject,
