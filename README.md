@@ -13,6 +13,7 @@ src/ concepts / uX / qualities / qOfUX.quality.ts
      concepts / uX / strategies / sOfUX.strategy.ts
      concepts / uX / uX.concept.ts
      concepts / uX / uX.principle.ts
+     tests / uX.test.ts
 ```
 
 ### uX.concept.ts
