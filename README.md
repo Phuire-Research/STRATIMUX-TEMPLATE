@@ -5,7 +5,8 @@ npm i
 *Note if tsconfig.json is giving a type error for jest, be sure to open jest config after your **npm i***
 
 For more examples: [https://github.com/Phuire-Research/Stratimux/tree/main/src/concepts](https://github.com/Phuire-Research/Stratimux/tree/main/src/concepts)
-Reminder, this is a research project and while in a appropriate beta state. Some of this is bound to change, especially with the addition of more helper functions.
+
+*Reminder:* This is a research project and while in a appropriate beta state. Some of aspects are bound to change, especially with the addition of more helper functions.
 ### Project Structure
 ```
 src/ index.ts
