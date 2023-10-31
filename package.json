@@ -1,5 +1,6 @@
 {
-  "name": "@phuire/stratimux-ui",
+  "name": "stratimux-template",
+  "license": "GPL-3.0",
   "version": "0.0.01",
   "description": "Unified Turing Machine",
   "main": "dist/index.js",
@@ -10,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "directory": "https://github.com/Phuire-Research/Stratimux.git"
+    "directory": "https://github.com/Phuire-Research/STRATIMUX-TEMPLATE.git"
   },
   "scripts": {
     "dev": "npx nodemon",
