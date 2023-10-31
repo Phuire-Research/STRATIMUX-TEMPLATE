@@ -108,7 +108,7 @@ export function uXsOfUX(): ActionStrategy {
 ```
 
 ### uX.principle.ts
-Your concepts "main" function. This will be called after the axium initializes. 
+Your concept's "main" function. This will be called after the axium initializes. 
 * observer - Using observer.next(someAction) will directly emit that action into the axium's action stream.
 * _concepts - Is the initial load of concepts when your principle is initialized
 * concepts$- Is the UnifiedSubject that controls the halting quality of Stratimux and informs principles, methods, and any general subscriber of state changes.
