@@ -1,5 +1,4 @@
-import { createAxium, createCounterConcept } from 'stratimux';
-// import { phuireWorkspaceStrategy } from './concepts/phuire/strategies/workspace.strategy';
+import { createAxium } from 'stratimux';
 
 (() => {
   const axiumName = '';

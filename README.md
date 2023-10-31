@@ -1,4 +1,9 @@
 # STRATIMUX STARTER TEMPLATE
+```bash
+npm i
+```
+*Note if tsconfig.json is giving a type error for jest, be sure to open jest config after your **npm i***
+
 For more examples: [https://github.com/Phuire-Research/Stratimux/tree/main/src/concepts](https://github.com/Phuire-Research/Stratimux/tree/main/src/concepts)
 Reminder, this is a research project and while in a appropriate beta state. Some of this is bound to change, especially with the addition of more helper functions.
 ### Project Structure
@@ -154,4 +159,18 @@ export const uXPrinciple: PrincipleFunction = (
   ]);
 };
 
+```
+
+### index.ts
+```typescript
+import { createAxium } from 'stratimux';
+import { createUXConcept } from './concepts/uX/uX.concept'
+
+(() => {
+  const axiumName = '';
+  // Sets logging to true and store dialog to true
+  //  This will log to the console the dialog of each successive ActionStrategy
+  //  And store the entire application context in the axium's dialog.
+  createAxium(axiumName, [createUXConcept()], true, true);
+})();
 ```
