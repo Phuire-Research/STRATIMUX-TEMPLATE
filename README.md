@@ -1,4 +1,5 @@
-# STRATIMUX STARTER TEMPLATE
+![Stratimux](https://github.com/Phuire-Research/Stratimux/blob/main/Stratimux.png?raw=true)
+# STARTER TEMPLATE
 ```bash
 npm i
 ```
