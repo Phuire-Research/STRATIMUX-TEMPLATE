@@ -66,6 +66,6 @@
   },
   "dependencies": {
     "rxjs": "^7.8.1",
-    "stratimux": "^0.0.67"
+    "stratimux": "^0.0.68"
   }
 }
