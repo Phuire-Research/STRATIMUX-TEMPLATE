@@ -182,6 +182,7 @@ export const uXPrinciple: PrincipleFunction = (
         plan.conclude();
       }
     }
+  // There always needs to be atleast one subscriber or plan for the Axium to be active.
   ], 30);
 };
 ```
