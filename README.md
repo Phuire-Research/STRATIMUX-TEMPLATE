@@ -53,7 +53,6 @@ export const createUXConcept = (
       uXqOfUXQuality
     ],
     [
-
       uXPrinciple,
     ],
     mode
