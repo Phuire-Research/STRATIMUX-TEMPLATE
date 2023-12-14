@@ -1,6 +1,6 @@
 import {
   AxiumState,
-  Counter,
+  CounterState,
   counterName,
   countingStrategy,
   countingTopic,
@@ -21,7 +21,7 @@ test('Axium Counting Strategy Test', (done) => {
       }, (concepts) => {
         const axiumState = concepts[0].state as AxiumState;
         if (axiumState.lastStrategy === countingTopic) {
-          const counter = selectState<Counter>(concepts, counterName);
+          const counter = selectState<CounterState>(concepts, counterName);
           expect(counter?.count).toBe(1);
           setTimeout(() => {done();}, 500);
           plan.conclude();

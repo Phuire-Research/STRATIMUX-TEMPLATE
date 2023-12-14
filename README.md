@@ -31,6 +31,22 @@ When in doubt simplify.
 * [The Impossible Halting Turing Machine](https://github.com/Phuire-Research/Stratimux/blob/main/Index.md) - Original Paper for Stratimux
 * [Unified Turing Machine](https://github.com/Phuire-Research/Stratimux/blob/main/The-Unified-Turing-Machine.md) - The governing concept for this entire framework.:
 
+### 12/14/23
+* Set Stage can now properly be set to 0.
+### 11/29/23
+* Official Release
+* Stage Planner Beat - No longer experimental, have fun! It's Stratimux is now a dancing algorithm recursive function.
+### 11/27/23
+* Added a new experimental parameter to staging. Beat, which is a duration that will "Throttle and debounce," state notifications to that specific plan.
+### 11/26/23
+* Updated naming conventions throughout. Counter is now CounterState. Strategies now export with their associated concept's prepended.
+* Added parsing tokens. If curious about this functionality see the logixUX project. These tokens in combination with that project will upon its release. Allow for the ease of parsing Stratimux or other TypeScript projects into high quality training data.
+### 11/17/23
+* selectSlice now performing deep selections.
+### 11/15/23
+* Action Payloads must extend type: Record<string, unknown>  
+   * This change is to provide a guarantee of advanced functionality in the current UI Proof of Concept.
+
 ### Project Structure
 ```
 src/ index.ts
