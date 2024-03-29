@@ -5,10 +5,10 @@ import {
   PrincipleFunction,
   UnifiedSubject,
   axiumRegisterStagePlanner,
-  axiumSelectOpen,
+  createStage,
   getAxiumState,
-  primeAction,
   selectUnifiedState,
+  stageWaitForOpenThenIterate,
   strategyBegin
 } from 'stratimux';
 import { UXState, uXName } from './uX.concept';
@@ -20,31 +20,23 @@ export const uXPrinciple: PrincipleFunction = (
   concepts$: UnifiedSubject,
   semaphore: number
 ) => {
-  const plan = concepts$.stage('uX Plan', [
-    (concepts, dispatch) => {
-      // This will register this plan to the axium, this allows for the axium to close or remove your concept cleanly.
-      dispatch(primeAction(concepts, axiumRegisterStagePlanner({conceptName: uXName, stagePlanner: plan})), {
-        on: {
-          selector: axiumSelectOpen,
-          expected: true,
-        },
-        iterateStage: true
-      });
-    },
-    (concepts, dispatch) => {
+  // There always needs to be atleast one subscriber or plan for the Axium to be active.
+  const plan = concepts$.plan('uX Plan', [
+    // This will register this plan to the axium, this allows for the axium to close or remove your concept cleanly.
+    stageWaitForOpenThenIterate(() => (axiumRegisterStagePlanner({conceptName: uXName, stagePlanner: plan}))),
+    createStage((concepts, dispatch) => {
       const state = selectUnifiedState<UXState>(concepts, semaphore);
       if (state) {
         dispatch(strategyBegin(uXSomeStrategy()), {
           iterateStage: true
         });
       }
-    },
-    (concepts) => {
+    }, {beat: 30}),
+    createStage((concepts) => {
       const {lastStrategy} = getAxiumState(concepts);
       if (lastStrategy === uXSomeStrategyTopic) {
         plan.conclude();
       }
-    }
-  // There always needs to be atleast one subscriber or plan for the Axium to be active.
-  ], 30);
+    })
+  ]);
 };
