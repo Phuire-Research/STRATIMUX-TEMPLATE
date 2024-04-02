@@ -31,6 +31,26 @@ When in doubt simplify.
 * [The Impossible Halting Turing Machine](https://github.com/Phuire-Research/Stratimux/blob/main/Index.md) - Original Paper for Stratimux
 * [Unified Turing Machine](https://github.com/Phuire-Research/Stratimux/blob/main/The-Unified-Turing-Machine.md) - The governing concept for this entire framework.:
 
+## Change Log ![Tests](https://github.com/Phuire-Research/Stratimux/actions/workflows/node.js.yml/badge.svg)
+### **BREAKING Update v0.1.5** 4/02/24
+* Unified the internal concept streams and created a new dedicated stream to inform most recent concepts
+  * Note if you are assembling plans within a method, be sure to grab the **concepts$** from *getAxiumState*
+* It is now a requirement you use the **stageWaitForOpenThenIterate(() => action)** helper function in your plans if you are depending on the last strategyTopic property on the axium concept.
+* Added an addition logging property to reveal the internal action stream that can be set when creating your axium. This is separate from the prior logging feature.
+* Method now utilize an internal actionConcept$ stream of type Subject<Concepts>. Method creators that utilize the UnifiedSubject will throw a type error and will need to be updated.
+* **PATCH v0.1.51** Removed debugging console.logs
+### **BREAKING Update v0.1.4** 3/28/24
+* Removed the "on.expected" option from dispatch to reduce inner complexity of your stages
+* Renamed **axium.stage** to **axium.plan** to be in line with industry terminology
+  * The new plan set up requires a staging entity or the return from the new createStage helper function
+    * This new entity enables you to change the priority in which your stages are informed per state change
+  * You may now assign each stage its own separate beat versus the entire plan
+    * Removes beat from the overall plan and now needs to be performed atomically
+  * This overall change trims the total plans that are checked per state, but may still supply plans that trigger on all changes via empty array in entity or outright ignoring the value field via the createStage function
+* Added nullReducer to disallow excessive observations from being triggered
+* First pass updating StagePlanner documentation
+### 3/05/24
+* Minor DX release, properly exporting Axium type for inclusion in other frameworks.
 ### 12/14/23
 * Set Stage can now properly be set to 0.
 ### 11/29/23
@@ -46,6 +66,11 @@ When in doubt simplify.
 ### 11/15/23
 * Action Payloads must extend type: Record<string, unknown>  
    * This change is to provide a guarantee of advanced functionality in the current UI Proof of Concept.
+
+
+```bash
+npm i stratimux
+```
 
 ### Project Structure
 ```
@@ -102,10 +127,6 @@ export const createUXConcept = (
 This isolates all the parts necessary for your actions to have impact within this system. Be mindful of your types, as even though they are not explicitly used within this system. They likewise better inform training data, and likewise act as unique identifiers if you are not setting the semaphore ahead of time.
 
 The semaphore is the method of quality selection within the Axium. This is to reduce the time complexity of each look up. And if you applications are purely static with no planned dynamic changes to the Axium's conceptual load. This values can be hard coded ahead of time. This is one of the planned features for [logixUX](https://github.com/Phuire-Research/logixUX). In addition to other scaffolding improvements, AI assistance, and more.
-### uXqOfUx.quality.ts
-This isolates all the parts necessary for your actions to have impact within this system. Be mindful of your types, as even though they are not explicitly used within this system. They likewise better inform training data, and likewise act as unique identifiers if you are not setting the semaphore ahead of time.
-
-The semaphore is the method of quality selection within the Axium. This is to reduce the time complexity of each look up. And if you applications are purely static with no planned dynamic changes to the Axium's conceptual load. This values can be hard coded ahead of time. This is one of the planned features for [logixUX](https://github.com/Phuire-Research/logixUX). In addition to other scaffolding improvements, AI assistance, and more.
 ```typescript
 import {
   MethodCreator,
@@ -130,7 +151,7 @@ function getRandomRange(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
-const uXqOfUXCreator: MethodCreator = (concepts$?: UnifiedSubject, semaphore?: number) =>
+const uXqOfUXCreator: MethodCreator = (concepts$?: Subject<Concepts>, semaphore?: number) =>
   // Only if you need to access state, otherwise
   createMethodWithState<UXState>((action, state) => {
     if (action.strategy) {
@@ -163,7 +184,7 @@ export const uXqOfUXQuality = createQuality(
 /* Below are the default functions available for your quality */
 // export const qOfUXQuality = createQuality(
 //   qOfUXType,
-//   defaultReducer,
+//   defaultReducer(Informs)/nullReducer(Doesn't Inform),
 // The method is optional and is an advanced behavior
 //   defaultMethodCreator
 // );
@@ -188,7 +209,9 @@ import {
   getAxiumState,
   primeAction,
   selectUnifiedState,
-  strategyBegin
+  strategyBegin,
+  createStage,
+  stageWaitForOpenThenIterate
 } from 'stratimux';
 import { UXState, uXName } from './uX.concept';
 import { uXSomeStrategy, uXSomeStrategyTopic } from './strategies/uXSome.strategy';
@@ -199,33 +222,25 @@ export const uXPrinciple: PrincipleFunction = (
   concepts$: UnifiedSubject,
   semaphore: number
 ) => {
-  const plan = concepts$.stage('uX Plan', [
-    (concepts, dispatch) => {
-      // This will register this plan to the axium, this allows for the axium to close or remove your concept cleanly.
-      dispatch(primeAction(concepts, axiumRegisterStagePlanner({conceptName: uXName, stagePlanner: plan})), {
-        on: {
-          selector: axiumSelectOpen,
-          expected: true,
-        },
-        iterateStage: true
-      });
-    },
-    (concepts, dispatch) => {
+  // There always needs to be atleast one subscriber or plan for the Axium to be active.
+  const plan = concepts$.plan('uX Plan', [
+    // This will register this plan to the axium, this allows for the axium to close or remove your concept cleanly.
+    stageWaitForOpenThenIterate(() => (axiumRegisterStagePlanner({conceptName: uXName, stagePlanner: plan}))),
+    createStage((concepts, dispatch) => {
       const state = selectUnifiedState<UXState>(concepts, semaphore);
       if (state) {
         dispatch(strategyBegin(uXSomeStrategy()), {
           iterateStage: true
         });
       }
-    },
-    (concepts) => {
+    }, {beat: 30}),
+    createStage((concepts) => {
       const {lastStrategy} = getAxiumState(concepts);
       if (lastStrategy === uXSomeStrategyTopic) {
         plan.conclude();
       }
-    }
-  // There always needs to be atleast one subscriber or plan for the Axium to be active.
-  ], 30);
+    }, {beat: 30})
+  ]);
 };
 ```
 
@@ -269,6 +284,7 @@ import { createUXConcept } from './concepts/uX/uX.concept';
   // Sets logging to true and store dialog to true
   //  This will log to the console the dialog of each successive ActionStrategy
   //  And store the entire application context in the axium's dialog.
-  createAxium(axiumName, [createUXConcept()], true, true);
+  //  The final boolean will allow the action stream to be logged to console
+  createAxium(axiumName, [createUXConcept()], true, true, true);
 })();
 ```
