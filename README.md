@@ -32,6 +32,9 @@ When in doubt simplify.
 * [Unified Turing Machine](https://github.com/Phuire-Research/Stratimux/blob/main/The-Unified-Turing-Machine.md) - The governing concept for this entire framework.:
 
 ## Change Log ![Tests](https://github.com/Phuire-Research/Stratimux/actions/workflows/node.js.yml/badge.svg)
+### v0.1.52 Patch 4/03/24
+* Quick pass updating documentation
+* Synced up createAxium, etc... To properly allow for the axium to log actions incoming in the action stream if set.
 ### **BREAKING Update v0.1.5** 4/02/24
 * Unified the internal concept streams and created a new dedicated stream to inform most recent concepts
   * Note if you are assembling plans within a method, be sure to grab the **concepts$** from *getAxiumState*
@@ -281,10 +284,11 @@ import { createUXConcept } from './concepts/uX/uX.concept';
 
 (() => {
   const axiumName = 'Name of your axium';
-  // Sets logging to true and store dialog to true
-  //  This will log to the console the dialog of each successive ActionStrategy
-  //  And store the entire application context in the axium's dialog.
-  //  The final boolean will allow the action stream to be logged to console
+  // First boolean sets logging to true.
+  // Second set store dialog to true.
+  //  This will log to the console the dialog of each successive ActionStrategy.
+  //    And store the entire application context in the axium's dialog.
+  // The final boolean will allow the action stream to be logged to console for debugging purposes.
   createAxium(axiumName, [createUXConcept()], true, true, true);
 })();
 ```
