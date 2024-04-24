@@ -3,13 +3,9 @@ import { uXqOfUX } from '../qualities/qOfUx.quality';
 
 export const uXSomeStrategyTopic = 'uX Some Error Correcting Strategy';
 export const uXSomeStrategy = (): ActionStrategy => {
-  const stepSuccess = createActionNode(axiumLog(), {
-    successNode: null,
-    failureNode: null
-  });
+  const stepSuccess = createActionNode(axiumLog());
   const stepFailure = createActionNode(axiumKick(), {
     successNode: stepSuccess,
-    failureNode: null
   });
   const stepBegin = createActionNode(uXqOfUX(), {
     successNode: stepSuccess,
