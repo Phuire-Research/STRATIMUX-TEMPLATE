@@ -133,10 +133,7 @@ This isolates all the parts necessary for your actions to have impact within thi
 The semaphore is the method of quality selection within the Axium. This is to reduce the time complexity of each look up. And if you applications are purely static with no planned dynamic changes to the Axium's conceptual load. This values can be hard coded ahead of time. This is one of the planned features for [logixUX](https://github.com/Phuire-Research/logixUX). In addition to other scaffolding improvements, AI assistance, and more.
 ```typescript
 import {
-  MethodCreator,
-  Action,
-  prepareActionCreator,
-  createQuality,
+  createQualitySetWithPayload,
   UnifiedSubject,
   createMethodWithState,
   strategySuccess,
@@ -145,17 +142,19 @@ import {
 } from 'stratimux';
 import { UXState } from '../uX.concept';
 
-export const uXqOfUXType = 'uX allows for easy selection of your qualities, qOfUX is your quality, and Type is the distinction';
-export const uXqOfUX = prepareActionCreator(uXqOfUXType);
-export type uXqOfUxField = {
-  state: UXState
-};
-
 function getRandomRange(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
-const uXqOfUXCreator: MethodCreator = (concepts$?: Subject<Concepts>, semaphore?: number) =>
+export type uXqOfUxField = {
+  state: UXState
+};
+
+// [ActionCreator/ActionCreatorWithPayload, ActionType, Quality]
+export const [uXqOfUX, uXqOfUXType, uXqOfUXQuality] = createQualitySetWithPayload<uXqOfUxField>({
+  type: 'uX allows for easy selection of your qualities, qOfUX is your quality, and Type is the distinction',
+  reducer: (state: UXState) => ({...state}),
+  methodCreator: (concepts$?: Subject<Concepts>, semaphore?: number) =>
   // Only if you need to access state, otherwise
   createMethodWithState<UXState>((action, state) => {
     if (action.strategy) {
@@ -172,24 +171,13 @@ const uXqOfUXCreator: MethodCreator = (concepts$?: Subject<Concepts>, semaphore?
       }
     }
     return action;
-  }, concepts$ as UnifiedSubject, semaphore as number);
-
-function uXqOfUXReducer(state: UXState, _: Action): UXState {
-  return {
-    ...state,
-  };
-}
-
-export const uXqOfUXQuality = createQuality(
-  uXqOfUXType,
-  uXqOfUXReducer,
-  uXqOfUXCreator
-);
+  }, concepts$ as UnifiedSubject, semaphore as number)
+});
 /* Below are the default functions available for your quality */
 // export const qOfUXQuality = createQuality(
 //   qOfUXType,
 //   defaultReducer(Informs)/nullReducer(Doesn't Inform),
-// The method is optional and is an advanced behavior
+// The method is optional and is an advanced behavior enabling the quality to be used in an ActionStrategy
 //   defaultMethodCreator
 // );
 ```
