@@ -33,11 +33,12 @@ When in doubt simplify.
 * [Unified Turing Machine](https://github.com/Phuire-Research/Stratimux/blob/main/The-Unified-Turing-Machine.md) - The governing concept for this entire framework.:
 
 ## Change Log ![Tests](https://github.com/Phuire-Research/Stratimux/actions/workflows/node.js.yml/badge.svg)
-### **BREAKING** v0.1.66 5/13/2024
+### **BREAKING** v0.1.67 5/13/2024
 * Revamped the Action Creator Functions to follow behind the current creator with an **options** parameter design choice.
   * Note pure action creators will not provide an option for payload
 * Cascaded priority to ActionStrategies to allow for planning priority ahead of time.
 * Updated the PrincipleFunction documentation to have the semaphore parameter to now be conceptSemaphore. This allows for an easy drop in into the options parameter.
+* Made createAxium utilize the same **options** design pattern.options parameter.
 ### v0.1.64 5/13/2024
 * Added Action Priority: This will allow action's assigned a priority of not 0 to be placed accordingly into the action ques.
 * Adjusted DotPath type to improve type checking performance. Massively degrades with an additional level.
@@ -313,6 +314,6 @@ import { createUXConcept } from './concepts/uX/uX.concept';
   //  This will log to the console the dialog of each successive ActionStrategy.
   //    And store the entire application context in the axium's dialog.
   // The final boolean will allow the action stream to be logged to console for debugging purposes.
-  createAxium(axiumName, [createUXConcept()], true, true, true);
+  createAxium(axiumName, [createUXConcept()], {logging: true, storeDialog: true, logActionStream: true});
 })();
 ```
