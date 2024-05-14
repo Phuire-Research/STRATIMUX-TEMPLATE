@@ -14,7 +14,7 @@ import {
 } from 'stratimux';
 
 test('Axium Counting Strategy Test', (done) => {
-  const axium = createAxium('axiumStrategyTest', [createCounterConcept()], true, true);
+  const axium = createAxium('axiumStrategyTest', [createCounterConcept()], { logging: true, storeDialog: true });
   const plan = axium.plan('Counting Strategy Stage',
     [
       stageWaitForOpenThenIterate(() => axiumKick()),
