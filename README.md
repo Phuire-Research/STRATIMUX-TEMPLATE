@@ -15,7 +15,6 @@ Thankfully, this is the reason for the atomic behavior of your qualities combine
 
 When in doubt simplify.
 
-### [TS Documentation](https://tsdocs.dev/docs/stratimux/0.1.52)
 ### Concept Index
 * [Action Strategy](https://github.com/Phuire-Research/Stratimux/blob/main/ActionStrategy.md) - Data structure that allows for Stratimux to be provably terminating.
 * [Muxium](https://github.com/Phuire-Research/Stratimux/blob/main/Muxium.md) - Governing concept that contains the set of concepts that formalizes each muxium.
