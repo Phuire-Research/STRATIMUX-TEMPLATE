@@ -70,7 +70,7 @@ export type MUXState = {
   message: string
 }
 
-export const muXName = 'uX';
+export const muXName = 'muX';
 
 export const createMUXState = (): MUXState => {
   return {
@@ -127,7 +127,7 @@ function getRandomRange(min: number, max: number) {
 }
 
 export const muXqOfMux = createQualityCardWithPayload<MUXState, muXOfMuxPayload, MUXDeck>({
-  type: 'muX allows for easy selection of your qualities, qOfUX is your quality, and Type is the distinction',
+  type: 'muX allows for easy selection of your qualities, muXqOfMux is your quality, and Type is the distinction',
   reducer: (_, action) => {
     const {message} = action.payload;
     return {
@@ -204,7 +204,7 @@ This approach to algorithm design is the core strength of Stratimux, but likewis
 import { ActionStrategy, createActionNode, createStrategy, Deck, MuxiumDeck } from 'stratimux';
 import { MUXDeck } from '../muX.concept';
 
-export const muXSomeStrategyTopic = 'uX Some Error Correcting Strategy';
+export const muXSomeStrategyTopic = 'muX Some Error Correcting Strategy';
 export const muXSomeStrategy = (d: Deck<MuxiumDeck & MUXDeck>): ActionStrategy => {
   const stepSuccess = createActionNode(d.muxium.e.muxiumLog());
   const stepFailure = createActionNode(d.muxium.e.muxiumKick(), {

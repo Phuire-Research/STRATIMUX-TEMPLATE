@@ -6,7 +6,7 @@ export type MUXState = {
   message: string
 }
 
-export const muXName = 'uX';
+export const muXName = 'muX';
 
 export const createMUXState = (): MUXState => {
   return {

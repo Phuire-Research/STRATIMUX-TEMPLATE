@@ -19,7 +19,7 @@ function getRandomRange(min: number, max: number) {
 }
 
 export const muXqOfMux = createQualityCardWithPayload<MUXState, muXOfMuxPayload, MUXDeck>({
-  type: 'muX allows for easy selection of your qualities, qOfUX is your quality, and Type is the distinction',
+  type: 'muX allows for easy selection of your qualities, muXqOfMux is your quality, and Type is the distinction',
   reducer: (_, action) => {
     const {message} = action.payload;
     return {
