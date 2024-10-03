@@ -1,36 +1,45 @@
 import {
-  AxiumState,
+  MuxiumState,
   CounterState,
-  axiumKick,
+  muxiumKick,
   counterName,
   countingStrategy,
   countingTopic,
-  createAxium,
   createCounterConcept,
   createStage,
   selectState,
   stageWaitForOpenThenIterate,
-  strategyBegin
+  strategyBegin,
+  muxification,
+  MuxiumDeck,
+  CounterDeck,
+  getMuxiumState
 } from 'stratimux';
 
-test('Axium Counting Strategy Test', (done) => {
-  const axium = createAxium('axiumStrategyTest', [createCounterConcept()], { logging: true, storeDialog: true });
-  const plan = axium.plan('Counting Strategy Stage',
+test('Muxium Counting Strategy Test', (done) => {
+  const muxium = muxification('muxiumStrategyTest', {counter: createCounterConcept()}, { logging: true, storeDialog: true });
+  muxium.plan<MuxiumDeck & CounterDeck>('Counting Strategy Stage', ({stageO, stage, d__}) =>
     [
-      stageWaitForOpenThenIterate(() => axiumKick()),
-      createStage((_, dispatch) => {
-        dispatch(strategyBegin(countingStrategy()), {
-          iterateStage: true
-        });
+      stageO(() => d__.muxium.e.muxiumKick()),
+      stage(({dispatch, d, stagePlanner}) => {
+        const strategy = countingStrategy(d);
+        if (strategy) {
+          dispatch(strategyBegin(strategy), {
+            iterateStage: true
+          });
+        } else {
+          expect(false).toBe(true);
+          stagePlanner.conclude();
+        }
       }),
-      createStage((concepts) => {
-        const axiumState = concepts[0].state as AxiumState;
-        if (axiumState.lastStrategy === countingTopic) {
-          const counter = selectState<CounterState>(concepts, counterName);
+      stage(({concepts, d, stagePlanner}) => {
+        const muxiumState = getMuxiumState(concepts);
+        if (muxiumState.lastStrategy === countingTopic) {
+          const counter = d.counter.k.state(concepts);
           expect(counter?.count).toBe(1);
           setTimeout(() => {done();}, 500);
-          plan.conclude();
-          axium.close();
+          stagePlanner.conclude();
+          muxium.close();
         }
       })
     ]);
