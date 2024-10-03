@@ -48,6 +48,12 @@ When in doubt simplify.
 npm i stratimux
 ```
 
+To work with this project template.
+```bash
+npm i --force
+npm run start
+```
+
 ### Project Structure
 ```
 src/ index.ts
