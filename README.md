@@ -30,38 +30,49 @@ When in doubt simplify.
 * [The Impossible Halting Turing Machine](https://github.com/Phuire-Research/Stratimux/blob/main/Index.md) - Original Paper for Stratimux
 * [Unified Turing Machine](https://github.com/Phuire-Research/Stratimux/blob/main/The-Unified-Turing-Machine.md) - The governing concept for this entire framework.:|
 
-## Change Log ![Tests](https://github.com/Phuire-Research/Stratimux/actions/workflows/node.js.yml/badge
-### QoL 0.2.48
-* Exported both the Stage and PartialStaging Types for Algorithmic Stage Generation.
-### Strategy Determine 0.2.47
-* Ensured that the Strategy Determine helper function is working as intended. Noting it creates a single Action Strategy, this is used primarily in Methods to ensure Halting Completeness.
-* Now accepts Any Action and no longer requires an options object.
-### Verbose Bad Actions 0.2.46
-* The Muxium Bad Action Quality is now being utilized and setting the muxium's bad action property as intended.
-### Restored Dialog Functionality 0.2.44
-* Moved the handling of the decision action node notes to the consumer function itself.
-### QoL 0.2.42
-* Broke up complex files into distinguishable parts
-* Hooked in deck functionality into method creators properly
-* muxium_createStitchNode now requires a deck load
-* Renamed muxificationConcept to muxiumConcept
-### Stratimux 0.2.0-1 Stealth Roll Out
-* Introduces type safety throughout your muxiums via a new DECK Interface System
-  * e: Entry Action
-  * c: Comparators, uses semaphores to ensure a stringless comparison
-  * k: Constants, allows you to select individual properties, make new selectors, get the entire state, etc...
-* Override + Hard Override - Will wipe out current actions within the Muxiums Action Que System
+## Change Log ![Tests](https://github.com/Phuire-Research/Stratimux/actions/workflows/node.js.yml/badge.svg)
+## QoL 0.3.11 Default Store Last ActionStrategy ActionList
+* Added a new Helper Function to the Stage Planner called createStaging or accessed as "staging" in the plan callback deconstruction. This provides a simple encapsulated environment to compose stages without having to use one-liners or additional imports.
+## QoL 0.3.1 Default Store Last ActionStrategy ActionList
+* No longer have to toggle Store Dialog to access the most recent successful ActionStrategy and it's Action List. Issue with prior approach in long running conditions is having to repeatedly clear the stored dialog if you are just attempting to debug your decks.
+
+# Stratimux 0.3.0: Precision & Performance
+
+## Features & Enhancements
+
+- **Forward Capability Implementation** ([PR #251](https://github.com/Phuire-Research/Stratimux/pull/251)): Implemented custom UUID generation for smoother Ownership Concept roll-up processes, simplified Muxium Type declarations, and added exported Stage types for algorithmic generation.
+
+- **DECK Interface System** ([PR #242](https://github.com/Phuire-Research/Stratimux/pull/242)): Introduced type safety through the DECK interface with entry actions (e), stringless comparison semaphores (c), and constant selectors (k).
+
+## Bug Fixes
+
+- **Dialog Functionality Restored** ([PR #245](https://github.com/Phuire-Research/Stratimux/pull/245)): Moved decision action node handling to the consumer function itself.
+
+- **Bad Action Handling Improved** ([PR #246](https://github.com/Phuire-Research/Stratimux/pull/246)): Ensured Muxium Bad Action Quality properly sets the muxium's bad action property.
+
+## Maintenance & Refinements
+
+- **Strategy Determine Helper** ([PR #247](https://github.com/Phuire-Research/Stratimux/pull/247)): Improved to work with any Action type without requiring an options object, ensuring proper halting completeness.
+
+- **Codebase Organization** ([PR #243](https://github.com/Phuire-Research/Stratimux/pull/243)): Broke up complex files into distinguishable parts and properly connected deck functionality to method creators.
+
+## Release Status
+
+Version 0.3.0 is officially tagged and released ([PR #252](https://github.com/Phuire-Research/Stratimux/pull/252)).
+
+**Release Notes**: https://github.com/Phuire-Research/Stratimux/releases/tag/v0.3.0
 
 
+Other typescript projects
 ```bash
-npm i stratimux
+npm i stratimux@latest
 ```
 
-To work with this project template.
+From the template template
 ```bash
-npm i --force
 npm run start
 ```
+
 
 ### Project Structure
 ```
@@ -116,7 +127,7 @@ export const createMuXConcept = () => {
   );
 };
 ```
-### muuXqOfMux.quality.ts
+### muXqOfMux.quality.ts
 This isolates all the parts necessary for your actions to have impact within this system. Types are a qualitative description of the overall quality. As even though they are not explicitly used within this system. They likewise better inform training data, and likewise act as unique identifiers if you are accessing the action creators directly versus the DECK System.
 
 Internally Stratimux uses semaphores as the method of quality routing within the Muxium. This is to reduce the time complexity of each look up. To further increase the speed of execution of your applications, utilize the supplied DECK Interfaces at each point of entry.
@@ -192,7 +203,7 @@ export const muXPrinciple: MUXPrinciple = ({
   // There always needs to be atleast one subscriber or plan for the Muxium to be active.
   const muxPlan = plan('muX Plan', ({stageO, stage, d__}) => [
     // This will register this plan to the muxium, this allows for the muxium to close or remove your concept cleanly.
-    stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlan}))),
+    stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlan})))e
     stage(({concepts, dispatch, k, d}) => {
       const state = k.state(concepts);
       if (state) {
@@ -208,6 +219,31 @@ export const muXPrinciple: MUXPrinciple = ({
       }
     })
   ]);
+  // Advanced
+  // *Note* when accessing your deck from outside of Stratimux, you will need to supply your Deck Type Interface to the plan to access such. This is a QoL Decision allowing for Stratimux to be adapted to any number of environments.
+  const muxPlan = plan<MUXDeck>('muX Plan', ({staging, stageO, stage, d__}) => staging(() => {
+      // By using the staging helper function you gain access to scope encapsulation while maintaining type safety. This allow you to process which stages you would like to include in an open environment, versus having to perform sophisticated one-liners and reducing readability. 
+      const stageRegister = stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlan})))
+
+      const stageDispatch = stage(({concepts, dispatch, k, d}) => {
+          const state = k.state(concepts);
+          if (state) {
+            dispatch(strategyBegin(muXSomeStrategy(d)), {
+              iterateStage: true
+            });
+          }
+        }, {beat: 30});
+
+      const stageFinalize = stage(({concepts, stagePlanner}) => {
+        const {lastStrategy} = getMuxiumState(concepts);
+        if (lastStrategy === muXSomeStrategyTopic) {
+          stagePlanner.conclude();
+        }
+      });
+
+      return [stageRegister, stageDispatch, stageFinalize];
+    })
+  );
 };
 ```
 
