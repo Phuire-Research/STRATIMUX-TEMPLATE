@@ -5,8 +5,7 @@ npm i
 ```
 *Note if tsconfig.json is giving a type error for jest, be sure to open jest config after your **npm i***
 
-### For more examples: 
- * [https://github.com/Phuire-Research/Stratimux/tree/main/src/concepts](https://github.com/Phuire-Research/Stratimux/tree/main/src/concepts)
+## [Agent Reference](https://github.com/Phuire-Research/Stratimux/blob/main/STRATIMUX-REFERENCE.md)
 
 ### Advice when encountering branch prediction errors.
 The easiest means of detecting if your application is starting to encounter such errors is to enable the dialog and logging options on your Muxium. To avoid running into these branch prediction errors. Attempt to limit your strategy assembly, qualities, and plans to be less than O(n^3). You will find that your functions will suddenly become probabilistic in their ability execution deterministically.
