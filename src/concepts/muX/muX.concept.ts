@@ -1,5 +1,5 @@
 import { Concept, createConcept, MuxiumDeck, PrincipleFunction } from 'stratimux';
-import { muXqOfMux } from './qualities/qOfMux.quality';
+import { muXqOfMux, MuXqOfMux } from './qualities/qOfMux.quality';
 import { muXPrinciple } from './muX.principle';
 
 export type MUXState = {
@@ -18,11 +18,16 @@ const qualities = {
   muXqOfMux
 };
 
-export type MUXDeck = {
-  muX: Concept<MUXState, typeof qualities>;
+// NEW v0.3.2: Explicit quality type mapping required
+export type MUXQualities = {
+  muXqOfMux: MuXqOfMux,
 };
 
-export type MUXPrinciple = PrincipleFunction<typeof qualities, MuxiumDeck & MUXDeck, MUXState>;
+export type MUXDeck = {
+  muX: Concept<MUXState, MUXQualities>;
+};
+
+export type MUXPrinciple = PrincipleFunction<MUXQualities, MuxiumDeck & MUXDeck, MUXState>;
 
 export const createMuXConcept = () => {
   return createConcept(

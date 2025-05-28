@@ -3,13 +3,17 @@ import {
   strategySuccess,
   strategyFailed,
   createQualityCardWithPayload,
-  strategyData_muxifyData
+  strategyData_muxifyData,
+  Quality
 } from 'stratimux';
 import { MUXDeck, MUXState, } from '../muX.concept';
 
 type muXOfMuxPayload = {
   message: string
 }
+
+// NEW v0.3.2: Explicit quality type export required
+export type MuXqOfMux = Quality<MUXState, muXOfMuxPayload>;
 export type uXqOfUxField = {
   state: MUXState
 };
