@@ -34,7 +34,9 @@ When in doubt simplify.
 
 **[View Full Release Notes](https://github.com/Phuire-Research/Stratimux/releases/tag/v0.3.2)**
 
-> **⚠️ BREAKING CHANGES**: v0.3.2 introduces major type system changes requiring migration. See examples below and [migration guide](https://github.com/Phuire-Research/Stratimux/blob/main/STRATIMUX-REFERENCE.md#version-032-migration-guide) for details.
+> **⚠️ BREAKING UPDATE**: v0.3.2 introduces major type system changes requiring migration. 
+> 
+> **📋 [Complete Migration Guide →](https://github.com/Phuire-Research/Stratimux/blob/main/MIGRATION-GUIDE-v0.3.2.md)**
 
 # Summary: Day One of Stratimux - The Design Intent Realized
 
@@ -83,9 +85,6 @@ This release completes the foundational architecture that enables the compositio
 - **Debug improvements**: `lastStrategyActionList` automatically stored without performance overhead
 - **Stage composition**: New `createStages` helper for scoped, readable stage planning
 - **Better development experience**: Improved error handling and development tooling
-
-### ⚠️ **Breaking Changes - Migration Required**
-This release introduces a **major type system overhaul** requiring explicit quality type definitions:
 
 ```typescript
 // OLD (breaks at scale)
