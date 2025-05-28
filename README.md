@@ -31,11 +31,11 @@ When in doubt simplify.
 ## Change Log ![Tests](https://github.com/Phuire-Research/Stratimux/actions/workflows/node.js.yml/badge.svg)
 # Stratimux 0.3.21: Stratideck - Complete Architecture
 
-**[View Full Release Notes](https://github.com/Phuire-Research/Stratimux/releases/tag/v0.3.2)**
+**[View Full Release Notes](https://github.com/Phuire-Research/Stratimux/releases/tag/v0.3.21)**
 
 > **⚠️ BREAKING UPDATE**: v0.3.21 introduces major type system changes requiring migration. 
 > 
-> **📋 [Complete Migration Guide →](https://github.com/Phuire-Research/Stratimux/blob/main/MIGRATION-GUIDE-v0.3.2.md)**
+> **📋 [Complete Migration Guide →](https://github.com/Phuire-Research/Stratimux/blob/main/MIGRATION-GUIDE-v0.3.21.md)**
 
 # Summary: Day One of Stratimux - The Design Intent Realized
 
@@ -105,7 +105,7 @@ export type CounterQualities = {
 - **All concepts**: Require explicit quality type interfaces
 - **All tests**: Updated for new type patterns
 
-**[Complete migration details and examples →](https://github.com/Phuire-Research/Stratimux/releases/tag/v0.3.2)**
+**[Complete migration details and examples →](https://github.com/Phuire-Research/Stratimux/releases/tag/v0.3.21)**
 
 
 Other typescript projects
