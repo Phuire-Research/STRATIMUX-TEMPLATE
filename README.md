@@ -253,24 +253,27 @@ export const muXPrinciple: MUXPrinciple = ({
   plan
 }) => {
   // There always needs to be atleast one subscriber or plan for the Muxium to be active.
-  const muxPlan = plan('muX Plan', ({stageO, stage, d__}) => [
-    // This will register this plan to the muxium, this allows for the muxium to close or remove your concept cleanly.
-    stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlan}))),
-    stage(({concepts, dispatch, k, d}) => {
-      const state = k.state(concepts);
-      if (state) {
-        dispatch(strategyBegin(muXSomeStrategy(d)), {
-          iterateStage: true
-        });
-      }
-    }, {beat: 30}),
-    stage(({concepts, stagePlanner}) => {
-      const {lastStrategy} = getMuxiumState(concepts);
-      if (lastStrategy === muXSomeStrategyTopic) {
-        stagePlanner.conclude();
-      }
-    })
-  ]);  // v0.3.21 Advanced: Using createStages helper for improved scoped composition
+  const muxPlan = plan('muX Plan', ({staging, stageO, stage, d__}) =>
+    staging(() => [
+      // This will register this plan to the muxium, this allows for the muxium to close or remove your concept cleanly.
+      stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlan}))),
+      stage(({concepts, dispatch, k, d}) => {
+        const state = k.getState(concepts);
+        console.log(k.message.select());
+        if (state) {
+          dispatch(strategyBegin(muXSomeStrategy(d)), {
+            iterateStage: true
+          });
+        }
+      }, {beat: 30}),
+      stage(({concepts, stagePlanner}) => {
+        const {lastStrategy} = getMuxiumState(concepts);
+        if (lastStrategy === muXSomeStrategyTopic) {
+          stagePlanner.conclude();
+        }
+      })
+    ])
+  );  // v0.3.21 Advanced: Using createStages helper for improved scoped composition
   // *Note* when accessing your deck from outside of Stratimux, you will need to supply your Deck Type Interface to the plan to access such. This is a QoL Decision allowing for Stratimux to be adapted to any number of environments.
   const muxPlanWithStages = plan<MUXDeck>('muX Plan with createStages', ({d__}) => 
     createStages(({stageO, stage}) => {
@@ -280,7 +283,7 @@ export const muXPrinciple: MUXPrinciple = ({
       const stageRegister = stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlanWithStages})));
 
       const stageDispatch = stage(({concepts, dispatch, k, d}) => {
-          const state = k.state(concepts);
+          const state = k.getState(concepts);
           if (state) {
             dispatch(strategyBegin(muXSomeStrategy(d)), {
               iterateStage: true

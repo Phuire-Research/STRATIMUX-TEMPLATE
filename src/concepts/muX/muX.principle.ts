@@ -15,7 +15,8 @@ export const muXPrinciple: MUXPrinciple = ({
       // This will register this plan to the muxium, this allows for the muxium to close or remove your concept cleanly.
       stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlan}))),
       stage(({concepts, dispatch, k, d}) => {
-        const state = k.state(concepts);
+        const state = k.getState(concepts);
+        console.log(k.message.select());
         if (state) {
           dispatch(strategyBegin(muXSomeStrategy(d)), {
             iterateStage: true

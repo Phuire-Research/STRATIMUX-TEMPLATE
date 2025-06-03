@@ -28,7 +28,7 @@ test('Muxium Counting Strategy Test', (done) => {
       stage(({concepts, d, stagePlanner}) => {
         const muxiumState = getMuxiumState(concepts);
         if (muxiumState.lastStrategy === countingTopic) {
-          const counter = d.counter.k.state(concepts);
+          const counter = d.counter.k.getState(concepts);
           expect(counter?.count).toBe(1);
           setTimeout(() => {done();}, 500);
           stagePlanner.conclude();
