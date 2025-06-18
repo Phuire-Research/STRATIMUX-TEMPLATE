@@ -29,61 +29,48 @@ When in doubt simplify.
 * [Unified Turing Machine](https://github.com/Phuire-Research/Stratimux/blob/main/The-Unified-Turing-Machine.md) - The governing concept for this entire framework.:|
 
 ## Change Log ![Tests](https://github.com/Phuire-Research/Stratimux/actions/workflows/node.js.yml/badge.svg)
-# Stratimux 0.3.21: Stratideck - Complete Architecture
+## Decks Emitted to Quality Parts are Based on Concept v0.3.271
+1. Qualities now receive their own deck.d to allow for proper muxification.
+2. Stratidecks are now a Complete Circular Reference with Muxium returning to Root via it's own d.
+  - Note that the Type System will cap this Circular Reference as Tier 2 and constrain the parameters to ECK
+3. Added a `selectStratiDECK<D>(deck: unknown, conceptName: string): StratiDECK<D> | undefined` Function that returns the desired stratideck if found that is further enhanced via the circular Stratideck Reference. Will stop only after exploring the first base tier and it's potential muxified parts. Only truly useful at Root in a Dynamic Setting.
 
-**[View Full Release Notes](https://github.com/Phuire-Research/Stratimux/releases/tag/v0.3.21)**
+Specific note about working with the new selectStratiDECK System is this strange nuance demonstrates the fundamental limitations of hierarchically informed type systems.
 
-> **⚠️ BREAKING UPDATE**: v0.3.21 introduces major type system changes requiring migration. 
-> 
-> **📋 [Complete Migration Guide →](https://github.com/Phuire-Research/Stratimux/blob/main/MIGRATION-GUIDE-v0.3.21.md)**
+Wherein you have to declare our new SomeConcept Type as such:
+```typescript
+// Will Build
+export type SomeConcept = Concept<SomeState, SomeQualities, SomeMuxifiedDecks>
+export type SomeDeck = {
+  someConcept: Concept<SomeState, SomeQualities, SomeMuxifiedDecks>
+}
+```
+Versus attempting to do Higher Order Composition in this Hierarchical Type System. 
+```typescript
+// Will Not Build when Utilizing Entry Actions Derived from D with Payloads.
+export type SomeConcept = Concept<SomeState, SomeQualities, SomeMuxifiedDecks>
+export type SomeDeck = {
+  someConcept: SomeConcept
+}
+```
+This will compile, but due to how the Parent Child Relationship in these Systems are not Interoperable. You can't do the Common Sense Composition without losing Information.
 
-# Summary: Day One of Stratimux - The Design Intent Realized
+### Refinement Muxify Concepts Q Property v0.3.261
+# Stratimux v0.3.26: StratiDECK
 
-## Core Achievement
-**v0.3.21 represents Day One of Stratimux** - the moment when the framework's architectural vision becomes reality through the Stratideck system.
+The StratiDECK Higher Order Conceptual Compositional Architecture is now production-ready with enhanced type safety and refined APIs.
 
-## The Problem Solved
-- **Semaphore limitations**: All qualities of same type shared identical semaphores limited comparisons to in concept.
-- **No concept individualization**: `playerCounter.add()` and `sessionCounter.add()` were indistinguishable
-- **Single origin constraint**: Could only have one source per quality type
+## What's New
+- **🎯 Enhanced Selectors**: `k.getState()`, `k.getName()`, `k.getConcept<T>()` - clearer naming, better types
+- **🔒 Type System**: Complete coverage for all muxified concept compositions  
+- **🚀 Developer Experience**: No type casting needed for `nextA`, cleaner console output
+- **📋 Stricter Requirements**: Concept names must match their listen names in concept load
 
-## The Identity Solution
-- **Simple function comparators**: `c.playerScore.add(action)` - just a function call
-- **Unique identities**: Same quality patterns, different identities per concept instance
-- **Cross-concept distinction**: Multiple counters/timers with individual identities
+## Breaking Changes
+- Renamed selectors: `k.state()` → `k.getState()`, `k.name()` → `k.getName()`, `k.create()` → `k.getConcept()`
+- Concept-listen name pairing now enforced
 
-## Higher Order Composition Principle
-**Proven**: All complex concepts are compositions of simpler concepts
-- Reuse concept patterns (Counter, Timer, Toggle) across different muxified concepts
-- Maintain unique identities through the DECK interface system
-- Build sophisticated applications from proven building blocks
-
-## The Stratideck Design Intent
-- **Concept sharing**: Reuse patterns while preserving distinctness
-- **Muxified interface**: StratiDECK system {d:.. {d:.. {e, c, k} e, c, k}, e, c, k} ease of higher order composition access
-- **Type safety**: Full inference across concept boundaries
-- **Compositional architecture**: Complexity through composition, not complication
-
-## Architectural Impact
-1. **True concept portability** with identity preservation
-2. **Scalable complexity** through proven patterns
-3. **Effective mapping** - distinguish between same quality types
-4. **Foundational completion** - enables Stratimux's designed potential
-
-## Day One Significance
-This release completes the foundational architecture that enables the compositional future Stratimux was designed for - transforming from technical framework to **complete architectural paradigm**.
-
-## Key Features & Changes
-
-### 🎯 **Complete STRATIDECK (Deck of Decks) Interface System**
-- **No imports needed**: Direct access to actions, selectors, and semaphores via deck interface
-- **Entry points**: `d` (decks), `e` (actions), `c` (comparators), `k` (selectors)
-- **Type safety**: Full TypeScript inference throughout the system
-
-### 🔧 **Enhanced Quality-of-Life Features**
-- **Debug improvements**: `lastStrategyActionList` automatically stored without performance overhead
-- **Stage composition**: New `createStages` helper for scoped, readable stage planning
-- **Better development experience**: Improved error handling and development tooling
+**[Full Release Notes →](https://github.com/Phuire-Research/Stratimux/releases/tag/v0.3.26)**
 
 ```typescript
 // OLD (breaks at scale)
@@ -105,7 +92,7 @@ export type CounterQualities = {
 - **All concepts**: Require explicit quality type interfaces
 - **All tests**: Updated for new type patterns
 
-**[Complete migration details and examples →](https://github.com/Phuire-Research/Stratimux/releases/tag/v0.3.21)**
+**[Complete migration details and examples →](https://github.com/Phuire-Research/Stratimux/blob/main/MIGRATION-GUIDE-v0.3.22.md)**
 
 
 Other typescript projects
@@ -149,7 +136,7 @@ export const createMUXState = (): MUXState => {
   };
 };
 
-// v0.3.21 REQUIRED: Explicit quality type mapping for type safety at scale
+// v0.3.22 REQUIRED: Explicit quality type mapping for type safety at scale
 export type MUXQualities = {
   muXqOfMux: MuXqOfMux;
 };
@@ -200,7 +187,7 @@ function getRandomRange(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
-// v0.3.21 REQUIRED: Export explicit quality type for concept type mapping
+// v0.3.22 REQUIRED: Export explicit quality type for concept type mapping
 export type MuXqOfMux = Quality<MUXState, muXOfMuxPayload>;
 
 export const muXqOfMux = createQualityCardWithPayload<MUXState, muXOfMuxPayload, MUXDeck>({
@@ -253,27 +240,26 @@ export const muXPrinciple: MUXPrinciple = ({
   plan
 }) => {
   // There always needs to be atleast one subscriber or plan for the Muxium to be active.
-  const muxPlan = plan('muX Plan', ({staging, stageO, stage, d__}) =>
-    staging(() => [
-      // This will register this plan to the muxium, this allows for the muxium to close or remove your concept cleanly.
-      stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlan}))),
-      stage(({concepts, dispatch, k, d}) => {
-        const state = k.getState(concepts);
-        console.log(k.message.select());
-        if (state) {
-          dispatch(strategyBegin(muXSomeStrategy(d)), {
-            iterateStage: true
-          });
-        }
-      }, {beat: 30}),
-      stage(({concepts, stagePlanner}) => {
-        const {lastStrategy} = getMuxiumState(concepts);
-        if (lastStrategy === muXSomeStrategyTopic) {
-          stagePlanner.conclude();
-        }
-      })
-    ])
-  );  // v0.3.21 Advanced: Using createStages helper for improved scoped composition
+  const muxPlan = plan('muX Plan', ({stageO, stage, d__}) => [
+    // This will register this plan to the muxium, this allows for the muxium to close or remove your concept cleanly.
+    stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlan}))),
+    stage(({concepts, dispatch, k, d}) => {
+      const state = k.getState(concepts);
+      const message = k.message.select();
+      console.log(message);
+      if (state) {
+        dispatch(strategyBegin(muXSomeStrategy(d)), {
+          iterateStage: true
+        });
+      }
+    }, {beat: 30}),
+    stage(({concepts, stagePlanner}) => {
+      const {lastStrategy} = getMuxiumState(concepts);
+      if (lastStrategy === muXSomeStrategyTopic) {
+        stagePlanner.conclude();
+      }
+    })
+  ]);  // v0.3.22 Advanced: Using createStages helper for improved scoped composition
   // *Note* when accessing your deck from outside of Stratimux, you will need to supply your Deck Type Interface to the plan to access such. This is a QoL Decision allowing for Stratimux to be adapted to any number of environments.
   const muxPlanWithStages = plan<MUXDeck>('muX Plan with createStages', ({d__}) => 
     createStages(({stageO, stage}) => {
@@ -283,7 +269,7 @@ export const muXPrinciple: MUXPrinciple = ({
       const stageRegister = stageO(() => (d__.muxium.e.muxiumRegisterStagePlanner({conceptName: muXName, stagePlanner: muxPlanWithStages})));
 
       const stageDispatch = stage(({concepts, dispatch, k, d}) => {
-          const state = k.getState(concepts);
+          const state = k.state(concepts);
           if (state) {
             dispatch(strategyBegin(muXSomeStrategy(d)), {
               iterateStage: true
