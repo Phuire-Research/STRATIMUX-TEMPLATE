@@ -1,25 +1,199 @@
 # Stratimux Reference Guide
 
+## 📚 Table of Contents
+
+### 🎯 [Essential Principles for Successful StratiDECK Development](#-essential-principles-for-successful-stratideck-development)
+- [The Four Pillars of Quality StratiDECK Concepts](#the-four-pillars-of-quality-stratideck-concepts)
+  - [1. Type-First Architecture 🏗️](#1-type-first-architecture-️)
+  - [2. Higher-Order Reactive Paradigm ⚡](#2-higher-order-reactive-paradigm-)
+  - [3. Compositional Quality Design 🧩](#3-compositional-quality-design-)
+  - [4. Strategic State Management 📊](#4-strategic-state-management-)
+- [🔑 Core Success Indicators](#-core-success-indicators)
+- [🚨 Critical Anti-Patterns to Avoid](#-critical-anti-patterns-to-avoid)
+
+### 📖 [Introduction](#introduction)
+
+### 🚀 [Version 0.3.2 Key Changes (StratiDECK)](#version-032-key-changes-stratideck)
+- [Critical Breaking Changes](#critical-breaking-changes)
+- [🚀 Higher-Order Programming Paradigm](#-higher-order-programming-paradigm)
+  - [Flat Programming (Traditional - What NOT to do)](#flat-programming-traditional---what-not-to-do)
+  - [Logically Conceptual Higher-Order Programming](#higher-order-programming-stratimux-way)
+
+### 🏛️ [StratiDECK: Tiered Higher-Order Conceptual Composition System](#️-stratideck-tiered-higher-order-conceptual-composition-system)
+- [Overview](#overview-1)
+- [Architectural Layers](#architectural-layers)
+  - [Base Level: Muxium (Tier 0)](#base-level-muxium-tier-0)
+  - [First Level: Concept Composition (Tier 1)](#first-level-concept-composition-tier-1)
+  - [Second Level: Flattened Muxified Access (Tier 2)](#second-level-flattened-muxified-access-tier-2)
+- [The ECK Limitation Strategy](#the-eck-limitation-strategy)
+  - [Problem Addressed](#problem-addressed)
+  - [Solution: ECK Flattening](#solution-eck-flattening)
+  - [Type System Implementation](#type-system-implementation)
+- [Conceptual Composition Benefits](#conceptual-composition-benefits)
+- [Usage Patterns](#usage-patterns)
+- [Runtime Muxification Integration](#runtime-muxification-integration)
+- [Technical Implementation Details](#technical-implementation-details)
+- [Design Principles](#design-principles)
+
+### 🎯 [Critical Planning Context Patterns](#-critical-planning-context-patterns)
+- [**Outer Plan Context vs Principle Context**](#outer-plan-context-vs-principle-context)
+  - [🚨 Outer Plan Context (via `muxium.plan()`)](#-outer-plan-context-via-muxiumplan)
+  - [🏗️ Principle Context (within concept principles)](#️-principle-context-within-concept-principles)
+- [🔑 Single Dispatch Pattern (CRITICAL RULE)](#-single-dispatch-pattern-critical-rule)
+- [📋 Stage Options Reference](#-stage-options-reference)
+- [🔄 Planning Flow Control](#-planning-flow-control)
+
+### 🎬 [ActionStrategies - Orchestrated Action Sequences](#-actionstrategies---orchestrated-action-sequences)
+- [🎯 Understanding ActionStrategies vs Plans](#-understanding-actionstrategies-vs-plans)
+- [🏗️ ActionStrategy Architecture](#️-actionstrategy-architecture)
+- [🔧 Using ActionStrategies in Qualities](#-using-actionstrategies-in-qualities)
+- [🚨 Critical TypeScript Pattern - Deck Type Parameter](#-critical-typescript-pattern---deck-type-parameter)
+- [📋 ActionStrategy Best Practices](#-actionstrategy-best-practices)
+- [🎯 When to Use ActionStrategies vs Plans](#-when-to-use-actionstrategies-vs-plans)
+- [🔄 ActionStrategy Execution Flow](#-actionstrategy-execution-flow)
+- [🎯 ActionStrategy Data - Universal Transformer Pattern](#-actionstrategy-data---universal-transformer-pattern)
+  - [🧠 Fundamental ActionStrategy Data Concepts](#-fundamental-actionstrategy-data-concepts)
+  - [🔧 Data Flow Consumer Functions](#-data-flow-consumer-functions)
+  - [🏗️ Producing ActionStrategy Data in Qualities](#️-producing-actionstrategy-data-in-qualities)
+  - [🔍 Consuming ActionStrategy Data in Qualities](#-consuming-actionstrategy-data-in-qualities)
+  - [⚡ Asynchronous Method Creator Patterns](#-asynchronous-method-creator-patterns)
+  - [🚨 Failure Conditions and Higher Order Logic](#-failure-conditions-and-higher-order-logic)
+  - [🎯 ActionStrategy Data Best Practices](#-actionstrategy-data-best-practices)
+
+### 🏗️ [Muxified Concept Access Patterns (CRITICAL)](#️-muxified-concept-access-patterns-critical)
+- [🎯 Base Concept vs Muxified Conceptual Parts](#-base-concept-vs-muxified-conceptual-parts)
+- [🚨 Outer Plan Dispatch Pattern for Muxified Concepts](#-outer-plan-dispatch-pattern-for-muxified-concepts)
+- [🔧 TypeScript Recursive Type Limitations](#-typescript-recursive-type-limitations)
+- [✅ Explicit User Decision Pattern](#-explicit-user-decision-pattern)
+- [📋 Correct Citation Examples](#-correct-citation-examples)
+
+### 🚨 [Critical Dispatch Pattern Differences (Essential Knowledge)](#-critical-dispatch-pattern-differences-essential-knowledge)
+- [🎯 Two Distinct Dispatch Patterns](#-two-distinct-dispatch-patterns)
+- [⚠️ Critical Anti-Pattern (Causes System Lockup)](#️-critical-anti-pattern-causes-system-lockup)
+- [🔄 Action Overflow Prevention](#-action-overflow-prevention)
+- [🎯 When to Use Each Pattern](#-when-to-use-each-pattern)
+- [🚀 Shortest Path Dispatch Pattern (Efficiency Optimization)](#-shortest-path-dispatch-pattern-efficiency-optimization)
+
+### 🎯 [DECK K Constant Pattern - Reactive State Access (v0.2.242+)](#-deck-k-constant-pattern---reactive-state-access-v02242)
+- [🏗️ Pattern Architecture Overview](#️-pattern-architecture-overview)
+- [🎯 Context-Aware Usage Patterns](#-context-aware-usage-patterns)
+- [🚀 Performance-Optimized State Selection](#-performance-optimized-state-selection)
+- [🎯 Working Implementation Examples](#-working-implementation-examples)
+- [🚨 Critical Anti-Patterns to Avoid](#-critical-anti-patterns-to-avoid-1)
+- [📊 Performance Benefits](#-performance-benefits)
+- [🔧 Debugging & Troubleshooting](#-debugging--troubleshooting)
+- [🎯 Migration Guide from Legacy Patterns](#-migration-guide-from-legacy-patterns)
+
+### 🧩 [Quality Creation Patterns & Best Practices](#-quality-creation-patterns--best-practices)
+- [📋 Comprehensive Quality Implementation Guide](#-comprehensive-quality-implementation-guide)
+- [🎯 Pattern 1: Simple Quality (No Payload)](#-pattern-1-simple-quality-no-payload)
+- [🎯 Pattern 2: Payload Quality (With Parameters)](#-pattern-2-payload-quality-with-parameters)
+- [🎯 Pattern 3: Destructured Payload (Alternative Syntax)](#-pattern-3-destructured-payload-alternative-syntax)
+- [🎯 Pattern 4: Complex Array/Object Updates](#-pattern-4-complex-arrayobject-updates)
+- [🎯 Pattern 5: Advanced Method Creator (Complex Logic)](#-pattern-5-advanced-method-creator-complex-logic)
+- [🎯 Pattern 6: Performance-Optimized No-State-Change](#-pattern-6-performance-optimized-no-state-change)
+- [🚨 Critical Anti-Patterns to Avoid](#-critical-anti-patterns-to-avoid-2)
+- [✅ Quality Implementation Checklist](#-quality-implementation-checklist)
+- [🎯 Quality Type Definition Pattern](#-quality-type-definition-pattern)
+
+### 🧪 [Stratimux Testing Patterns & Asynchronous State Management](#-stratimux-testing-patterns--asynchronous-state-management)
+- [🎯 Essential Testing Principles](#-essential-testing-principles)
+- [⚡ Asynchronous State Management (CRITICAL)](#-asynchronous-state-management-critical)
+- [🔄 Stage Separation for State Changes](#-stage-separation-for-state-changes)
+- [⏱️ Reactive Stream Timing & Planning Scope](#️-reactive-stream-timing--planning-scope)
+- [🧪 Jest Integration Patterns](#-jest-integration-patterns)
+- [📋 Complete Testing Implementation Examples](#-complete-testing-implementation-examples)
+- [🚨 Critical Testing Anti-Patterns](#-critical-testing-anti-patterns)
+- [✅ Testing Best Practices Checklist](#-testing-best-practices-checklist)
+
+### 🚀 [Critical Reducer Performance Optimization (ESSENTIAL)](#-critical-reducer-performance-optimization-essential)
+- [🎯 The Shortest Path Principle for State Updates](#-the-shortest-path-principle-for-state-updates)
+- [✅ CORRECT: Partial State Return Pattern](#-correct-partial-state-return-pattern)
+- [❌ WRONG: Full State Return Anti-Patterns](#-wrong-full-state-return-anti-patterns)
+- [🔥 Performance Impact Demonstration](#-performance-impact-demonstration)
+- [📊 When to Return What](#-when-to-return-what)
+- [🎯 Complex State Update Patterns](#-complex-state-update-patterns)
+- [🧠 Memory and Performance Benefits](#-memory-and-performance-benefits)
+- [🔧 Debugging Performance Issues](#-debugging-performance-issues)
+- [📝 Quality Reducer Checklist](#-quality-reducer-checklist)
+
+### 🧠 [Strategic State Management & Concept Composition Wisdom](#-strategic-state-management--concept-composition-wisdom)
+- [🏗️ Designing Effective State Structures](#️-designing-effective-state-structures)
+- [🔗 Concept Composition Strategies](#-concept-composition-strategies)
+- [📐 State Design Best Practices](#-state-design-best-practices)
+  - [1. **Normalize Complex Data**](#1-normalize-complex-data)
+  - [2. **Separate Concerns Clearly**](#2-separate-concerns-clearly)
+  - [3. **Design for Reactivity**](#3-design-for-reactivity)
+  - [4. **🚨 CRITICAL: Avoid Optional Properties in State (KeyedSelector Requirement)**](#4--critical-avoid-optional-properties-in-state-keyedselector-requirement)
+  - [5. **🚀 CRITICAL: Optimal Reducer Returns (Shortest Path Principle)**](#5--critical-optimal-reducer-returns-shortest-path-principle)
+- [🎯 Composition Integration Patterns](#-composition-integration-patterns)
+- [🚀 Advanced Composition Wisdom](#-advanced-composition-wisdom)
+
+---
+
+## 🎯 Essential Principles for Successful StratiDECK Development
+
+### The Four Pillars of Quality StratiDECK Concepts
+
+#### 1. **Type-First Architecture** 🏗️
+- Always begin with `qualities/types.ts` containing all state interfaces and payload types
+- Use explicit Quality type mapping (NEVER `typeof` patterns)
+- Maintain strict TypeScript compliance with verbatimModuleSyntax
+
+#### 2. **Higher-Order Reactive Paradigm** ⚡
+- All operations occur within planning scope using `muxium.plan<DECK>()`
+- State access through DECK K Constant pattern: `k.property.select()` or `d.concept.k.property.select()`
+- No base-level operations (no `getState()`, direct mutations, or imperative dispatches)
+
+#### 3. **Compositional Quality Design** 🧩
+- Each quality represents a single, atomic state transformation
+- Qualities are pure functions with predictable inputs/outputs
+- Use `createQualityCard` for simple actions, `createQualityCardWithPayload` for parameterized actions
+
+#### 4. **Strategic State Management** 📊
+- Design state structures that reflect your domain model clearly
+- Use principles for initialization and long-running reactive behaviors
+- Leverage selectors for efficient, targeted reactivity
+
+### 🔑 Core Success Indicators
+
+A successful StratiDECK concept demonstrates:
+- **Zero TypeScript compilation errors** in strict mode
+- **Complete type safety** from state definition through quality implementation
+- **Reactive responsiveness** to state changes through proper selector usage
+- **Compositional flexibility** allowing integration with other concepts via `muxifyConcepts`
+- **Clear separation of concerns** between state management (qualities) and reactive logic (principles)
+
+### 🚨 Critical Anti-Patterns to Avoid
+
+1. **Legacy typeof Pattern**: `export type Qualities = typeof qualities` (causes compilation failures)
+2. **Imperative State Access**: Attempting `muxium.getState()` or direct state mutations
+3. **Missing Type Exports**: Quality files without explicit Quality type exports
+4. **Flat Programming Mindset**: Trying to operate outside planning scope
+5. **Overly Complex State**: Designing state structures that mix concerns or domains
+
+---
+
 ## Introduction
 
 Stratimux is an asynchronous graph programming framework that implements a Muxified Turing Machine. This reference guide is **specifically designed for AI agents** and provides a comprehensive overview of the core concepts, patterns, and functionality based on analyzing the codebase and test files.
 
-**Version Coverage**: This guide covers Stratimux v0.3.22 (Stratideck) with complete type system overhaul and DECK interface system.
+**Version Coverage**: This guide covers Stratimux v0.3.2 (Stratideck) with complete type system overhaul and StratiDECK interface system.
 
 **For Agents**: This reference provides drop-in code patterns, type definitions, and implementation examples for effective Stratimux development without requiring deep framework knowledge.
 
-## Version 0.3.22 Key Changes (Stratideck)
+## Version 0.3.2 Key Changes (StratiDECK)
 
 ### Critical Breaking Changes
 
 **Quality Type System Overhaul**: All qualities now require explicit type definitions due to TypeScript limitations at scale.
 
 ```typescript
-// OLD Pattern (No longer works with complex concepts)
+// ❌ OLD Pattern (No longer works with complex concepts - LEGACY ANTI-PATTERN)
 const qualities = { counterAdd, counterSubtract };
 export type CounterQualities = typeof qualities;
 
-// NEW Pattern (Required for v0.3.22+)
+// ✅ NEW Pattern (Required for v0.3.2+ - CORRECT APPROACH)
 export type CounterAdd = Quality<CounterState>;
 export type CounterSubtract = Quality<CounterState>;
 export type CounterQualities = {
@@ -28,3272 +202,2747 @@ export type CounterQualities = {
 };
 ```
 
-### New Features
+**⚠️ CRITICAL FOR AI AGENTS**: Never use `typeof` pattern for quality definitions. This is a legacy anti-pattern that causes compilation failures in v0.3.2+.
 
-#### 1. Enhanced MuxiumState (v0.3.01)
+### 🚀 Higher-Order Programming Paradigm
+
+**Stratimux is fundamentally different from traditional "flat" programming**. It operates as a higher-order environment where you don't work at the base level, but within planning scope:
+
+#### Flat Programming (Traditional - What NOT to do)
 ```typescript
-export type MuxiumState = {
-  dialog: string;
-  lastStrategy: string;
-  lastStrategyActionList: Array<string>; // NEW: Debug enhancement
-  lastStrategyData: unknown;
-  generation: number;
-}
+// ❌ FLAT/IMPERATIVE APPROACH (Wrong for Stratimux)
+const muxium = muxification('My App', { myConcept: createMyConcept() });
+
+// Direct state access (BAD)
+const state = muxium.getState(); // This doesn't exist!
+state.myConcept.someProperty = 'new value'; // Direct mutation (BAD)
+
+// Imperative action dispatch (BAD)  
+muxium.dispatch(myAction()); // Base-level dispatch (BAD)
 ```
 
-#### 2. createStages Helper Function (v0.3.11)
+#### Logically Conceptual Higher-Order Programming 
 ```typescript
-// NEW: Scoped stage composition helper
-const plan = muxium.plan<CounterDeck>('createStages Example', ({staging, stage, stageO, d__}) => {
-  
-  // Traditional approach without createStages
-  const manualStages = [
-    stageO(() => d__.muxium.e.muxiumKick()),
-    stage(({dispatch, d}) => {
-      dispatch(d.counter.e.counterAdd(), {iterateStage: true});
-    }),
-    stage(({concepts, dispatch, d}) => {
-      const count = selectSlice(concepts, counterSelectCount);
-      if (count === 5) {
-        dispatch(d.counter.e.counterSetCount({newCount: 0}), {iterateStage: true});
-      }
-    })
-  ];
-  
-  // NEW: Using createStages for scoped composition
-  const composedStages = staging(() => {
-    const initStage = stageO(() => d__.muxium.e.muxiumKick());
+// ✅ HIGHER-ORDER APPROACH
+const muxium = muxification('My App', { myConcept: createMyConcept() });
+
+// All logic happens within planning scope
+muxium.plan<MyConceptDeck>('my application logic', ({ stage, conclude, d__, k__ }) => [
+  stage(({ d, k, dispatch, stagePlanner }) => {
+    // State access through DECK K pattern
+    const someProperty = d.myConcept.k.someProperty.select();
     
-    const countStage = stage(({dispatch, d}) => {
-      dispatch(d.counter.e.counterAdd(), {iterateStage: true});
-    });
-    
-    const resetStage = stage(({concepts, dispatch, d}) => {
-      const count = selectSlice(concepts, counterSelectCount);
-      if (count === 5) {
-        dispatch(d.counter.e.counterSetCount({newCount: 0}), {iterateStage: true});
-      }
-    });
-    
-    return [initStage, countStage, resetStage];
-  });
-  
-  return composedStages; // or manualStages - both work identically
-});
-```
-
-**Benefits of createStages (`staging`):**
-- **Scoped composition**: Groups related stages logically  
-- **Type safety**: Full TypeScript support within the callback
-- **Reusability**: Stage groups can be extracted and reused
-- **Readability**: Complex plans become more maintainable
-
-### Migration Required
-
-**All Quality Files Must Export Types**:
-```typescript
-// Every quality file now requires:
-export type QualityName = Quality<StateType, PayloadType?>;
-```
-
-**All Concept Files Must Use Explicit Type Mapping**:
-```typescript
-// Required pattern for all concepts
-export type ConceptQualities = {
-  qualityOne: QualityOneType,
-  qualityTwo: QualityTwoType,
-  // ... explicit mapping required
-};
-```
-
-## Migration Guide for v0.3.22
-
-### 1. Package Installation
-
-```bash
-# Remove old package
-npm uninstall @phuire/stratimux
-
-# Install new package  
-npm install stratimux
-```
-
-### 2. Update Import Statements
-
-```typescript
-// OLD
-import { muxification } from '@phuire/stratimux';
-
-// NEW  
-import { muxification } from 'stratimux';
-```
-
-### 3. Add Quality Type Exports
-
-For every quality file, add explicit type exports:
-
-```typescript
-// OLD (quality file - no type exports required)
-export const counterAdd = createQualityCard<CounterState>({
-  type: 'Counter Add',
-  reducer: (state) => ({ count: state.count + 1 })
-});
-
-// NEW (quality file - type export required)
-export type CounterAdd = Quality<CounterState>;
-export const counterAdd = createQualityCard<CounterState>({
-  type: 'Counter Add',
-  reducer: (state) => ({ count: state.count + 1 })
-});
-```
-
-### 4. Update Concept Quality Type Definitions
-
-```typescript
-// OLD (implicit typing)
-const qualities = { counterAdd, counterSubtract };
-export type CounterQualities = typeof qualities;
-
-// NEW (explicit mapping required)
-export type CounterQualities = {
-  counterAdd: CounterAdd,
-  counterSubtract: CounterSubtract,
-};
-```
-
-### 5. Leverage New createStages Helper
-
-```typescript
-// OLD (direct array)
-const plan = muxium.plan('My Plan', ({stage}) => [
-  stage(() => { /* logic */ }),
-  stage(() => { /* logic */ })
+    // Conditional logic and reactive patterns
+    if (someProperty === 'trigger') {
+      dispatch(d.myConcept.e.myAction({ data: 'response' }), { 
+        iterateStage: true 
+      });
+    } else {
+      stagePlanner.conclude();
+    }
+  }),
+  conclude()
 ]);
+```
 
-// NEW (using staging for better composition)
-const plan = muxium.plan('My Plan', ({staging, stage}) => 
-  staging(() => {
-    const stage1 = stage(() => { /* logic */ });
-    const stage2 = stage(() => { /* logic */ });
-    return [stage1, stage2];
+**Key Differences:**
+- **No base-level operations**: Everything happens in planning scope
+- **Reactive by design**: Plans respond to state changes
+- **Type-safe**: DECK system provides full TypeScript support
+- **Declarative**: You describe what should happen, not how to do it
+- **Compositional**: Plans can be combined and reused
+
+This paradigm shift from imperative to higher-order reactive programming is what makes Stratimux unique and powerful.
+
+## 🏛️ StratiDECK: Tiered Higher-Order Conceptual Composition System
+
+### Overview
+
+StratiDECK represents Stratimux's architectural approach to conceptual composition through a tiered system that prevents infinite nesting while maintaining composability. The system implements **logically conceptual higher-order reasoning** that operates through controlled access tiers.
+
+### Architectural Layers
+
+#### Base Level: Muxium (Tier 0)
+The foundation muxium instance that coordinates all conceptual compositions:
+
+```typescript
+const muxium = muxification('ApplicationName', {
+  concept1: createConcept1(),
+  concept2: createConcept2(),
+  concept3: createConcept3()
+});
+```
+
+#### First Level: Base Concept Composition (Tier 1)
+Independent concepts that can be composed together through muxification:
+
+```typescript
+// Each concept maintains logical independence as Base Concept
+const authConcept = createConcept(/* auth logic */);
+const dataConcept = createConcept(/* data logic */);
+const uiConcept = createConcept(/* ui logic */);
+
+// Composed through muxifyConcepts to create Muxified Concepts
+const composedDeck = muxifyConcepts({
+  authentication: authConcept,
+  dataLayer: dataConcept,
+  userInterface: uiConcept
+});
+```
+
+#### Second Level: Flattened Muxified Access (Tier 2)
+All muxified concepts become accessible at the second tier through the 'd' property:
+
+```typescript
+// Access pattern through 'd' property to reach Muxified Concepts
+d.baseConcept.d.muxifiedConcept.k.someProperty.select()
+//            ^-- Second tier access to Muxified Concept
+```
+
+### The ECK Limitation Strategy
+
+#### Problem Addressed
+Without tier limitations, conceptual composition could create infinite nesting:
+```typescript
+// Potential infinite nesting without ECK limitation
+d.concept1.d.concept2.d.concept3.d.concept4.d.concept5... // Goes on forever
+```
+
+#### Solution: ECK Flattening
+StratiDECK caps conceptual access at the **2nd tier** using the ECK (E-ntities, C-oncepts, K-onstants) pattern:
+
+```typescript
+// CORRECT: 2nd tier access (Base → Muxified)
+d.baseConcept.d.muxifiedConcept.k.property.select()
+
+// WRONG: 3rd tier access (prevented by design)
+d.base.d.muxified.d.furtherMuxified.k.property.select() // This pattern is blocked
+```
+
+#### Type System Implementation
+The TypeScript type system enforces the ECK limitation:
+
+```typescript
+interface StratiDECK {
+  [conceptName: string]: {
+    e: ConceptActions;    // Entities (action creators)
+    c: ConceptState;      // Concepts (state structure)  
+    k: ConceptSelectors;  // Constants (reactive selectors)
+    d: MuxifiedConcepts;  // Decks (2nd tier only)
+  }
+}
+```
+
+### Conceptual Composition Benefits
+
+1. **Logical Independence**: Each concept maintains its reasoning boundaries
+2. **Controlled Composition**: Prevents unmanageable nesting through tier limits
+3. **Higher-Order Access**: Direct composition without dependency chains
+4. **Concept Individuation**: Muxified concepts can become Base concepts independently
+5. **Type Safety**: Full TypeScript support through flattened structure
+6. **Reactive Consistency**: Uniform access patterns across all concepts
+
+### Usage Patterns
+
+#### Within Planning Scope (Outer Context)
+```typescript
+muxium.plan<CompositeDeck>('operation', ({ stage, conclude }) => [
+  stage(({ d, dispatch }) => {
+    // Access Base concept state
+    const baseValue = d.baseConcept.k.someValue.select();
+    
+    // Access Muxified concept state at 2nd tier
+    const muxifiedValue = d.baseConcept.d.muxifiedConcept.k.value.select();
+    
+    // Dispatch to Muxified concept
+    dispatch(d.baseConcept.d.muxifiedConcept.e.action({ 
+      data: baseValue 
+    }), { iterateStage: true });
+  }),
+  conclude()
+]);
+```
+
+#### Within Principle Context
+```typescript
+export const compositePrinciple: BaseConceptPrinciple = ({ d_, k_, plan }) => {
+  return plan('composite operation', ({ stage, conclude }) => [
+    stage(({ d, k, dispatch }) => {
+      // Direct access to own Base concept state
+      const ownValue = k.property.select();
+      
+      // Access to Muxified concept at 2nd tier
+      const muxifiedValue = d.baseConcept.d.muxifiedConcept.k.value.select();
+      
+      dispatch(d_.baseConcept.e.updateWithMuxified({ 
+        base: ownValue, 
+        muxified: muxifiedValue 
+      }), { iterateStage: true });
+    }),
+    conclude()
+  ]);
+};
+```
+
+### Runtime Muxification Integration
+
+StratiDECK integrates with runtime muxification for dynamic concept composition:
+
+```typescript
+// Base concept with muxification capability
+const baseConcept = createConcept({
+  name: 'baseConcept',
+  state: initialState,
+  qualities: baseQualities,
+  concepts: muxifyConcepts({
+    muxifiedConcept: createMuxifiedConcept(),
+    utilityConept: createUtilityConcept()
   })
-);
+});
 ```
 
-### 6. Update Complex Concepts
+### Technical Implementation Details
 
-For concepts with many qualities, ensure all types are explicitly defined:
-
+#### Deck Structure
 ```typescript
-// NEW pattern for complex concepts
-export type MyConceptAdd = Quality<MyState>;
-export type MyConceptRemove = Quality<MyState>;  
-export type MyConceptUpdate = Quality<MyState, UpdatePayload>;
-export type MyConceptQuery = Quality<MyState, QueryPayload>;
+interface ConceptDeck {
+  [conceptName: string]: {
+    e: ActionCreators;      // Action creators for this concept
+    c: ConceptDefinition;   // Concept definition and metadata
+    k: ReactiveSelectors;   // DECK K Constant pattern selectors
+    d: {                    // 2nd tier Muxified concepts
+      [muxifiedName: string]: {
+        e: ActionCreators;
+        c: ConceptDefinition;  
+        k: ReactiveSelectors;
+        // Note: No nested 'd' property (ECK limitation)
+      }
+    }
+  }
+}
+```
 
-export type MyConceptQualities = {
-  myConceptAdd: MyConceptAdd,
-  myConceptRemove: MyConceptRemove,
-  myConceptUpdate: MyConceptUpdate,
-  myConceptQuery: MyConceptQuery,
+#### Access Path Resolution
+The system resolves concept access through controlled path traversal:
+
+1. **Tier 1**: `d.conceptName` → Direct Base concept access
+2. **Tier 2**: `d.conceptName.d.muxifiedConcept` → Muxified concept access  
+3. **Tier 3+**: Blocked by type system and runtime limitations
+
+### Design Principles
+
+1. **Logically Conceptual**: Each tier represents a logical reasoning boundary
+2. **Higher-Order Composition**: Concepts compose through muxification
+3. **Controlled Complexity**: ECK limitation prevents runaway nesting
+4. **Concept Individuation**: Muxified concepts can individuate as Base concepts
+5. **Functional Coherence**: Maintains functional programming principles
+6. **Type System Harmony**: Full integration with TypeScript for safety
+
+The StratiDECK system demonstrates how higher-order conceptual reasoning can be implemented as code structure, providing both logical clarity and practical implementation benefits through controlled compositional architecture.
+
+## 🎯 Critical Planning Context Patterns
+
+### **Outer Plan Context vs Principle Context** 
+
+Understanding the distinction between these two planning contexts is **CRITICAL** for proper Stratimux development:
+
+#### 🚨 Outer Plan Context (via `muxium.plan()`)
+```typescript
+// When you create a plan from muxium, you're in OUTER PLAN CONTEXT
+muxium.plan<ConceptDeck>('operation name', ({ stage, conclude }) => [
+  stage(({ dispatch, d, k }) => {
+    // ❌ WRONG: k refers to MUXIUM global state, not concept state
+    const wrongValue = k.someProperty.select(); // This won't work!
+    
+    // ✅ CORRECT: Use d.conceptName.k for concept state access
+    const correctValue = d.myConcept.k.someProperty.select();
+    
+    // SINGLE dispatch per stage - acts like final return
+    dispatch(d.myConcept.e.myAction({ data: correctValue }), { 
+      iterateStage: true // Explicit stage control required
+    });
+    // No other dispatches allowed in this stage
+  }),
+  conclude()
+]);
+```
+
+#### 🏗️ Principle Context (within concept principles)
+```typescript
+// When you're inside a principle, you're in PRINCIPLE CONTEXT
+export const myPrinciple: MyConceptPrinciple = ({ d_, k_, plan }) => {
+  return plan('principle operation', ({ stage, conclude }) => [
+    stage(({ dispatch, d, k }) => {
+      // ✅ CORRECT: k refers directly to concept's own state
+      const conceptValue = k.someProperty.select();
+      
+      // SINGLE dispatch per stage - acts like final return
+      dispatch(d.myConcept.e.myAction({ data: conceptValue }), { 
+        iterateStage: true // Explicit stage control required
+      });
+      // No other dispatches allowed in this stage
+    }),
+    conclude()
+  ]);
 };
 ```
 
-### 7. Enhanced MuxiumState Usage
+### 🔑 Single Dispatch Pattern (CRITICAL RULE)
 
-Take advantage of the new `lastStrategyActionList` property:
+**Each stage must have exactly ONE dispatch that acts like a final return statement:**
 
+#### ✅ Correct Single Dispatch Pattern
 ```typescript
-// NEW debugging capability
-stage(({concepts}) => {
-  const muxiumState = getMuxiumState(concepts);
+stage(({ dispatch, d }) => {
+  const value = d.myConcept.k.property.select();
   
-  // Access new debugging property
-  console.log('Last strategy actions:', muxiumState.lastStrategyActionList);
-  console.log('Strategy execution trace:', muxiumState.lastStrategyActionList.join(' → '));
+  if (value === 'condition') {
+    // SINGLE dispatch with early return
+    dispatch(d.myConcept.e.actionOne({ data: value }), { 
+      iterateStage: true 
+    });
+    return; // Explicit early return
+  }
+  
+  // SINGLE dispatch for alternate path
+  dispatch(d.myConcept.e.actionTwo({ data: 'default' }), { 
+    iterateStage: false 
+  });
+  // This is the implicit final return
+})
+```
+
+#### ❌ Wrong Multiple Dispatch Pattern
+```typescript
+stage(({ dispatch, d }) => {
+  // WRONG: Multiple dispatches in same stage
+  dispatch(d.myConcept.e.actionOne());   // First dispatch
+  dispatch(d.myConcept.e.actionTwo());   // Second dispatch - CAUSES ERRORS
+  dispatch(d.myConcept.e.actionThree()); // Third dispatch - CAUSES ERRORS
+  
+  return { iterateStage: true }; // WRONG: return object instead of dispatch options
+})
+```
+
+### 📋 Stage Options Reference
+
+Every dispatch **MUST** include explicit stage options:
+
+```typescript
+// Stage control options
+{ iterateStage: true }   // Move to next stage after dispatch
+{ iterateStage: false }  // Stay on current stage for next iteration
+{ }                      // Empty object - completes current plan iteration
+```
+
+### 🔄 Planning Flow Control
+
+#### Pattern: Conditional Stage Progression
+```typescript
+stage(({ dispatch, d }) => {
+  const needsProcessing = d.myConcept.k.needsProcessing.select();
+  
+  if (needsProcessing) {
+    // Continue to next stage for processing
+    dispatch(d.myConcept.e.startProcessing(), { 
+      iterateStage: true 
+    });
+    return;
+  }
+  
+  // Skip processing, complete plan
+  dispatch(d.myConcept.e.markComplete(), { 
+    iterateStage: false 
+  });
+})
+```
+
+#### Pattern: Stage Looping
+```typescript
+stage(({ dispatch, d }) => {
+  const items = d.myConcept.k.itemsToProcess.select();
+  
+  if (items.length > 0) {
+    // Process one item, stay on this stage
+    dispatch(d.myConcept.e.processNextItem(), { 
+      iterateStage: false // Loop on this stage
+    });
+    return;
+  }
+  
+  // All items processed, move forward
+  dispatch(d.myConcept.e.processingComplete(), { 
+    iterateStage: true 
+  });
+})
+```
+
+**Key Insights:**
+- **Outer plans**: Use `d.conceptName.k` for state access
+- **Principle plans**: Use `k` directly for concept's own state
+- **One dispatch per stage**: Each stage ends with exactly one dispatch
+- **Explicit options**: Every dispatch needs stage control options
+- **Flow control**: Use `iterateStage` boolean to control plan progression
+
+This understanding prevents the most common Stratimux planning errors and ensures proper reactive behavior.
+
+## 🎬 ActionStrategies - Orchestrated Action Sequences
+
+**ActionStrategies are the foundation of complex action orchestration in Stratimux, providing reusable, composable sequences of actions.**
+
+### 🎯 Understanding ActionStrategies vs Plans
+
+**Critical Distinction**: ActionStrategies are **NOT** the same as planning within qualities:
+- **ActionStrategies**: Pre-defined sequences of actions that can be reused across different contexts
+- **Plans**: Dynamic, reactive stages that respond to state changes in real-time
+- **Usage**: ActionStrategies are ideal for fixed workflows; Plans are ideal for reactive logic
+
+### 🏗️ ActionStrategy Architecture
+
+**ActionStrategies are explicit data structures** that define orchestrated action sequences. They are **consumed with no active parts** - pure data that describes what should happen when executed.
+
+#### Key Concept: Functions Compose Strategies
+ActionStrategies use **function composition** to build explicit data structures that Stratimux can execute. The strategy itself is immutable data; functions are used to compose and construct these data structures.
+
+#### Creating ActionStrategies - Multiple Approaches
+
+**Approach 1: Inline Strategy Creation**
+```typescript
+// In a principle or quality - direct inline creation
+const setRootDeckAction = d_.commandDeckInterface.e.commandDeckInterfaceSetRootDeck({
+  rootDeckName: deckName
 });
-```
-
-## Core Concepts
-
-### Muxium
-
-A Muxium is the governing concept that contains a set of concepts that formalize its functionality.
-
-```typescript
-// Creating a Debugging Muxium
-const muxium = muxification('Mock Muxium', {
-  counter: createCounterConcept(), 
-  chain: createChainConcept()
-}, {logging: true, storeDialog: true});
-```
-
-```typescript
-// Creating a Production Muxium
-const muxium = muxification('Production Deck', {
-  counter: createCounterConcept(),
-  chain: createChainConcept()
-}, {logging: false, storeDialog: false});
-```
-
-Key properties:
-- **Name**: A unique identifier for the Muxium
-- **Concepts**: A collection of concepts that make up the Muxium's functionality
-- **Options**: Configuration options like logging and storeDialog
-
-### Concept
-
-A Concept is a fundamental building block composed of state, qualities, principles, and mode.
-
-```typescript
-// Modern Counter Concept definition (v0.3.22+)
-export type CounterState = {
-  count: number
-}
-
-export const counterName = 'counter';
-
-const initialCounterState: CounterState = {
-  count: 0
-};
-
-// NEW: Explicit quality type definitions required
-export type CounterAdd = Quality<CounterState>;
-export type CounterSubtract = Quality<CounterState>;
-export type CounterSetCount = Quality<CounterState, CounterSetCountPayload>;
-export type CounterMultiply = Quality<CounterState, CounterMultiplyPayload>;
-
-// NEW: Explicit qualities interface
-export type CounterQualities = {
-  counterAdd: CounterAdd,
-  counterSubtract: CounterSubtract,
-  counterSetCount: CounterSetCount,
-  counterMultiply: CounterMultiply
-};
-
-const counterQualities = {
-  counterAdd,
-  counterSubtract,
-  counterSetCount,
-  counterMultiply
-};
-
-export const createCounterConcept = () => {
-  return createConcept<CounterState, CounterQualities>(
-    counterName,
-    initialCounterState,
-    counterQualities
-  );
-};
-
-// Modern Deck type definition
-export type CounterDeck = {
-  counter: Concept<CounterState, CounterQualities>,
-};
-```
-
-Components of a Concept:
-- **Name**: A unique identifier
-- **State**: The data structure maintained by the concept
-- **Qualities**: Functions that can update state and perform side-effects
-- **Principles**: The initialization/setup functions for the concept
-
-### Quality
-
-Qualities define actions that can be performed on a concept. They contain:
-
-1. A type identifier
-2. A reducer function to update state
-3. An optional method creator for side effects
-4. Optional keyed selectors
-
-#### Quality Without Payload
-
-```typescript
-// Real example from counter concept (v0.3.22+)
-// REQUIRED: Export the quality type
-export type CounterAdd = Quality<CounterState>;
-
-export const counterAdd = createQualityCard<CounterState>({
-  type: 'Counter Add',
-  reducer: (state) => {
-    return {
-      count: state.count + 1
-    };
-  },
-  methodCreator: defaultMethodCreator,
-  keyedSelectors: [counterSelectCount]
+const switchDeckContextAction = d_.commandDeckInterface.e.commandDeckInterfaceSwitchDeckContext({
+  deckName: deckName,
+  availableDecks: allDiscoveredDecks,
+  deckQualities: commandsInfo.flatList
 });
-```
 
-#### Quality Without Payload (No Keyed Selectors)
-
-```typescript
-// Simple quality that doesn't need DECK access (v0.3.22+)
-// REQUIRED: Export the quality type (even for simple qualities)
-export type MuxiumKick = Quality;
-
-export const muxiumKick = createQualityCard({
-  type: 'Kick Muxium',
-  reducer: defaultReducer,
-  methodCreator: defaultMethodCreator
+// Create explicit data structure using composition functions
+const strategy = createStrategy({
+  topic: 'Initializing Deck Discovery Sequence',
+  initialNode: createActionNode(setRootDeckAction, {
+    successNode: createActionNode(switchDeckContextAction)
+  })
 });
+
+// Execute the explicit data structure
+dispatch(strategyBegin(strategy), { iterateStage: true });
 ```
 
-#### Quality With Payload
-
+**Approach 2: Function-Composed Strategy Builder**
 ```typescript
-// REQUIRED: Define the payload type
-export type CounterSetCountPayload = {
-  newCount: number
-}
+// strategies/exampleStrategy.ts
+import { createActionNode, createStrategy, ActionStrategy, ActionStrategyParameters } from 'stratimux';
+import type { Deck } from 'stratimux';
+import type { MyConceptDeck } from '../myConcept.concept';
 
-// REQUIRED: Export the quality type (v0.3.22+)
-export type CounterSetCount = Quality<CounterState, CounterSetCountPayload>;
+export const myStrategyTopic = 'My Strategy Topic';
 
-export const counterSetCount = createQualityCardWithPayload<CounterState, CounterSetCountPayload>({
-  type: 'Counter set Count',
-  reducer: (state, {payload}) => {
-    const {newCount} = payload;
-    return {
-      count: newCount
-    };
-  },
-  methodCreator: defaultMethodCreator,
-  keyedSelectors: [counterSelectCount]
-});
-```
-
-Key differences:
-- `createQualityCard` vs `createQualityCardWithPayload`
-- Payload-based qualities receive a payload parameter in the reducer
-- The payload type must be defined separately
-
-### Strategy
-
-Strategies are composed action sequences that allow for error correction and complex workflows.
-
-```typescript
-// Strategy from the counter concept
-export function countingStrategy<T extends Deck<CounterDeck>>(deck: Partial<T>): ActionStrategy | undefined {
-  if (deck.counter) {
-    const {
-      counterSubtract,
-      counterAdd
-    } = deck.counter.e;
-
-    const stepFive = createActionNode(counterSubtract(), {
-      successNotes: {
-        preposition: 'and finally',
-        denoter: 'One.',
-      },
-    });
-    const stepFour = createActionNode(counterAdd(), {
-      successNode: stepFive,
-      successNotes: {
-        preposition: '',
-        denoter: 'One;',
-      },
-    });
-    const stepThree = createActionNode(counterAdd(), {
-      successNode: stepFour,
-      successNotes: {
-        preposition: '',
-        denoter: 'One;',
-      },
-    });
-    const stepTwo = createActionNode(counterSubtract(), {
-      successNode: stepThree,
-      successNotes: {
-        preposition: '',
-        denoter: 'One;',
-      },
-    });
-    const stepOne = createActionNode(counterAdd(), {
-      successNode: stepTwo,
-      successNotes: {
-        preposition: '',
-        denoter: 'One;',
-      },
-    });
-
-    const params: ActionStrategyParameters = {
-      topic: countingTopic,
-      initialNode: stepOne,
-    };
-
-    return createStrategy(params);
-  } else {
+// Function that composes an ActionStrategy data structure
+export function myStrategy<T extends Deck<MyConceptDeck>>(
+  deck: Partial<T>,  // Partial to handle unloaded concepts
+  param1: string,
+  param2: number
+): ActionStrategy | undefined {
+  // Guard against missing concept
+  if (!deck.myConcept) {
     return undefined;
   }
+  
+  // Extract actions from deck
+  const { actionOne, actionTwo, actionThree } = deck.myConcept.e;
+  
+  // Build strategy in reverse order (last to first) using composition functions
+  const stepThree = createActionNode(actionThree({ 
+    data: 'complete' 
+  }), {
+    successNotes: {
+      preposition: 'and finally',
+      denoter: 'process completed.',
+    },
+  });
+  
+  const stepTwo = createActionNode(actionTwo({ 
+    value: param2 
+  }), {
+    successNode: stepThree,
+    successNotes: {
+      preposition: 'then',
+      denoter: 'value processed;',
+    },
+  });
+  
+  const stepOne = createActionNode(actionOne({ 
+    text: param1 
+  }), {
+    successNode: stepTwo,
+    successNotes: {
+      preposition: 'First',
+      denoter: 'initialization started;',
+    },
+  });
+  
+  // Create the explicit ActionStrategy data structure
+  const params: ActionStrategyParameters = {
+    topic: myStrategyTopic,
+    initialNode: stepOne,
+  };
+  
+  // Return immutable data structure (not a function)
+  return createStrategy(params);
 }
 ```
 
-Key components:
-- **Action Nodes**: Individual steps in the strategy
-- **Success/Failure Paths**: Each node can define what hdeckens next on success or failure
-- **Topic**: A unique identifier for the strategy
-- **Initial Node**: The starting point of the strategy
-
-### Stage Planner
-
-Stage Planners divide application functionality into discrete stages and prevent action overflows. **Version 0.3.22** introduces the `createStages` helper (`staging`) for improved stage composition.
-
+**Approach 3: Simple Sequential Strategy**
 ```typescript
-// NEW v0.3.22 Pattern: Using createStages helper (staging)
-const plan = muxium.plan<CounterDeck>('Stage Planner Example', ({staging, stage, stageO, e__}) => 
-  staging(() => {
-    // Stage composition within a scoped callback
-    const kickStage = stageO(() => e__.muxiumKick());
-    
-    const incrementStage = stage(({concepts, dispatch, e}) => {
-      if (selectSlice(concepts, muxiumSelectOpen)) {
-        dispatch(e.muxiumKick(), {iterateStage: true});
-      }
-    }, {beat: 105});
-    
-    const addStage = stage(({dispatch, d}) => {
-      dispatch(d.counter.e.counterAdd(), {iterateStage: true});
-    }, {beat: 105});
-    
-    const completeStage = stage(({concepts, dispatch, d}) => {
-      const state = selectState<CounterState>(concepts, counterName);
-      if (state?.count === 9) {
-        dispatch(e__.muxiumPreClose({exit: false}), {iterateStage: true});
-        plan.conclude();
-      } else {
-        dispatch(d.counter.e.counterAdd(), {throttle: 1});
-      }
-    }, {beat: 105});
-    
-    return [kickStage, incrementStage, addStage, completeStage];
-  })
-);
-
-// LEGACY Pattern: Direct stage array (still supported)
-const legacyPlan = muxium.plan<CounterDeck>('Legacy Pattern', ({stage, stageO, e__}) => [
-  stageO(() => e__.muxiumKick()),
-  stage(({concepts, dispatch, e}) => {
-    // Same logic as above
-  }, {beat: 105}),
-  // ... more stages
-]);
+// For simple sequential actions
+const actions = [actionOne(), actionTwo(), actionThree()];
+const strategy = createStrategy({
+  topic: 'Simple Sequential Actions',
+  initialNode: actions.reduce((next, action, index) => 
+    createActionNode(action, index < actions.length - 1 ? { successNode: next } : {})
+  )
+});
 ```
 
-**Key Stage Planner Features (v0.3.22):**
+#### Core Architecture Principles
 
-- **`staging` (createStages)**: NEW - Scoped stage composition helper
-- **`stage`**: Create individual stages with options (beat, priority, selectors)
-- **`stageO`**: Special stage that waits for muxium to be open, then iterates
-- **`conclude`**: Helper to create a stage that concludes the plan
-- **Stages**: Ordered sequence of operations
-- **Stage Options**: Configure behavior like beat (throttling/debouncing), priority, selectors
-- **Iterate Stage**: Move to the next stage via `{iterateStage: true}`
-- **Conclude**: End the plan execution via `plan.conclude()`
+1. **Explicit Data Structures**: ActionStrategies are pure data, not executable code
+2. **Function Composition**: Use functions like `createStrategy()` and `createActionNode()` to build data structures
+3. **Immutable**: Once created, strategies are immutable data that can be safely passed around
+4. **Consumed by Execution**: `strategyBegin()` consumes the data structure and creates executable runtime behavior
+```
 
-### Action Controller
+### 🔧 Using ActionStrategies in Qualities
 
-Action Controllers handle asynchronous execution of actions. They are used in method creators to perform operations that need to complete asynchronously.
+#### Method Creator Pattern with Deck Loading
+```typescript
+// qualities/myQuality.quality.ts
+import { createMethodWithState, strategyBegin } from 'stratimux';
+import { myStrategy } from '../strategies/myStrategy';
+
+export const myQuality = createQualityCardWithPayload<
+  MyConceptState,
+  MyPayload
+>({
+  type: 'my quality action',
+  reducer: (state, action) => {
+    // Reducer logic
+    return { /* changed properties only */ };
+  },
+  methodCreator: () => createMethodWithState<
+    MyConceptState,     // State type
+    MyPayload,          // Payload type
+    MyConceptDeck       // Deck type - CRITICAL for muxified access
+  >(({ action, deck }) => {
+    if (action.strategy) {
+      const { param1, param2 } = selectPayload<MyPayload>(action);
+      
+      // Create strategy instance
+      const strategy = myStrategy(deck, param1, param2);
+      if (strategy) {
+        // Return strategyBegin() directly - DON'T dispatch
+        return strategyBegin(strategy);
+      }
+    }
+    
+    return action;
+  })
+});
+```
+
+### 🚨 Critical TypeScript Pattern - Deck Type Parameter
+
+**Due to TypeScript's recursive type limitations, the deck type must be explicitly provided:**
 
 ```typescript
-// Real example from experiment concept - throttle async method
-export const experimentThrottleAsyncIterateIdThenReceiveInMethod = createQualityCardWithPayload<ExperimentState, Data>({
-  type: 'Action Debounce Experiment asynchronously iterate ID then receive in Method via State',
-  reducer: (state: ExperimentState) => {
+// ❌ WRONG - Missing deck type parameter
+methodCreator: () => createMethodWithState<State, Payload>(({ action, deck }) => {
+  // deck will have incomplete type information
+})
+
+// ✅ CORRECT - Explicit deck type parameter
+methodCreator: () => createMethodWithState<
+  State,
+  Payload,
+  ConceptDeck  // Critical third parameter
+>(({ action, deck }) => {
+  // deck now has full muxified concept access
+})
+```
+
+### 📋 ActionStrategy Best Practices
+
+1. **Directory Structure**: Store strategies in `/strategies` folder within concept
+2. **Reusability**: Design strategies to be reusable across different contexts
+3. **Error Handling**: Always check for concept availability with guards
+4. **Node Order**: Build action nodes in reverse order (last to first)
+5. **Return Pattern**: Return `strategyBegin(strategy)` in method creators, don't dispatch
+
+### 🎯 When to Use ActionStrategies vs Plans
+
+**Use ActionStrategies when:**
+- You have a fixed sequence of actions
+- The workflow is reusable across multiple contexts
+- The logic doesn't require reactive state monitoring
+- You need to compose complex multi-step operations
+
+**Use Plans when:**
+- You need reactive behavior based on state changes
+- The flow is dynamic and conditional
+- You need stage persistence and flow control
+- The logic is specific to a single context
+
+### 🔄 ActionStrategy Execution Flow
+
+```typescript
+// 1. Quality is dispatched with strategy
+dispatch(d.concept.e.myQuality({ data }), { iterateStage: true });
+
+// 2. Method creator creates and returns strategy
+return strategyBegin(myStrategy(deck, param));
+
+// 3. Strategy executes nodes in sequence
+First: initialization started;
+then: value processed;
+and finally: process completed.
+```
+
+**Key Insights:**
+- ActionStrategies provide structured, reusable workflows
+- Method creators need explicit deck type for muxified access
+- Use `strategyBegin()` to initiate strategies, not dispatch
+- Strategies are ideal for complex but deterministic operations
+- Keep strategies in dedicated files for maintainability
+
+### 🎯 ActionStrategy Data - Universal Transformer Pattern
+
+**ActionStrategies serve as Universal Transformers through their data transformation capabilities, following Data Oriented Design principles.**
+
+#### 🧠 Fundamental ActionStrategy Data Concepts
+
+**Core Principle**: ActionStrategies transform data over time through a series of steps, with each step able to read, modify, and enhance the data payload using Record muxification.
+
+```typescript
+// ActionStrategy Data Field Definition Pattern
+export type ApiResponseDataField = {
+  response: string;
+  query: string;
+  timestamp: number;
+  type: 'context-aware' | 'standalone';
+  duration?: number;
+  tokenCount?: number;
+};
+
+// Universal naming convention: avoid collision with "Universal Properties"
+// Use prepositions for non-unifying parameters: "uiDivStyle" vs "style"
+```
+
+#### 🔧 Data Flow Consumer Functions
+
+ActionStrategy data is managed through these consumer functions:
+
+```typescript
+// Data manipulation functions available in qualities
+import {
+  strategyData_appendFailure,    // Add failure condition to data
+  strategyData_selectFailureCondition, // Get current failure condition
+  strategyData_clearFailureCondition,  // Remove failure condition
+  strategyData_select,          // Extract typed data from strategy
+  strategyData_muxifyData      // Merge new data with existing data
+} from 'stratimux';
+
+// Usage in quality method creators
+const data = strategyData_select<MyDataField>(strategy);
+const updatedData = strategyData_muxifyData(strategy, { newProperty: 'value' });
+```
+
+#### 🏗️ Producing ActionStrategy Data in Qualities
+
+**Pattern**: Qualities generate data and store it in ActionStrategy using `strategyData_muxifyData`:
+
+```typescript
+// Example: External API quality that produces response data
+export const apiStandaloneQuery = createQualityCardWithPayload<
+  ApiConceptState,
+  ApiStandaloneQueryPayload
+>({
+  type: 'api standalone query',
+  reducer: (state, action) => {
+    // Standard state updates
     return {
-      id: state.id + 1
+      isProcessing: true
     };
   },
-  methodCreator: () => createAsyncMethodThrottleWithState(({controller, action, state}) => {
-    setTimeout(() => {
-      const payload = action.payload;
+  methodCreator: () => {
+    // Async function defined outside method scope
+    const executeQuery = async (apiState: ApiConceptState, query: string) => {
+      const startTime = Date.now();
+      
+      // API call logic here
+      const response = await callExternalAPI(query);
+      const duration = Date.now() - startTime;
+      
+      // Return data that will be stored in ActionStrategy
+      return {
+        response,
+        query,
+        timestamp: Date.now(),
+        type: 'standalone' as const,
+        duration,
+        tokenCount: response.usage?.output_tokens
+      };
+    };
+    
+    return createAsyncMethodWithState<ApiConceptState>(({ controller, action, state }) => {
       if (action.strategy) {
-        const data = strategyData_muxifyData<Data>(action.strategy, {
-          id: state.id,
-          setId: payload.setId
-        });
-        const strategy = strategySuccess(action.strategy, data);
-        controller.fire(strategy);
+        const { query } = selectPayload<ApiStandaloneQueryPayload>(action);
+        const apiState = state as ApiConceptState;
+        
+        executeQuery(apiState, query)
+          .then((responseData) => {
+            // Store data in ActionStrategy using strategyData_muxifyData
+            controller.fire(strategySuccess(
+              action.strategy!, 
+              strategyData_muxifyData(action.strategy!, responseData)
+            ));
+          })
+          .catch(() => {
+            controller.fire(strategyFailed(action.strategy!));
+          });
       }
-      controller.fire(action);
-    }, 50);
-  }, 500)
+    });
+  }
 });
 ```
 
-Key functions:
-- **Subscribe**: Listen for action completion
-- **Fire**: Complete an action and move to next step
-- **Expire**: Mark an action as failed if timeout is reached
+#### 🔍 Consuming ActionStrategy Data in Qualities
 
-## DECK Interface System
-
-The DECK (Direct Entry with Constant Keys) interface provides type-safe access to concept functionality.
+**Pattern**: Downstream qualities extract data using `strategyData_select`:
 
 ```typescript
-// In a stage planner or principle
-stage(({concepts, dispatch, d, e, k}) => {
-  // d: Access to all concept entry points via deck
-  d.counter.e.counterAdd();
-  
-  // e: Direct entry to current concept's actions
-  e.conceptAction();
-  
-  // k: Constant selectors for state access (current concept only)
-  const count = k.count(concepts);
-  
-  // c: Comparators (not shown in example)
-  // Used for stringless comparison
-});
-```
-
-Components:
-- **d (deck)**: Access to all concepts' functionality
-- **e (entry)**: Direct actions for the current concept
-- **c (comparators)**: Stringless comparison for action types
-- **k (keyed selectors)**: State selectors for current concept
-
-### State Access Patterns
-
-Stratimux provides multiple ways to access state, with the DECK interface offering the most direct deckroach:
-
-#### 1. DECK Interface - Direct Keyed Selector Access (Recommended)
-
-```typescript
-stage(({d}) => {
-  // Direct access to state via keyed selectors
-  const count = d.counter.k.count.select();
-  expect(count).toBe(1);
-});
-```
-
-#### 2. Traditional State Selection (Legacy Pattern)
-
-```typescript
-stage(({concepts}) => {
-  // Using selectState with concept name
-  const counter = selectState<CounterState>(concepts, counterName);
-  expect(counter?.count).toBe(1);
-  
-  // Using selectSlice with keyed selector
-  const count = selectSlice(concepts, counterSelectCount);
-  expect(count).toBe(1);
-});
-```
-
-#### 3. Select Object Pattern
-
-```typescript
-import { select } from '../model/selector';
-
-stage(({concepts}) => {
-  // Using the select object
-  const counter = select.state<CounterState>(concepts, counterName);
-  const count = select.slice<number>(concepts, counterSelectCount);
-  expect(count).toBe(1);
-});
-```
-
-**Best Practice**: Use the DECK interface (`d.counter.k.count.select()`) for direct state access as it provides:
-- Type safety
-- Cleaner syntax
-- Direct access without passing concepts
-- Better performance by avoiding concept lookups
-
-## Advanced Concept Patterns
-
-### Concept Isolation and Individual Instances
-
-Stratimux supports creating isolated instances of the same concept through the `muxifyConcepts` function. This enables multiple independent instances of a concept to coexist with separate state management.
-
-#### Creating Isolated Concept Instances
-
-```typescript
-import { muxifyConcepts } from '../model/concept/conceptAdvanced';
-import { createConcept } from '../model/concept/concept';
-import { createCounterConcept } from '../concepts/counter/counter.concept';
-
-// Create multiple isolated counter instances
-const counterOne = muxifyConcepts([createCounterConcept()], createConcept('counterOne', {}));
-const counterTwo = muxifyConcepts([createCounterConcept()], createConcept('counterTwo', {}));
-const counterThree = muxifyConcepts([createCounterConcept()], createConcept('counterThree', {}));
-
-// Load them into a muxium with a base counter
-const muxium = muxification('Multi-Counter System', {
-  counter: createCounterConcept(),        // Base counter
-  counterOne,                             // Isolated instance 1
-  counterTwo,                             // Isolated instance 2
-  counterThree                            // Isolated instance 3
-}, {logging: true, storeDialog: true});
-```
-
-#### Benefits of Concept Isolation
-
-1. **Independent State**: Each isolated instance maintains its own state
-2. **Compositional Design**: Concepts can be composed without interference
-3. **Modular Architecture**: Easy to add/remove instances at runtime
-4. **Type Safety**: Full TypeScript support for each instance
-
-### DECK Access Patterns: Outer Plan vs Inner Plan
-
-The DECK interface provides different access patterns depending on whether you're working with outer plans (muxium-level) or inner plans (concept-level). Understanding these patterns is crucial for effective state management.
-
-#### Higher Order DECK Access
-
-When using muxified concepts, the DECK interface creates a higher order structure that allows access to both the outer concept and its inner muxified parts:
-
-```typescript
-type DECK = {
-  counter: Concept<CounterState, CounterQualities>;
-  counterOne: Concept<CounterState, CounterQualities, CounterDeck>;
-  counterTwo: Concept<CounterState, CounterQualities>;
-  counterThree: Concept<CounterState, CounterQualities>;
-};
-
-const plan = muxium.plan<DECK>('Multi-Counter Management', ({stage}) => [
-  stage(({d, dispatch}) => {
-    // Outer Plan Access: Direct concept access
-    console.log('Base counter:', d.counter.k.count.select());
-    
-    // Higher Order Access: Outer concept with inner deck navigation
-    console.log('Counter One (outer):', d.counterOne.k.count.select());
-    console.log('Counter One (inner):', d.counterOne.d.counter.k.count.select());
-    
-    // Dispatch to specific instances
-    dispatch(d.counter.e.counterAdd(), { iterateStage: true });
-    dispatch(d.counterOne.e.counterAdd(), { iterateStage: true });
-  }),
-  
-  stage(({d}) => {
-    // Verify isolated state changes
-    expect(d.counter.k.count.select()).toBe(1);
-    expect(d.counterOne.k.count.select()).toBe(0);     // Outer state unchanged
-    expect(d.counterOne.d.counter.k.count.select()).toBe(1); // Inner state changed
-  })
-]);
-```
-
-#### Access Pattern Comparison
-
-| Pattern | Syntax | Use Case |
-|---------|--------|----------|
-| **Outer Plan Access** | `d.counter.k.count.select()` | Direct concept state access |
-| **Inner Plan Access** | `d.counterOne.d.counter.k.count.select()` | Muxified concept's inner state |
-| **Action Dispatch** | `d.counter.e.counterAdd()` | Dispatching to base concept |
-| **Isolated Dispatch** | `d.counterOne.e.counterAdd()` | Dispatching to muxified concept |
-
-### MuX Type Parameter in createConcept
-
-The `createConcept` function includes a generic MuX type parameter that enables exact conceptual composition and muxified record tracking:
-
-```typescript
-export function createConcept<S extends Record<string, unknown>, Q = void, MuX = void>(
-  name: string,
-  state: S,
-  qualities?: Q,
-  principles?: PrincipleFunction<Q, any, S>[],
-  mode?: Mode[],
-  meta?: Record<string,unknown>,
-): Concept<S, Q, MuX>
-```
-
-#### MuX Type Parameter Benefits
-
-1. **Exact Composition**: Tracks the exact muxified structure at compile time
-2. **Type Safety**: Ensures proper DECK interface types for nested access
-3. **Intellisense Support**: Full IDE support for higher order navigation
-4. **Runtime Validation**: Enables proper muxified record management
-
-#### Using MuX for Complex Compositions
-
-```typescript
-type CounterDeck = {
-  counter: Concept<CounterState, CounterQualities>;
-};
-
-// Creating a muxified concept with exact typing
-const complexCounter = muxifyConcepts(
-  [createCounterConcept()], 
-  createConcept<ComplexState, ComplexQualities, CounterDeck>('complexCounter', initialState)
-);
-
-// The MuX parameter enables this higher order access:
-// d.complexCounter.d.counter.k.count.select()
-```
-
-### Muxified Record System
-
-Concepts maintain a `muxifiedRecord` that tracks their compositional structure and enables agnostic quality selection:
-
-```typescript
-export type Muxified = {
-  stateMap: string[];
-  actionMap: string[];
-};
-
-export type Concept<S, Q, MuX = void> = {
-  name: string;
-  muxifiedRecord: Record<string, Muxified>;
-  // ...other properties
-};
-```
-
-#### How Concepts Reveal Their Parts
-
-When concepts are muxified, they automatically track:
-
-1. **State Map**: Which state properties came from which source concept
-2. **Action Map**: Which actions originated from which source concept
-3. **Higher Order Structure**: How nested concepts relate to each other
-
-```typescript
-// Example of muxified record structure
-const muxifiedRecord = {
-  'counter': {
-    stateMap: ['count'],
-    actionMap: ['counterAdd', 'counterSubtract']
+// Example: Quality that consumes API response data
+export const interfaceAddDataToHistory = createQualityCardWithPayload<
+  InterfaceState,
+  InterfaceAddDataToHistoryPayload
+>({
+  type: 'interface add ActionStrategy data to history',
+  reducer: (state, action) => {
+    if (action.strategy) {
+      // Extract data from ActionStrategy
+      const data = strategyData_select<ApiResponseDataField>(action.strategy);
+      const { entryType, contentTemplate } = selectPayload<InterfaceAddDataToHistoryPayload>(action);
+      
+      if (data && data.response) {
+        // Use ActionStrategy data to create history entry
+        const content = contentTemplate ? 
+          contentTemplate.replace('{{response}}', data.response) : 
+          data.response;
+          
+        const entry: InterfaceHistoryEntry = {
+          type: entryType,
+          content
+        };
+        
+        // Return only changed state properties
+        return {
+          history: [...state.history, entry]
+        };
+      }
+    }
+    return {}; // No change if no valid data
   },
-  'experiment': {
-    stateMap: ['data', 'id'],
-    actionMap: ['experimentAsyncIterateId', 'experimentDebounce']
-  }
-};
-```
-
-#### Agnostic Quality Selection
-
-The muxified record enables runtime discovery of available qualities:
-
-```typescript
-// Dynamically access muxified parts
-Object.keys(concept.muxifiedRecord).forEach(sourceConcept => {
-  const muxified = concept.muxifiedRecord[sourceConcept];
-  
-  // Access state properties agnostically
-  muxified.stateMap.forEach(stateKey => {
-    console.log(`State ${stateKey} from ${sourceConcept}:`, concept.state[stateKey]);
-  });
-  
-  // Access actions agnostically
-  muxified.actionMap.forEach(actionKey => {
-    console.log(`Action ${actionKey} available from ${sourceConcept}`);
-  });
-});
-```
-
-### Muxium as System Control
-
-The Muxium concept serves as the system control layer and follows a special rule: **it never gets muxified with other concepts**. This ensures:
-
-1. **System Integrity**: Core muxium functionality remains unaltered
-2. **Predictable Behavior**: System operations are always available at known locations
-3. **Isolation Guarantee**: User concepts cannot interfere with system operations
-4. **Control Flow**: The muxium maintains exclusive control over concept lifecycle
-
-```typescript
-// The muxium is always accessible as:
-d.muxium.e.muxiumAction()  // System control actions
-d.muxium.k.selector.select()  // System state selectors
-
-// It never deckears in muxified records of other concepts
-concept.muxifiedRecord['muxium']  // This will never exist
-```
-
-This design ensures that Stratimux maintains a clear separation between user-defined concepts and system-level operations, providing both flexibility and stability.
-
-## Migration Guide: Legacy to DECK Interface
-
-The DECK Interface System represents the modern deckroach to accessing state and dispatching actions in Stratimux. This migration guide helps you transition from legacy patterns to the streamlined DECK interface.
-
-### Why Migrate to DECK Interface?
-
-The DECK interface provides:
-- **Type Safety**: Direct TypeScript inference without manual type assertions
-- **Performance**: Eliminates string-based concept lookups and name matching
-- **Simplicity**: No need to import selectors or manage concept names
-- **Consistency**: Muxified pattern for both state access and action dispatch
-- **Maintainability**: Self-documenting code with clear property access
-
-### Common Migration Pitfalls and Solutions
-
-#### Pitfall 1: Understanding When keyedSelectors Are Needed
-```typescript
-// ❌ Problem: DECK interface returns undefined when you need keyed selectors
-export const myQuality = createQualityCard<MyState>({
-  type: 'My Quality',
-  reducer: (state) => ({ ...state, processed: true })
-  // No keyedSelectors - this is fine for simple qualities
-});
-
-// ✅ Solution: Add keyedSelectors when you need DECK access or ownership control
-export const myQuality = createQualityCard<MyState>({
-  type: 'My Quality',
-  reducer: (state) => ({ ...state, processed: true }),
-  keyedSelectors: [
-    mySelectProcessed,    // Only include selectors you actually use
-    mySelectValue,        // via DECK interface or need for ownership
-    mySelectStatus
-  ]
-});
-
-// ✅ Also valid: Simple quality without keyedSelectors
-export const simpleQuality = createQualityCard<MyState>({
-  type: 'Simple Quality',
-  reducer: (state) => ({ ...state, count: state.count + 1 })
-  // No keyedSelectors needed if not using DECK or ownership
-});
-```
-
-#### Pitfall 2: Inconsistent Concept Naming
-```typescript
-// ❌ Problem: Concept name doesn't match DECK property
-const muxium = muxification('Deck', {
-  counterManager: createCounterConcept() // Different names!
-});
-
-stage(({d}) => {
-  const count = d.counter.k.count.select(); // ❌ Wrong concept name
-});
-
-// ✅ Solution: Keep consistent naming
-const muxium = muxification('Deck', {
-  counter: createCounterConcept()
-});
-
-stage(({d}) => {
-  const count = d.counter.k.count.select(); // ✅ Correct
-});
-```
-
-#### Pitfall 3: Mixing DECK and Legacy in Same Function
-```typescript
-// ❌ Problem: Inconsistent patterns cause confusion
-stage(({concepts, d, dispatch}) => {
-  const count = d.counter.k.count.select();          // DECK
-  const open = selectSlice(concepts, muxiumSelectOpen); // Legacy
-  
-  dispatch(counterAdd.actionCreator());               // Legacy
-  dispatch(d.counter.e.counterSubtract());           // DECK
-});
-
-// ✅ Solution: Be consistent within functions
-stage(({d, dispatch}) => {
-  const count = d.counter.k.count.select();    // All DECK
-  const open = d.muxium.k.open.select();       // All DECK
-  
-  dispatch(d.counter.e.counterAdd());          // All DECK
-  dispatch(d.counter.e.counterSubtract());     // All DECK
-});
-```
-
-#### Pitfall 4: Not Updating Type Definitions
-```typescript
-// ❌ Problem: Missing DECK type exports
-export const createCounterConcept = () => {
-  return createConcept(/* ... */);
-};
-
-// ✅ Solution: Always export DECK types
-export const createCounterConcept = () => {
-  return createConcept(/* ... */);
-};
-
-export type CounterDeck = {
-  counter: Concept<CounterState, typeof counterQualities>;
-};
-```
-
-#### Pitfall 5: Over-Migrating Complex Selectors
-```typescript
-// ❌ Problem: Force-fitting complex selectors into DECK
-stage(({d}) => {
-  // This won't work for complex nested selections
-  const complexValue = d.counter.k.deepNestedArray[0].property.select(); // ❌
-});
-
-// ✅ Solution: Keep complex selectors as legacy when appropriate
-stage(({concepts, d}) => {
-  // Simple values use DECK
-  const count = d.counter.k.count.select();
-  
-  // Complex selections use advanced selectors
-  const complexSelector = createMuxifiedKeyedSelector(
-    concepts, semaphore, 'deep.nested.array', [0, 'property']
-  );
-  const complexValue = selectSlice(concepts, complexSelector);
-});
-```
-
-#### Pitfall 6: Ignoring Null Safety Changes
-```typescript
-// ❌ Problem: Not updating null checks
-stage(({d}) => {
-  const state = d.counter.k.state.select();
-  
-  // Old pattern - unnecessary with DECK
-  if (state?.count && state?.ready) { // ❌ Redundant checks
-    // process
-  }
-});
-
-// ✅ Solution: Trust DECK interface type safety
-stage(({d}) => {
-  const count = d.counter.k.count.select();
-  const ready = d.muxium.k.open.select();
-  
-  // Direct checks - DECK handles null safety
-  if (count && ready) { // ✅ Clean and safe
-    // process
-  }
-});
-```
-
-## Advanced Production Patterns: Ownership System
-
-The Ownership System in Stratimux is an advanced concurrency control mechanism designed for production environments where you need to coordinate complex operations across multiple strategies. **This system is not required for most decklications** and should only be implemented when you have specific needs for state locking and coordination.
-
-### When to Use the Ownership System
-
-The ownership system is particularly valuable during the **refining stage of a Deck in production** when you need to:
-
-#### 1. Coordinate Complex Multi-Step Operations
-```typescript
-// Use ownership when you have operations that must be atomic
-// Example: Financial transaction processing
-
-export const transferFundsStrategy = createActionStrategy({
-  topic: 'Transfer Funds Between Accounts',
-  initialNode: createActionNode(
-    // This action needs exclusive access to both accounts
-    transferInitiate({ fromAccount, toAccount, amount }),
-    {
-      keyedSelectors: [
-        accountSelectBalance(fromAccount),
-        accountSelectBalance(toAccount)
-      ],
-      successNode: createActionNode(
-        transferCommit(),
-        {
-          keyedSelectors: [
-            accountSelectBalance(fromAccount),
-            accountSelectBalance(toAccount)
-          ]
-        }
-      )
-    }
-  )
-});
-```
-
-#### 2. Prevent Race Conditions in Critical Operations
-```typescript
-// When multiple strategies might modify the same state simultaneously
-export const inventoryManagementQuality = createQualityCard<InventoryState>({
-  type: 'Update Inventory Level',
-  reducer: (state, action) => ({
-    ...state,
-    inventory: updateInventoryLevel(state.inventory, action.payload)
-  }),
-  // Only add keyedSelectors when you need ownership control
-  keyedSelectors: [
-    inventorySelectLevel,
-    inventorySelectReserved
-  ]
-});
-```
-
-#### 3. Cross-Service Coordination
-```typescript
-// When actions need to coordinate across different services/processes
-export const distributedTaskQuality = createQualityCard<TaskState>({
-  type: 'Coordinate Distributed Task',
-  reducer: (state, action) => processDistributedTask(state, action),
-  keyedSelectors: [
-    taskSelectStatus,
-    taskSelectLockId
-  ], // Ownership needed for distributed coordination
-  method: createMethodWithAgreement(({ action }) => {
-    // This task might move off-premise to other services
-    return moveTaskOffPremise(action.payload);
-  }, 30000) // Extended timeout for distributed operations
-});
-```
-
-### When NOT to Use the Ownership System
-
-**Do not use ownership for:**
-
-#### 1. Simple State Updates
-```typescript
-// ❌ Don't add keyedSelectors for simple operations
-export const incrementCounterQuality = createQualityCard<CounterState>({
-  type: 'Increment Counter',
-  reducer: (state) => ({ ...state, count: state.count + 1 })
-  // No keyedSelectors needed - simple atomic operation
-});
-```
-
-#### 2. Read-Only Operations
-```typescript
-// ❌ Don't use ownership for pure read operations
-export const displayUserInfoQuality = createQualityCard<UserState>({
-  type: 'Display User Info',
-  reducer: (state, action) => ({ ...state, lastDisplayed: Date.now() })
-  // No keyedSelectors needed - just updating display timestamp
-});
-```
-
-#### 3. Independent Operations
-```typescript
-// ❌ Don't use ownership when operations don't conflict
-export const logEventQuality = createQualityCard<LogState>({
-  type: 'Log Event',
-  reducer: (state, action) => ({
-    ...state,
-    events: [...state.events, action.payload]
-  })
-  // No keyedSelectors needed - deckending to log is safe
-});
-```
-
-### Setting Up the Ownership System
-
-Only add the ownership concept when you have identified specific needs:
-
-```typescript
-// 1. Add ownership to your deck only when needed
-const productionDeck = {
-  muxium: createMuxiumConcept(),
-  ownership: createOwnershipConcept(), // Only add when required
-  accounts: createAccountsConcept(),
-  transactions: createTransactionsConcept()
-};
-
-// 2. Initialize ownership mode in production
-const muxium = muxification('ProductionDeck', productionDeck, {
-  logging: false, // Disable in production
-  storeDialog: false
-});
-
-// The ownership system will automatically handle coordination
-```
-
-### Production Ownership Patterns
-
-#### Pattern 1: Gradual Ownership Adoption
-```typescript
-// Start without ownership, add only when needed
-export const userAccountQuality = createQualityCard<UserState>({
-  type: 'Update User Account',
-  reducer: (state, action) => updateUserAccount(state, action),
-  // Add keyedSelectors only when you identify race conditions
-  ...(process.env.NODE_ENV === 'production' && needsOwnership ? {
-    keyedSelectors: [userSelectBalance, userSelectStatus]
-  } : {})
-});
-```
-
-#### Pattern 2: Ownership for Critical Paths Only
-```typescript
-// Use ownership selectively for critical business operations
-const isFinancialOperation = (qualityType: string) => 
-  ['transfer', 'payment', 'refund'].some(op => qualityType.includes(op));
-
-export const createFinancialQuality = <T>(config: QualityConfig<T>) => {
-  return createQualityCard({
-    ...config,
-    // Only add ownership to financial operations
-    ...(isFinancialOperation(config.type) ? {
-      keyedSelectors: config.keyedSelectors
-    } : {})
-  });
-};
-```
-
-#### Pattern 3: Feature Flag Ownership
-```typescript
-// Use feature flags to control ownership system usage
-const ENABLE_OWNERSHIP = process.env.OWNERSHIP_ENABLED === 'true';
-
-export const createProductionDeck = () => ({
-  muxium: createMuxiumConcept(),
-  ...(ENABLE_OWNERSHIP ? { ownership: createOwnershipConcept() } : {}),
-  // ... other concepts
-});
-```
-
-### Ownership System Best Practices
-
-#### 1. Minimal Ownership Scope
-```typescript
-// ✅ Only lock what you need to lock
-export const updateOrderQuality = createQualityCard<OrderState>({
-  type: 'Update Order Status',
-  reducer: (state, action) => updateOrderStatus(state, action),
-  keyedSelectors: [
-    orderSelectStatus, // Only lock status
-    // Don't lock: orderSelectHistory, orderSelectMetadata (not critical)
-  ]
-});
-```
-
-## 2. Deckropriate Timeout Values
-```typescript
-// ✅ Set realistic timeouts for your operations
-stage(({dispatch, d}) => {
-  dispatch(d.orders.e.processOrder(orderData), {
-    agreement: 10000 // 10 seconds for order processing
-  });
-});
-
-// ❌ Don't use default timeout for long operations
-stage(({dispatch, d}) => {
-  dispatch(d.reports.e.generateMonthlyReport(params), {
-    agreement: 300000 // 5 minutes for complex report generation
-  });
-});
-```
-
-#### 3. Graceful Failure Handling
-```typescript
-// ✅ Handle ownership conflicts gracefully
-export const handleOwnershipConflictStrategy = createActionStrategy({
-  topic: 'Handle Ownership Conflict',
-  initialNode: createActionNode(
-    processOrder(),
-    {
-      keyedSelectors: [orderSelectStatus],
-      failureNode: createActionNode(
-        retryLater(),
-        {
-          successNode: createActionNode(notifyUser())
-        }
-      )
-    }
-  )
-});
-```
-
-### Monitoring Ownership in Production
-
-```typescript
-// Monitor ownership health and performance
-export const ownershipMonitoringPrinciple: PrincipleFunction = ({
-  observer,
-  plan
-}) => {
-  plan('Ownership Monitoring', ({stage}) => [
-    stage(({concepts}) => {
-      const ownership = selectState<OwnershipState>(concepts, ownershipName);
-      if (ownership) {
-        // Monitor pending actions queue
-        if (ownership.pendingActions.length > 10) {
-          console.warn('High ownership queue length:', ownership.pendingActions.length);
-        }
+  methodCreator: () => createAsyncMethodWithState<InterfaceState>(({ controller, action }) => {
+    if (action.strategy) {
+      const data = strategyData_select<ApiResponseDataField>(action.strategy);
+      
+      if (data && data.response) {
+        // Create success data for downstream steps
+        const successData = strategyData_muxifyData(action.strategy, {
+          addedToHistory: true
+        });
         
-        // Monitor ledger size
-        if (ownership.ownershipLedger.size > 100) {
-          console.warn('Large ownership ledger:', ownership.ownershipLedger.size);
-        }
+        controller.fire(strategySuccess(action.strategy, successData));
+      } else {
+        controller.fire(strategyFailed(
+          action.strategy, 
+          strategyData_appendFailure(action.strategy, 'No response data available')
+        ));
       }
-    })
-  ]);
-};
-```
-
-### Migration to Ownership
-
-When you identify the need for ownership in an existing system:
-
-```typescript
-// 1. Identify critical operations first
-const criticalOperations = identifyCriticalOperations(existingQualities);
-
-// 2. Add keyedSelectors only to critical qualities
-const migrateToOwnership = (quality: QualityCard<any>) => {
-  if (criticalOperations.includes(quality.type)) {
-    return {
-      ...quality,
-      keyedSelectors: generateKeyedSelectors(quality)
-    };
-  }
-  return quality; // Leave non-critical qualities unchanged
-};
-
-// 3. Test thoroughly before production deployment
-```
-
-## Dynamic Concept Management
-
-Stratimux supports dynamic concept management, allowing you to add and remove concepts from a running muxium at runtime. This powerful feature enables building systems that can adapt their capabilities based on changing requirements.
-
-### Dynamic Muxium Configuration
-
-```typescript
-// Create a muxium with dynamic enabled
-const muxium = muxification('Dynamic System', {}, {
-  logging: true, 
-  storeDialog: true, 
-  dynamic: true  // Enable dynamic concept management
-});
-```
-
-### Adding Concepts at Runtime
-
-```typescript
-import { addConceptsToAddQueThenBlockStrategy } from '../concepts/muxium/strategies/addConcept.strategy';
-import { strategyBegin } from '../model/action/strategy/actionStrategyConsumers';
-
-// Real example from addConcepts.test.ts
-const plan = muxium.plan('Add Concepts Stage', ({stage, stageO, e__}) => [
-  stageO(() => e__.muxiumKick()),
-  stage(({concepts, dispatch, d, e}) => {
-    console.log('Adding Counter Concept');
-    expect(Object.keys(d).length).toBe(1); // Only muxium initially
-    
-    dispatch(
-      strategyBegin(
-        addConceptsToAddQueThenBlockStrategy(e, concepts, { 
-          counter: createCounterConcept() 
-        })
-      ),
-      { iterateStage: true }
-    );
-  }),
-  stage(({d}) => {
-    // Concept is now available in the deck
-    expect(Object.keys(d).length).toBe(2); // muxium + counter
-    
-    // Can now use the newly added concept
-    const strategy = countingStrategy(d as Deck<MuxiumDeck & CounterDeck>);
-    if (strategy) {
-      dispatch(strategyBegin(strategy));
     }
   })
-]);
-```
-
-### Removing Concepts at Runtime
-
-```typescript
-import { 
-  addConceptsToRemovalQueThenBlockStrategy,
-  removeConceptsViaQueThenUnblockTopic 
-} from '../concepts/muxium/strategies/removeConcept.strategy';
-
-// Real example from removeConcepts.test.ts
-const plan = muxium.plan('Remove Concepts Stage', ({stage, stageO, e__, k__}) => [
-  stageO(() => e__.muxiumKick()),
-  stage(({concepts, dispatch, e}) => {
-    dispatch(
-      strategyBegin(
-        addConceptsToRemovalQueThenBlockStrategy(e, concepts, {
-          counter: createCounterConcept()
-        })
-      ), 
-      { iterateStage: true }
-    );
-  }),
-  stage(({concepts, d}) => {
-    const muxiumState = getMuxiumState(concepts);
-    
-    // Wait for removal strategy to complete
-    if (muxiumState.lastStrategy === removeConceptsViaQueThenUnblockTopic) {
-      let exists = false;
-      forEachConcept(concepts, (concept) => {
-        if (concept.name === counterName) {
-          exists = true;
-        }
-      });
-      
-      expect(exists).toBe(false); // Concept removed
-      expect(Object.keys(d).length).toBe(1); // Only muxium remains
-      
-      plan.conclude();
-      muxium.close();
-    }
-  }, { selectors: [k__.lastStrategy] })
-]);
-```
-
-### Dynamic Concept Management Patterns
-
-#### Pattern 1: Feature Module Loading
-```typescript
-// Load concepts based on user permissions or feature flags
-const loadUserFeatures = async (userRole: string) => {
-  const concepts: Record<string, Concept<any, any>> = {};
-  
-  if (userRole === 'admin') {
-    concepts.admin = await import('./admin.concept').then(m => m.createAdminConcept());
-  }
-  
-  if (userRole === 'user') {
-    concepts.userProfile = await import('./user.concept').then(m => m.createUserConcept());
-  }
-  
-  return concepts;
-};
-
-// Add concepts dynamically based on user login
-stage(({dispatch, e, concepts}) => {
-  const userConcepts = await loadUserFeatures(currentUser.role);
-  dispatch(
-    strategyBegin(addConceptsToAddQueThenBlockStrategy(e, concepts, userConcepts))
-  );
 });
 ```
 
-#### Pattern 2: Plugin System
-```typescript
-// Dynamic plugin loading system
-interface Plugin {
-  name: string;
-  concept: Concept<any, any>;
-  dependencies?: string[];
-}
+#### ⚡ Asynchronous Method Creator Patterns
 
-const loadPlugin = (plugin: Plugin) => {
-  stage(({dispatch, e, concepts, d}) => {
-    // Check dependencies are available
-    const hasAllDeps = plugin.dependencies?.every(dep => 
-      Object.keys(d).includes(dep)
-    ) ?? true;
-    
-    if (hasAllDeps) {
-      dispatch(
-        strategyBegin(
-          addConceptsToAddQueThenBlockStrategy(e, concepts, {
-            [plugin.name]: plugin.concept
-          })
-        )
-      );
-    }
-  });
-};
-```
-
-#### Pattern 3: Resource Management
-```typescript
-// Remove concepts when no longer needed
-const cleanupUnusedConcepts = () => {
-  stage(({dispatch, e, concepts}) => {
-    const unusedConcepts = identifyUnusedConcepts(concepts);
-    
-    if (unusedConcepts.length > 0) {
-      dispatch(
-        strategyBegin(
-          addConceptsToRemovalQueThenBlockStrategy(e, concepts, unusedConcepts)
-        )
-      );
-    }
-  });
-};
-```
-
-### Best Practices for Dynamic Concept Management
-
-#### 1. Graceful Concept Addition
-```typescript
-// Always verify concept addition was successful
-stage(({concepts, d}) => {
-  const muxiumState = getMuxiumState(concepts);
-  
-  // Check if the add strategy completed successfully
-  if (muxiumState.lastStrategy?.includes('addConcept')) {
-    // Verify the concept is actually available
-    if (d.newConcept) {
-      console.log('Concept successfully added');
-      // Proceed with using the new concept
-    } else {
-      console.error('Concept addition failed');
-      // Handle failure case
-    }
-  }
-});
-```
-
-#### 2. Safe Concept Removal
-```typescript
-// Ensure no pending operations before removal
-const safeRemoveConcept = (conceptName: string) => {
-  stage(({concepts, dispatch, e}) => {
-    const concept = selectConcept(concepts, conceptName);
-    
-    if (concept && !hasPendingOperations(concept)) {
-      dispatch(
-        strategyBegin(
-          addConceptsToRemovalQueThenBlockStrategy(e, concepts, {
-            [conceptName]: concept
-          })
-        )
-      );
-    } else {
-      console.warn(`Cannot remove ${conceptName}: has pending operations`);
-    }
-  });
-};
-```
-
-#### 3. Dependency Management
-```typescript
-// Track concept dependencies to prevent orphaned states
-const conceptDependencies = new Map<string, string[]>();
-
-const addConceptWithDependencies = (name: string, concept: Concept<any, any>, deps: string[]) => {
-  conceptDependencies.set(name, deps);
-  
-  // Add concept only if all dependencies are present
-  stage(({d, dispatch, e, concepts}) => {
-    const allDepsPresent = deps.every(dep => Object.keys(d).includes(dep));
-    
-    if (allDepsPresent) {
-      dispatch(
-        strategyBegin(
-          addConceptsToAddQueThenBlockStrategy(e, concepts, { [name]: concept })
-        )
-      );
-    }
-  });
-};
-```
-
-### Dynamic Concept Lifecycle Events
+**CRITICAL**: When using async operations in method creators, follow these patterns to handle action expiration (default 5000ms, configurable via action options):
 
 ```typescript
-// Monitor concept lifecycle events
-const conceptLifecyclePrinciple: PrincipleFunction = ({ observer }) => {
-  return observer.subscribe((concepts) => {
-    const muxiumState = getMuxiumState(concepts);
-    
-    // Log concept additions
-    if (muxiumState.lastStrategy?.includes('addConcept')) {
-      console.log('Concept added:', muxiumState.lastStrategyData);
-    }
-    
-    // Log concept removals
-    if (muxiumState.lastStrategy?.includes('removeConcept')) {
-      console.log('Concept removed:', muxiumState.lastStrategyData);
-    }
-  });
-};
-```
-
-Dynamic concept management enables building highly flexible and adaptive systems that can evolve their capabilities at runtime while maintaining type safety and system integrity.
-
-## Advanced Stage Planner Features
-
-The Stage Planner provides sophisticated options for controlling execution flow, state observation, and performance optimization. These advanced features enable fine-grained control over how stages execute and respond to state changes.
-
-### Stage Dispatch Options
-
-Stage dispatch options provide precise control over action execution and stage flow.
-
-#### Run Once Pattern
-```typescript
-// Real example from stageDispatchOptions.test.ts
-stage(({concepts, dispatch, d}) => {
-  const counter = selectState<CounterState>(concepts, counterName);
-  console.log('Stage runs multiple times, action runs only once');
-  
-  // Action will only execute once despite multiple stage executions
-  dispatch(d.counter.e.counterAdd(), {
-    runOnce: true
-  });
-  
-  // Check result and move to next stage when ready
-  if (selectSlice(concepts, counterSelectCount) === 1) {
-    dispatch(d.counter.e.counterSetCount({newCount: 5}), {
-      iterateStage: true
-    });
-  }
-})
-```
-
-#### Set Stage Explicitly
-```typescript
-// Jump to specific stage based on conditions
-stage(({concepts, dispatch, d}) => {
-  const count = selectSlice(concepts, counterSelectCount);
-  
-  if (count === 2) {
-    // Jump directly to stage 2 (0-indexed)
-    dispatch(d.counter.e.counterAdd(), {
-      setStage: 2,
-      throttle: 1 // Prevent action overlap
-    });
-  }
-})
-```
-
-#### Throttle and Agreement
-```typescript
-// Control action timing and ownership
-stage(({dispatch, d}) => {
-  dispatch(d.counter.e.counterAdd(), {
-    throttle: 1000,    // Wait 1 second between actions
-    agreement: 5000    // Ownership timeout for concurrent access
-  });
-})
-```
-
-### Dynamic Stage Selector Management
-
-Stages can dynamically update their selectors to respond to different state changes.
-
-#### Set Stage Selectors
-```typescript
-// Real example from setStageOptions.test.ts
-stage(({dispatch, d}) => {
-  const strategy = countingStrategy(d);
-  if (strategy) {
-    dispatch(strategyBegin(strategy), {
-      iterateStage: true,
-      setStageSelectors: {
-        stage: 1,                           // Target stage index
-        selectors: [d.muxium.k.lastStrategy] // New selectors for that stage
-      }
-    });
-  }
-}, {selectors: [d__.muxium.k.lastStrategy]}), // Initial selectors
-
-// Stage 1 now uses the new selectors
-stage(({concepts, changes}) => {
-  // This stage now only triggers on lastStrategy changes
-  const muxiumState = getMuxiumState(concepts);
-  if (muxiumState.lastStrategy === countingTopic) {
-    console.log('Strategy completed:', changes?.length);
-  }
-}) // No initial selectors - set dynamically
-```
-
-#### Progressive Selector Addition
-```typescript
-// Real example from newPlanOptions.test.ts
-stage(({dispatch, changes, d}) => {
-  const selectors: KeyedSelector[] = [];
-  
-  if (count === 0) {
-    selectors.push(planOptionsSelect.one);
-    expect(changes?.length).toBe(0); // First run
-  } else if (count === 1) {
-    selectors.push(planOptionsSelect.one);
-    selectors.push(planOptionsSelect.two);
-    expect(changes?.length).toBe(1); // One selector triggered
-  } else if (count === 2) {
-    selectors.push(planOptionsSelect.one);
-    selectors.push(planOptionsSelect.two);
-    selectors.push(planOptionsSelect.three);
-    expect(changes?.length).toBe(2); // Two selectors triggered
-  }
-  
-  // Update stage selectors dynamically
-  dispatch(d.experiment.e.experimentUpdateSelectors(), {
-    setStageSelectors: {
-      stage: 0, // Current stage
-      selectors: selectors
-    }
-  });
-})
-```
-
-### Stage Beat and Timing Control
-
-The beat system provides sophisticated timing control combining throttle and debounce behaviors.
-
-#### Basic Beat Configuration
-```typescript
-// Real example from stagePlannerBeat.test.ts
-const plan = muxium.plan('Stage Planner Beat Test', ({stage, stageO, e__}) => [
-  stageO(() => e__.muxiumKick()),
-  
-  stage(({concepts, dispatch, e}) => {
-    if (selectSlice(concepts, muxiumSelectOpen)) {
-      dispatch(e.muxiumKick(), {
-        iterateStage: true,
-      });
-    }
-  }, {beat: 105}), // First notification goes through, subsequent debounced for 105ms
-  
-  stage(({dispatch, d}) => {
-    dispatch(d.counter.e.counterAdd(), {
-      iterateStage: true
-    });
-  }, {beat: 105}),
-  
-  stage(({concepts, dispatch, d, e}) => {
-    const state = selectState<CounterState>(concepts, counterName);
-    if (state?.count === 9) {
-      dispatch(e.muxiumPreClose({exit: false}), {
-        iterateStage: true
-      });
-      plan.conclude();
-    } else {
-      dispatch(d.counter.e.counterAdd(), {
-        throttle: 1 // Individual action throttling
-      });
-    }
-  }, {beat: 105})
-]);
-```
-
-#### Beat with Selector Changes
-```typescript
-// Real example from beatSelectorChanges.test.ts
-stage(({concepts, changes}) => {
-  // Beat ensures changes are accumulated and delivered together
-  if (getMuxiumState(concepts).lastStrategy === topic) {
-    expect(selectSlice(concepts, beatSelectorChangesSelectCountOne)).toBe(tally[0]);
-    expect(selectSlice(concepts, beatSelectorChangesSelectCountTwo)).toBe(tally[1]);
-    expect(selectSlice(concepts, beatSelectorChangesSelectCountThree)).toBe(tally[2]);
-    // ... more selectors
-    
-    // All changes delivered together due to beat
-    expect(changes?.length).toBe(tally.length);
-  }
-}, {beat: 7000}) // 7 second beat - accumulates changes
-```
-
-### Stage Priority Management
-
-```typescript
-// Real example from priority tests
-const plan = muxium.plan('Priority Management', ({stage}) => [
-  stage(({dispatch, d}) => {
-    // High priority stage
-    dispatch(d.experiment.e.experimentHighPriority(), {
-      priority: 1000
-    });
-  }, {priority: 1000}),
-  
-  stage(({dispatch, d}) => {
-    // Normal priority stage
-    dispatch(d.experiment.e.experimentNormalPriority());
-  }, {priority: 100}),
-  
-  stage(({dispatch, d}) => {
-    // Low priority stage
-    dispatch(d.experiment.e.experimentLowPriority());
-  }, {priority: 1})
-]);
-```
-
-### Mixed Plan Options
-
-```typescript
-// Real example combining multiple stage options
-stage(({dispatch, d, changes}) => {
-  if (changes?.length === expectedChanges) {
-    dispatch(d.experiment.e.experimentAdvance(), {
-      iterateStage: true,
-      setStageSelectors: {
-        stage: nextStage,
-        selectors: getSelectorsForStage(nextStage)
-      },
-      throttle: 100,
-      priority: calculatePriority(currentConditions)
-    });
-  }
-}, {
-  beat: 500,
-  priority: 100,
-  selectors: getCurrentSelectors()
-})
-```
-
-### Stage Error Handling and Recovery
-
-```typescript
-// Handle stage failures gracefully
-stage(({concepts, dispatch, d}) => {
-  try {
-    const result = performComplexOperation();
-    dispatch(d.processing.e.processingSuccess(result), {
-      iterateStage: true
-    });
-  } catch (error) {
-    // Handle stage failure
-    dispatch(d.processing.e.processingError({error: error.message}), {
-      setStage: errorRecoveryStage
-    });
-  }
-})
-```
-
-### Stage Performance Monitoring
-
-```typescript
-// Monitor stage execution performance
-stage(({concepts, dispatch, stagePlanner}) => {
-  const startTime = performance.now();
-  
-  performStageOperation();
-  
-  const executionTime = performance.now() - startTime;
-  
-  if (executionTime > 1000) {
-    console.warn(`Stage took ${executionTime}ms to execute`);
-    
-    // Adjust stage options based on performance
-    dispatch(d.monitoring.e.monitoringSlowStage({
-      stage: stagePlanner.currentStage,
-      executionTime
-    }));
-  }
-})
-```
-
-### Stage Planner Best Practices
-
-#### 1. Selector Optimization
-```typescript
-// ✅ Use specific selectors to minimize unnecessary stage executions
-stage(({changes}) => {
-  // Only triggers when specific values change
-  if (changes?.some(c => c.keys === 'specificValue')) {
-    // Handle specific change
-  }
-}, {selectors: [specificSelector]})
-
-// ❌ Avoid broad selectors that trigger too frequently
-stage(({changes}) => {
-  // Triggers on any state change - inefficient
-  handleAnyChange();
-}, {selectors: [broadSelector]})
-```
-
-#### 2. Beat Configuration
-```typescript
-// ✅ Use beat for batch processing
-stage(({changes}) => {
-  // Process all accumulated changes together
-  processBatchChanges(changes);
-}, {beat: 1000}) // Accumulate changes for 1 second
-
-// ❌ Don't use beat for immediate response needs
-stage={({dispatch, d}) => {
-  // Critical operations should not be delayed
-  dispatch(d.emergency.e.emergencyResponse());
-}, {beat: 1000}) // Bad - delays critical operations
-```
-
-#### 3. Stage Flow Control
-```typescript
-// ✅ Use conditional stage advancement
-stage(({concepts, dispatch, d}) => {
-  if (isReadyToAdvance(concepts)) {
-    dispatch(d.flow.e.flowAdvance(), {iterateStage: true});
-  } else {
-    // Stay in current stage until ready
-    dispatch(d.flow.e.flowWait(), {throttle: 1000});
-  }
-})
-```
-
-The Stage Planner's advanced features enable building sophisticated, responsive, and efficient applications that can adapt their behavior based on changing conditions while maintaining optimal performance.
-
-## Asynchronous Strategy Patterns
-
-Stratimux provides powerful patterns for handling asynchronous operations through strategies, method creators, and action controllers. These patterns enable complex asynchronous workflows while maintaining system coherence.
-
-### Strategy Recursion
-
-Strategy recursion enables iterative processing with automatic halting conditions.
-
-#### Recursive Strategy Implementation
-```typescript
-// Real example from asynchronousRecursion.test.ts
-export const experimentRecursivelyIterateId = <T extends Deck<ExperimentDeck>>(
-  deck: Partial<T>, 
-  list: string[]
-): ActionStrategy | undefined => {
-  if (deck.experiment) {
-    const {
-      experimentRecurseIterateId
-    } = deck.experiment.e;
-
-    // Base case: list is empty, strategy completes
-    if (list.length === 0) {
-      return undefined;
-    }
-
-    // Recursive case: process current item and continue with remainder
-    const stepTwo = createActionNode(experimentRecurseIterateId(), {
-      successNode: createActionNode(
-        strategyRecurse(experimentRecursivelyIterateId(deck, list.slice(1)))
-      ),
-      successNotes: {
-        preposition: 'Recursively',
-        denoter: `Processing item: ${list[0]}`,
-      },
-    });
-
-    const params: ActionStrategyParameters = {
-      topic: experimentRecursivelyIterateIdTopic,
-      initialNode: stepTwo,
-    };
-
-    return createStrategy(params);
-  }
-  return undefined;
-};
-```
-
-#### Using Recursive Strategies
-```typescript
-// Real usage example
-const plan = muxium.plan('Recursive Processing', ({stage, stageO, e__}) => [
-  stageO(() => e__.muxiumKick()),
-  
-  stage(({dispatch, d}) => {
-    const itemsToProcess = ['item1', 'item2', 'item3', 'item4'];
-    
-    dispatch(strategyBegin(
-      experimentRecursivelyIterateId(d, itemsToProcess)
-    ), {
-      iterateStage: true
-    });
-  }),
-  
-  stage(({concepts}) => {
-    const lastTopic = selectSlice(concepts, muxiumSelectLastStrategy);
-    const experimentState = selectState<ExperimentState>(concepts, experimentName);
-    
-    // Check if recursion completed
-    if (lastTopic === experimentRecursivelyIterateIdTopic) {
-      expect(experimentState?.id).toBe(itemsToProcess.length);
-      console.log('Recursive processing completed');
-      plan.conclude();
-    }
-  })
-]);
-```
-
-### Debounced Asynchronous Methods
-
-Debouncing prevents excessive execution of asynchronous operations during rapid state changes.
-
-#### Debounced Method Creator
-```typescript
-// Real example from experiment concept
-export const experimentDebounceAsyncIterateIdThenReceiveInMethod = 
-  createQualityCardWithPayload<ExperimentState, Data>({
-    type: 'Experiment debounce async iterate ID then receive in Method via State',
-    reducer: (state: ExperimentState) => ({
-      id: state.id + 1
-    }),
-    methodCreator: () => createAsyncMethodDebounceWithState(
-      ({controller, action, state}) => {
-        setTimeout(() => {
-          const payload = action.payload;
-          if (action.strategy) {
-            const data = strategyData_muxifyData<Data>(action.strategy, {
-              id: state.id,
-              setId: payload.setId
-            });
-            const strategy = strategySuccess(action.strategy, data);
-            controller.fire(strategy);
-          }
-          controller.fire(action);
-        }, 50);
-      }, 
-      500 // 500ms debounce delay
-    )
-  });
-```
-
-#### Debounced Strategy Pattern
-```typescript
-// Real example from debounce strategies
-export const experimentDebounceIterateIdThenAddToData = <T extends Deck<ExperimentDeck>>(
-  deck: Partial<T>, 
-  id: number
-): ActionStrategy | undefined => {
-  if (deck.experiment) {
-    const {
-      experimentDebounceIterateIdThenReceiveInMethod
-    } = deck.experiment.e;
-
-    const stepTwo = createActionNode(
-      experimentDebounceIterateIdThenReceiveInMethod({setId: id}), {
-        successNotes: {
-          preposition: 'then',
-          denoter: 'Debounced Operation Complete',
-        },
-      }
-    );
-
-    return createStrategy({
-      topic: experimentDebounceIterateIdThenAddToDataTopic,
-      initialNode: stepTwo,
-    });
-  }
-  return undefined;
-};
-```
-
-#### Testing Debounced Operations
-```typescript
-// Real test pattern from debounceMethods.test.ts
-test('Debounce method prevent excess count', (done) => {
-  const plan = muxium.plan('Experiment debounce add one', ({stage}) => [
-    stage(({dispatch, d}) => {
-      // Rapid dispatch - only last should execute due to debouncing
-      dispatch(strategyBegin(experimentDebounceAddOneStrategy(d)), {
-        iterateStage: true
-      });
-    }),
-    stage(({dispatch, d}) => {
-      // Another rapid dispatch
-      dispatch(strategyBegin(experimentDebounceAddOneStrategy(d)), {
-        iterateStage: true
-      });
-    }),
-    stage(({concepts}) => {
-      const experimentState = selectState<ExperimentState>(concepts, experimentName);
-      
-      // Verify debouncing worked - should only increment once
-      setTimeout(() => {
-        expect(experimentState?.id).toBe(1); // Not 2, due to debouncing
-        done();
-      }, 1000);
-    })
-  ]);
-});
-```
-
-### Throttled Asynchronous Methods
-
-Throttling ensures operations execute at controlled intervals, preventing system overload.
-
-#### Throttled Method Creator
-```typescript
-// Real example from experiment concept
-export const experimentThrottleAsyncIterateIdThenReceiveInMethod = 
-  createQualityCardWithPayload<ExperimentState, Data>({
-    type: 'Experiment throttle async iterate ID then receive in Method via State',
-    reducer: (state: ExperimentState) => ({
-      id: state.id + 1
-    }),
-    methodCreator: () => createAsyncMethodThrottleWithState(
-      ({controller, action, state}) => {
-        setTimeout(() => {
-          const payload = action.payload;
-          if (action.strategy) {
-            const data = strategyData_muxifyData<Data>(action.strategy, {
-              id: state.id,
-              setId: payload.setId
-            });
-            const strategy = strategySuccess(action.strategy, data);
-            controller.fire(strategy);
-          }
-          controller.fire(action);
-        }, 50);
-      }, 
-      500 // 500ms throttle interval
-    )
-  });
-```
-
-#### Throttled Strategy Testing
-```typescript
-// Real test from throttleMethods.test.ts
-test('Throttle Method Test', (done) => {
-  const plan = muxium.plan('Throttle Test', ({stage, stageO, e__}) => [
-    stageO(() => e__.muxiumKick()),
-    
-    stage(({concepts, dispatch, d}) => {
-      const experimentState = selectState<ExperimentState>(concepts, experimentName);
-      if (experimentState) {
-        dispatch(strategyBegin(
-          experimentThrottleIterateIdThenAddToData(d, experimentState.id)
-        ), {iterateStage: true});
-      }
-    }),
-    
-    stage(({concepts}) => {
-      const lastStrategy = selectSlice(concepts, muxiumSelectLastStrategy);
-      
-      if (lastStrategy === experimentThrottleIterateIdThenAddToDataTopic) {
-        // Verify throttling worked correctly
-        const experimentState = selectState<ExperimentState>(concepts, experimentName);
-        expect(experimentState?.id).toBeGreaterThanOrEqual(1);
-        
-        setTimeout(() => done(), 1000);
-      }
-    })
-  ]);
-});
-```
-
-### Strategy Data Flow Patterns
-
-#### Strategy Success with Data
-```typescript
-// Pass data between strategy steps
-const processDataStrategy = <T extends Deck<ProcessingDeck>>(
-  deck: Partial<T>, 
-  inputData: any
-): ActionStrategy | undefined => {
-  if (deck.processing) {
-    const stepTwo = createActionNode(
-      processStep2(),
-      {
-        successNode: createActionNode(
-          processStep3(),
-          {
-            successNotes: {
-              preposition: 'finally',
-              denoter: 'Data Processing Complete'
-            }
-          }
-        ),
-        successNotes: {
-          preposition: 'then',
-          denoter: 'Step 2 Complete'
-        }
-      }
-    );
-
-    const stepOne = createActionNode(
-      processStep1(),
-      {
-        successNode: stepTwo,
-        successNotes: {
-          preposition: 'first',
-          denoter: 'Step 1 Complete'
-        }
-      }
-    );
-
-    return createStrategy({
-      topic: processDataTopic,
-      initialNode: stepOne,
-      data: inputData // Data flows through strategy
-    });
-  }
-  return undefined;
-};
-```
-
-### Action Controller Patterns
-
-#### Controller with State Access
-```typescript
-// Real pattern from method creators
-methodCreator: () => createAsyncMethodThrottleWithState(
-  ({controller, action, state}) => {
-    // Access current state
-    const currentId = state.id;
+// ✅ CORRECT: Async function declared outside method scope
+methodCreator: () => {
+  const performAsyncOperation = async (state: ConceptState, params: any) => {
+    // Set timeout with buffer for action expiration (default 5000ms, configurable)
+    const timeoutMs = Math.min(state.configTimeout, 4000); // Leave 1s buffer for default
     
     // Perform async operation
-    performAsyncOperation(currentId).then((result) => {
-      // Update strategy with result
-      if (action.strategy) {
-        const updatedStrategy = strategySuccess(action.strategy, result);
-        controller.fire(updatedStrategy);
-      }
-      
-      // Complete the action
-      controller.fire(action);
-    }).catch((error) => {
-      // Handle errors
-      if (action.strategy) {
-        const failedStrategy = strategyFailed(action.strategy, error);
-        controller.fire(failedStrategy);
-      }
-    });
-  },
-  throttleInterval
-)
-```
-
-#### Controller Subscription Pattern
-```typescript
-// Subscribe to action completion
-methodCreator: () => createAsyncMethod(({controller, action}) => {
-  const subscription = controller.subscribe((firedAction) => {
-    if (firedAction.type === 'Operation Complete') {
-      console.log('Async operation completed:', firedAction.payload);
-      subscription.unsubscribe();
-    }
-  });
-  
-  // Start async operation
-  startAsyncOperation().then(() => {
-    controller.fire(createOperationCompleteAction());
-  });
-})
-```
-
-### Strategy Determination
-
-Use `strategyDetermine` to dynamically choose between action and strategy dispatch.
-
-```typescript
-// Real example from strategyDetermine.test.ts
-stage(({dispatch, d}) => {
-  // strategyDetermine automatically wraps single actions in strategies
-  dispatch(strategyDetermine(d.counter.e.counterAdd()), {
-    iterateStage: true
-  });
-}),
-
-stage(({dispatch, d}) => {
-  // Works with payload actions too
-  dispatch(strategyDetermine(d.counter.e.counterSetCount({
-    newCount: FINAL_COUNT
-  })), {
-    iterateStage: true
-  });
-}),
-
-stage(({d}) => {
-  // Verify both executed properly
-  expect(d.counter.k.count.select()).toBe(FINAL_COUNT);
-  plan.conclude();
-})
-```
-
-### Error Handling in Async Strategies
-
-```typescript
-// Comprehensive error handling
-const robustAsyncStrategy = <T extends Deck<ProcessingDeck>>(
-  deck: Partial<T>
-): ActionStrategy | undefined => {
-  if (deck.processing) {
-    const errorNode = createActionNode(
-      handleError(),
-      {
-        successNotes: {
-          preposition: 'finally',
-          denoter: 'Error Handled'
-        }
-      }
-    );
-
-    const mainNode = createActionNode(
-      processData(),
-      {
-        successNode: createActionNode(finalizeProcessing()),
-        failureNode: errorNode,
-        successNotes: {
-          preposition: 'then',
-          denoter: 'Processing Successful'
-        },
-        failureNotes: {
-          preposition: 'but',
-          denoter: 'Processing Failed'
-        }
-      }
-    );
-
-    return createStrategy({
-      topic: robustProcessingTopic,
-      initialNode: mainNode
-    });
-  }
-  return undefined;
-};
-```
-
-These asynchronous patterns enable building complex, responsive applications that can handle concurrent operations, manage timing constraints, and maintain system coherence even under high load conditions.
-
-## Selector System and State Access
-
-Stratimux provides multiple selector systems for accessing state, from legacy patterns to the modern unified selector approach. Understanding these patterns helps in choosing the right approach for different scenarios.
-
-### Unified Selector System
-
-The unified selector system provides a consistent API for all state access operations.
-
-#### Creating Dynamic Selectors
-```typescript
-// Real example from unifiedSelector.test.ts
-import { select } from '../model/selector';
-
-stage(({concepts}) => {
-  // Create concept-based keyed selector
-  const conceptSelector = select.createConceptKeyedSelector<CounterState>(
-    counterName, 
-    'count'
-  );
-  
-  // Create muxified keyed selector using concept index
-  const muxifiedSelector = select.createMuxifiedKeyedSelector<CounterState>(
-    concepts, 
-    1,        // Concept index in muxium
-    'count'   // State property
-  ) as KeyedSelector;
-  
-  // Both selectors access the same state
-  expect(select.slice(concepts, conceptSelector)).toBe(0);
-  expect(select.slice(concepts, muxifiedSelector)).toBe(0);
-  
-  // Use consistent API across selector types
-  const stateValue = select.state<CounterState>(concepts, counterName);
-  expect(stateValue?.count).toBe(0);
-});
-```
-
-#### Selector Performance Patterns
-```typescript
-// Cache frequently used selectors
-const cachedSelectors = {
-  userProfile: select.createConceptKeyedSelector<UserState>('user', 'profile'),
-  userSettings: select.createConceptKeyedSelector<UserState>('user', 'settings'),
-  systemStatus: select.createConceptKeyedSelector<SystemState>('system', 'status')
-};
-
-stage(({concepts}) => {
-  // Efficient access using cached selectors
-  const profile = select.slice(concepts, cachedSelectors.userProfile);
-  const settings = select.slice(concepts, cachedSelectors.userSettings);
-  const status = select.slice(concepts, cachedSelectors.systemStatus);
-});
-```
-
-### Change Detection and Monitoring
-
-The `onChange` system provides powerful state change monitoring capabilities.
-
-#### Basic Change Monitoring
-```typescript
-// Real example from onChange.test.ts
-const selectorRouter: Record<string, any> = {
-  [muxiumSelectLastStrategy.keys]: (concepts: Concepts) =>
-    console.log('Strategy changed:', selectSlice(concepts, muxiumSelectLastStrategy))
-};
-
-const plan = muxium.plan('Change Monitoring', ({stage, d__}) => [
-  stage(({stagePlanner, concepts, dispatch, d}) => {
-    // Monitor specific state changes
-    if (selectSlice(concepts, muxiumSelectLastStrategy) === initializeTopic) {
-      const strategy = countingStrategy(d);
-      if (strategy) {
-        dispatch(strategyBegin(strategy), {
-          iterateStage: true
-        });
-      }
-    }
-  }, {selectors: [d__.muxium.k.lastStrategy]}),
-  
-  stage(({concepts, changes}) => {
-    // Process accumulated changes
-    changes?.forEach(keyed => {
-      selectorRouter[keyed.keys] ? selectorRouter[keyed.keys](concepts) : null;
-    });
+    const result = await externalAPI.call(params, { timeout: timeoutMs });
     
-    // Verify specific change occurred
-    const counter = selectState<CounterState>(concepts, counterName);
-    expect(counter?.count).toBe(1);
-  })
+    return {
+      result,
+      timestamp: Date.now(),
+      // ... other data
+    };
+  };
+  
+  return createAsyncMethodWithState<ConceptState>(({ controller, action, state }) => {
+    if (action.strategy) {
+      const payload = selectPayload<PayloadType>(action);
+      
+      performAsyncOperation(state, payload)
+        .then((data) => {
+          controller.fire(strategySuccess(
+            action.strategy!, 
+            strategyData_muxifyData(action.strategy!, data)
+          ));
+        })
+        .catch((error) => {
+          controller.fire(strategyFailed(action.strategy!));
+        });
+    }
+  });
+}
+
+// ❌ WRONG: Using async/await in method creator
+methodCreator: () => createAsyncMethodWithState<ConceptState>(async ({ controller, action, state }) => {
+  // DON'T DO THIS - method creators should not be async
+})
+
+// ✅ CORRECT: Configuring action expiration for long-running operations
+stage(({ dispatch, d }) => {
+  dispatch(d.concept.e.longRunningAction({ data: 'value' }), { 
+    iterateStage: true,
+    expiration: 30000 // 30 seconds for long-running operation
+  });
+})
+
+// For outer muxium dispatches
+muxium.dispatch(
+  muxium.deck.d.concept.e.longRunningAction({ data: 'value' }),
+  { expiration: 15000 } // 15 seconds custom expiration
+);
+```
+
+#### 🚨 Failure Conditions and Higher Order Logic
+
+ActionStrategies support advanced failure handling through failure conditions:
+
+```typescript
+// Built-in failure conditions
+export enum failureConditions {
+  ownershipExpired = 'ownershipExpired',
+  ownershipBlocked = 'ownershipBlocked', 
+  controllerExpired = 'controllerExpired',
+  muxiumExpired = 'muxiumExpired',
+  muxiumBadGeneration = 'muxiumBadGeneration'
+}
+
+// Using failure conditions in quality method creators
+if (validationFailed) {
+  controller.fire(strategyFailed(
+    action.strategy!, 
+    strategyData_appendFailure(action.strategy!, 'Custom validation failure')
+  ));
+}
+
+// Failure nodes can read failure conditions for intelligent decisions
+const failureCondition = strategyData_selectFailureCondition(strategy);
+if (failureCondition === 'controllerExpired') {
+  // Handle timeout specifically
+} else if (failureCondition === 'ownershipBlocked') {
+  // Handle blocking specifically
+}
+```
+
+#### 🎯 ActionStrategy Data Best Practices
+
+1. **Data Field Design**: Create explicit TypeScript interfaces for ActionStrategy data
+2. **Timeout Management**: Account for action expiration (default 5000ms, configurable via options object)
+3. **Custom Expiration**: Use `{ expiration: ms }` in dispatch options for long-running operations
+4. **Error Handling**: Use failure conditions for intelligent error recovery
+5. **Type Safety**: Use `strategyData_select<T>()` with explicit types
+6. **Data Evolution**: Use `strategyData_muxifyData()` to enhance data through strategy steps
+7. **Universal Properties**: Follow naming conventions to enable data unification
+8. **Async Patterns**: Declare async functions outside method scope, use `.then()` for controller.fire
+
+**The ActionStrategy Data pattern enables sophisticated data transformation workflows that serve as the foundation for complex business logic orchestration in Stratimux applications.**
+
+## 🚨 Critical Dispatch Pattern Differences (Essential Knowledge)
+
+**Understanding the fundamental difference between dispatch patterns in Stratimux is critical to prevent system lockup and ensure proper flow control.**
+
+### 🎯 Two Distinct Dispatch Patterns
+
+#### 1. Outer Muxium Dispatches (One-Shot Operations)
+**Used for direct action dispatch without flow control or reactive stages.**
+
+```typescript
+// ✅ CORRECT: Outer muxium dispatch pattern
+muxium.dispatch(action);
+// Notice: NO stage options object - this is immediate one-shot dispatch
+
+// Examples of correct outer dispatch usage:
+muxium.dispatch(
+  muxium.deck.d.concept.e.setProperty({ value: 'new value' })
+);
+
+// From UI components or external contexts
+const handleClick = () => {
+  muxium.dispatch(
+    muxium.deck.d.concept.e.userAction({ data: buttonData })
+  );
+};
+```
+
+#### 2. Stage Dispatches (Flow-Controlled Operations)
+**Used within planning scope stages with explicit flow control.**
+
+```typescript
+// ✅ CORRECT: Stage dispatch pattern
+stage(({ dispatch, d }) => {
+  dispatch(d.concept.e.action({ data: 'value' }), { 
+    iterateStage: true // REQUIRED: Explicit stage options
+  });
+});
+
+// Available stage options:
+{ iterateStage: true }   // Move to next stage
+{ iterateStage: false }  // Stay on current stage for next iteration
+{ }                      // Complete current plan iteration
+```
+
+### ⚠️ Critical Anti-Pattern (Causes System Lockup)
+
+**NEVER mix the patterns - this causes immediate system failure:**
+
+```typescript
+// ❌ CRITICAL ERROR: Using stage options with outer dispatch
+muxium.dispatch(action, {}); // WRONG - causes undefined errors
+
+// ❌ CRITICAL ERROR: Missing stage options in stage dispatch
+stage(({ dispatch, d }) => {
+  dispatch(d.concept.e.action()); // WRONG - no stage options causes lockup
+});
+```
+
+### 🔄 Action Overflow Prevention
+
+**Stage dispatches must be throttled to prevent action overflow that locks the priority queue:**
+
+#### ✅ Correct: Throttled Stage Dispatch
+```typescript
+stage(({ dispatch, d }) => {
+  const needsAction = d.concept.k.shouldProcess.select();
+  
+  if (needsAction) {
+    // Throttled dispatch with explicit iteration control
+    dispatch(d.concept.e.processItem(), { 
+      iterateStage: true // Moves to next stage, preventing immediate re-execution
+    });
+    return;
+  }
+  
+  // Alternative path with controlled flow
+  dispatch(d.concept.e.idle(), { 
+    iterateStage: false // Stay on stage but wait for next plan iteration
+  });
+});
+```
+
+#### ❌ Wrong: Uncontrolled Stage Dispatch
+```typescript
+stage(({ dispatch, d }) => {
+  // DANGER: Missing stage options can cause infinite dispatch loops
+  dispatch(d.concept.e.processItem()); // System lockup risk!
+});
+```
+
+### 🎯 When to Use Each Pattern
+
+#### Use Outer Muxium Dispatch When:
+- Triggering actions from UI components
+- Responding to external events (WebSocket, HTTP, user input)
+- Simple state updates without reactive logic
+- No need for stage-based flow control
+
+#### Use Stage Dispatch When:
+- Inside planning scope (principles, muxium.plan())
+- Need reactive flow control between operations
+- Implementing multi-stage logical sequences
+- Building orchestrated concept behaviors
+
+### 💡 Key Success Indicators
+
+**Your dispatch pattern is correct when:**
+- ✅ No "Cannot read properties of undefined" errors
+- ✅ Actions execute in expected sequence
+- ✅ No infinite loops or system lockups
+- ✅ Proper flow control between planning stages
+- ✅ Clean separation between one-shot and flow-controlled operations
+
+**This distinction is fundamental to Stratimux architecture and must be understood for successful development.**
+
+### 🚀 Shortest Path Dispatch Pattern (Efficiency Optimization)
+
+**When you have direct muxium access and only need to dispatch an action without reactive logic, use direct dispatch instead of creating unnecessary planning scope.**
+
+#### ✅ Efficient Direct Dispatch Pattern
+```typescript
+// When you only need to dispatch, not observe state changes
+const handleSimpleAction = () => {
+  // Direct dispatch via muxium.deck - no planning scope needed
+  muxium.dispatch(
+    muxium.deck.d.myConcept.e.myAction({ data: 'value' })
+  );
+};
+```
+
+#### ❌ Unnecessary Planning Overhead Pattern
+```typescript
+// INEFFICIENT: Creating full planning scope just to dispatch
+const handleSimpleAction = () => {
+  muxium.plan<ConceptDeck>('simple action', ({ stage, conclude }) => [
+    stage(({ dispatch, d, stagePlanner }) => {
+      dispatch(d.myConcept.e.myAction({ data: 'value' }), {
+        iterateStage: true
+      });
+      stagePlanner.conclude();
+    }),
+    conclude()
+  ]);
+};
+```
+
+#### 🎯 When to Use Each Pattern
+
+**Use Direct Dispatch (`muxium.dispatch()`) when:**
+- You only need to trigger an action
+- No reactive state observation required
+- Simple, one-time operations
+- UI event handlers with direct actions
+
+**Use Planning Scope (`muxium.plan()`) when:**
+- You need to observe state changes
+- Multi-stage reactive logic required
+- Complex conditional workflows
+- Long-running reactive processes
+
+#### 📊 Performance Comparison
+```typescript
+// HIGH EFFICIENCY: Direct dispatch
+muxium.dispatch(muxium.deck.d.concept.e.action());
+
+// MEDIUM EFFICIENCY: Simple planning scope
+muxium.plan('operation', ({ stage, conclude }) => [
+  stage(({ dispatch, d }) => dispatch(d.concept.e.action(), {})),
+  conclude()
+]);
+
+// COMPLEX LOGIC: Full planning scope (when needed)
+muxium.plan('complex operation', ({ stage, conclude }) => [
+  stage(/* reactive state observation and conditional logic */),
+  stage(/* multi-step processing */),
+  conclude()
 ]);
 ```
 
-#### Advanced Change Processing
+**Key Principle**: Use the shortest path that meets your functional requirements. Don't create unnecessary complexity when a simple dispatch suffixes.
+
+## 🏗️ Muxified Concept Access Patterns (CRITICAL)
+
+**When working with muxified concepts (concepts included in higher-order compositions), accessing their state and dispatching actions requires understanding the distinction between base concept access and muxified conceptual parts access.**
+
+### 🎯 Base Concept vs Muxified Conceptual Parts
+
+#### Base Concept Access Pattern (Direct)
 ```typescript
-// Process different types of changes
-stage(({concepts, changes}) => {
-  if (changes) {
-    changes.forEach(change => {
-      switch (change.keys) {
-        case 'userProfile':
-          handleUserProfileChange(concepts, change);
-          break;
-        case 'systemStatus':
-          handleSystemStatusChange(concepts, change);
-          break;
-        case 'lastStrategy':
-          handleStrategyChange(concepts, change);
-          break;
-        default:
-          console.log('Unhandled change:', change.keys);
-      }
+// When working directly with a concept's own state and actions
+muxium.plan<MyConceptDeck>('direct access', ({ stage, conclude }) => [
+  stage(({ dispatch, d }) => {
+    // Direct concept access via DECK
+    const value = d.myConcept.k.property.select();
+    
+    // Direct action dispatch
+    dispatch(d.myConcept.e.myAction({ data: value }), { 
+      iterateStage: true 
+    });
+  }),
+  conclude()
+]);
+```
+
+#### Muxified Concept Access Pattern (Through Parent)
+```typescript
+// When accessing a muxified concept through its parent composition
+muxium.plan<ParentDeck>('muxified access', ({ stage, conclude }) => [
+  stage(({ dispatch, d }) => {
+    // Accessing muxified concept through parent DECK
+    const value = d.parent.d.childConcept.k.property.select();
+    
+    // Dispatching to muxified concept through parent
+    dispatch(d.parent.d.childConcept.e.childAction({ data: value }), { 
+      iterateStage: true 
+    });
+  }),
+  conclude()
+]);
+```
+
+### 🚨 Outer Plan Dispatch Pattern for Muxified Concepts
+
+**When working in outer plan context (via `muxium.plan()`), the dispatch pattern differs based on concept composition structure:**
+
+#### ✅ Correct: Muxified Concept Dispatch
+```typescript
+// Pattern: d.parentConcept.d.childConcept.e.action()
+muxium.plan<ParentDeck>('example operation', ({ stage, conclude }) => [
+  stage(({ dispatch, d }) => {
+    // Accessing muxified concept state
+    const history = d.parent.d.childInterface.k.history.select();
+    
+    // Dispatching to muxified concept
+    dispatch(d.parent.d.childInterface.e.updateBuffer({
+      buffer: 'new data'
+    }), { 
+      iterateStage: true 
+    });
+  }),
+  conclude()
+]);
+```
+
+#### ❌ Wrong: Direct Concept Access on Muxified
+```typescript
+// WRONG: Attempting direct access to muxified concept
+muxium.plan<ParentDeck>('broken operation', ({ stage, conclude }) => [
+  stage(({ dispatch, d }) => {
+    // WRONG: childInterface is not directly accessible
+    const value = d.childInterface.k.property.select(); // TYPE ERROR
+    
+    // WRONG: Direct dispatch to muxified concept
+    dispatch(d.childInterface.e.action(), {}); // TYPE ERROR
+  }),
+  conclude()
+]);
+```
+
+### 🔧 TypeScript Recursive Type Limitations
+
+**Stratimux v0.3.2 StratiDECK cannot automatically determine whether a concept is accessed directly or through muxification due to TypeScript's recursive type limitations. This creates an ambiguity that requires explicit user decision.**
+
+#### The Type Ambiguity Problem
+```typescript
+// TypeScript cannot distinguish between:
+d.concept.k.property.select()         // Direct concept access
+d.parent.d.concept.k.property.select() // Muxified concept access
+
+// Both are valid TypeScript, but only one will work at runtime
+// depending on the actual concept composition structure
+```
+
+### ✅ Explicit User Decision Pattern
+
+**The developer must explicitly choose the correct access pattern based on their concept composition architecture:**
+
+#### Decision Matrix
+| Concept Relationship | Access Pattern | Example |
+|----------------------|----------------|---------|
+| **Direct Concept** | `d.concept.k.property.select()` | Concept is directly included in muxium |
+| **Muxified Child** | `d.parent.d.child.k.property.select()` | Concept is included via `muxifyConcepts()` |
+| **Nested Muxified** | `d.grandparent.d.parent.d.child.k.property.select()` | Multiple levels of composition |
+
+#### Implementation Strategy
+```typescript
+// 1. Examine your concept composition
+const parentConcept = createConcept('parent', {
+  // ...parent state and qualities
+}, [
+  // ChildInterface is muxified INTO parent
+  muxifyConcepts([childInterfaceConcept])
+]);
+
+// 2. Choose correct access pattern based on composition
+muxium.plan<ParentDeck>('operation', ({ stage, conclude }) => [
+  stage(({ dispatch, d }) => {
+    // Since childInterface is muxified INTO parent,
+    // use: d.parent.d.childInterface
+    const value = d.parent.d.childInterface.k.buffer.select();
+    
+    dispatch(d.parent.d.childInterface.e.updateBuffer({
+      buffer: value
+    }), { iterateStage: true });
+  }),
+  conclude()
+]);
+```
+
+### 📋 Correct Citation Examples
+
+#### Example 1: Simple Muxified Access
+```typescript
+// Composition: parent contains childInterface
+// Access Pattern: d.parent.d.childInterface
+
+muxium.plan<ParentDeck>('clear suggestions', ({ stage, conclude }) => [
+  stage(({ dispatch, d }) => {
+    dispatch(d.parent.d.childInterface.e.clearSuggestion({}), { 
+      iterateStage: true 
+    });
+  }),
+  conclude()
+]);
+```
+
+#### Example 2: Multi-Level Muxified Access
+```typescript
+// Composition: app contains parent, parent contains childInterface
+// Access Pattern: d.app.d.parent.d.childInterface
+
+muxium.plan<AppDeck>('complex operation', ({ stage, conclude }) => [
+  stage(({ dispatch, d }) => {
+    const buffer = d.app.d.parent.d.childInterface.k.dataBuffer.select();
+    
+    dispatch(d.app.d.parent.d.childInterface.e.parseInput({
+      input: buffer
+    }), { iterateStage: true });
+  }),
+  conclude()
+]);
+```
+
+#### Example 3: Direct Concept Access (Non-Muxified)
+```typescript
+// Composition: concept is directly added to muxium
+// Access Pattern: d.concept
+
+muxium.plan<ConceptDeck>('direct operation', ({ stage, conclude }) => [
+  stage(({ dispatch, d }) => {
+    const value = d.concept.k.property.select();
+    
+    dispatch(d.concept.e.action({ data: value }), { 
+      iterateStage: true 
+    });
+  }),
+  conclude()
+]);
+```
+
+**Key Insights:**
+- **Composition Structure Determines Access**: The way concepts are composed determines the access pattern
+- **TypeScript Cannot Help**: Due to recursive type limitations, compile-time checking cannot resolve the ambiguity
+- **Developer Responsibility**: You must explicitly choose the correct pattern based on your architecture
+- **Test-Driven Validation**: Use test files to validate that your chosen access pattern works correctly
+- **Documentation Critical**: Document your concept composition structure for team clarity
+
+This pattern is crucial for proper muxified concept interaction and prevents runtime errors in complex Stratimux applications.
+
+## 🎯 DECK K Constant Pattern - Reactive State Access (v0.2.242+)
+
+**The DECK K Constant Pattern is Stratimux's primary method for type-safe, reactive state access across all contexts. This pattern provides consistent state selection with automatic reactivity and performance optimization.**
+
+### 🏗️ Pattern Architecture Overview
+
+The `k` (K Constant) provides a reactive state selector interface that automatically adapts to the execution context:
+- **Principle Context**: Direct access to concept's own state via `k.property.select()`
+- **Planning Scope Context**: Cross-concept state access via `d.conceptName.k.property.select()`
+- **Automatic Reactivity**: All selections are reactive and trigger re-evaluation on state changes
+- **Type Safety**: Full TypeScript inference with compile-time validation
+
+### 🎯 Context-Aware Usage Patterns
+
+#### 1. Principle Context Pattern (Within Concept's Own Principles)
+**Use `k.property.select()` when accessing the concept's own state from within its principles:**
+
+```typescript
+// Within a principle of the myConcept
+stage(({ k, dispatch, d }) => {
+  // ✅ CORRECT: Direct access to own concept's state
+  const currentValue = k.someProperty.select();
+  const anotherValue = k.anotherProperty.select();
+  const complexData = k.dataStructure.select();
+  
+  // State access is reactive and type-safe
+  if (currentValue > 10) {
+    dispatch(d.myConcept.e.processData({ value: currentValue }), {
+      iterateStage: true
     });
   }
-}, {selectors: [
-  userProfileSelector,
-  systemStatusSelector,
-  lastStrategySelector
-]})
-```
-
-### Data Slice Selection
-
-The data slice system enables efficient access to nested state properties.
-
-#### Basic Data Slice Access
-```typescript
-// Real patterns from selectDataSlice.test.ts
-stage(({concepts}) => {
-  // Access nested properties efficiently
-  const userData = selectSlice(concepts, createSelector(
-    'user',
-    (state: UserState) => state.profile.personalInfo
-  ));
-  
-  // Access array elements
-  const firstOrder = selectSlice(concepts, createSelector(
-    'orders',
-    (state: OrderState) => state.orderList[0]
-  ));
-  
-  // Access computed values
-  const orderTotal = selectSlice(concepts, createSelector(
-    'orders',
-    (state: OrderState) => state.orderList.reduce((sum, order) => sum + order.total, 0)
-  ));
 });
 ```
 
-#### Memoized Selectors
+#### 2. Planning Scope Context Pattern (Cross-Concept Access)
+**Use `d.conceptName.k.property.select()` when accessing any concept's state from planning scope:**
+
 ```typescript
-// Create memoized selectors for expensive computations
-const expensiveComputationSelector = createSelector(
-  'analytics',
-  (state: AnalyticsState) => {
-    // Expensive computation only runs when analytics state changes
-    return computeComplexAnalytics(state.data);
+// Within muxium.plan() or cross-concept operations
+muxium.plan<MyConceptDeck>('reactive operation', ({ stage, conclude }) => [
+  stage(({ d, dispatch }) => {
+    // ✅ CORRECT: Access any concept's state via DECK
+    const myConceptValue = d.myConcept.k.someProperty.select();
+    const otherConceptValue = d.otherConcept.k.differentProperty.select();
+    const sharedState = d.sharedConcept.k.globalData.select();
+    
+    // Reactive state comparison across concepts
+    if (myConceptValue !== otherConceptValue) {
+      dispatch(d.myConcept.e.synchronizeState({ 
+        target: otherConceptValue 
+      }), { iterateStage: true });
+    }
+  }),
+  conclude()
+]);
+```
+
+### 🚀 Performance-Optimized State Selection
+
+#### Efficient Single Property Access
+```typescript
+// ✅ OPTIMAL: Direct property selection
+const isReady = k.isReady.select();
+const currentCommand = k.currentCommand.select();
+const userPreferences = k.userPreferences.select();
+
+// Use selected values directly in conditional logic
+if (isReady && currentCommand) {
+  // Reactive logic executes only when these properties change
+}
+```
+
+#### Reactive State Observation
+```typescript
+// ✅ REACTIVE: State changes trigger automatic re-evaluation
+stage(({ k, dispatch, d }) => {
+  const historyLength = k.commandHistory.select().length;
+  const maxHistory = k.maxHistorySize.select();
+  
+  // Automatically triggers when history or max size changes
+  if (historyLength > maxHistory) {
+    dispatch(d.myConcept.e.trimHistory(), { iterateStage: true });
   }
-);
-
-stage(({concepts}) => {
-  // Result is cached until analytics state changes
-  const analytics = selectSlice(concepts, expensiveComputationSelector);
-  processAnalytics(analytics);
 });
 ```
 
-### Selector Composition Patterns
 
-#### Combining Multiple Selectors
+### 🎯 Working Implementation Examples
+
+#### Interface State Management
 ```typescript
-// Compose selectors for complex state access
-const userOrderSummarySelector = createSelector(
-  ['user', 'orders'],
-  (userState: UserState, orderState: OrderState) => {
+// Real-world example from Interface concept
+stage(({ k, dispatch, d }) => {
+  // ✅ Principle context - accessing own concept's state
+  const currentCmd = k.currentCommand.select();
+  const history = k.history.select();
+  const available = k.availableCommands.select();
+  
+  // Reactive command validation
+  if (currentCmd && !available.includes(currentCmd)) {
+    dispatch(d.interface.e.setError({ 
+      message: `Unknown command: ${currentCmd}` 
+    }), { iterateStage: true });
+  }
+});
+
+// Cross-concept orchestration
+muxium.plan<AppDeck>('data processing', ({ stage, conclude }) => [
+  stage(({ d, dispatch }) => {
+    // ✅ Planning scope - accessing multiple concepts
+    const command = d.interface.k.currentCommand.select();
+    const clientReady = d.client.k.isReady.select();
+    const serverState = d.server.k.connectionStatus.select();
+    
+    // Multi-concept reactive coordination
+    if (command && clientReady && serverState === 'connected') {
+      dispatch(d.client.e.executeOperation({ command }), { 
+        iterateStage: true 
+      });
+    }
+  }),
+  conclude()
+]);
+```
+
+### 🚨 Critical Anti-Patterns to Avoid
+
+#### ❌ Wrong Context Usage
+```typescript
+// DON'T use planning scope pattern in principle context
+stage(({ k, d }) => {
+  const wrong = d.myConcept.k.property.select(); // ❌ Redundant in principle
+  const correct = k.property.select(); // ✅ Direct access in principle
+});
+
+// DON'T use principle pattern in planning scope without d prefix
+stage(({ k }) => {
+  const wrong = k.property.select(); // ❌ k is undefined in planning scope
+  const correct = d.myConcept.k.property.select(); // ✅ Use DECK access
+});
+```
+
+#### ❌ Legacy State Access
+```typescript
+// DON'T use deprecated state access methods
+const state = muxium.getState(); // ❌ Legacy, non-reactive
+const value = state.concept.property; // ❌ Direct state access
+
+// DO use DECK K Constant Pattern
+const value = d.concept.k.property.select(); // ✅ Reactive, type-safe
+```
+
+### 📊 Performance Benefits
+
+#### Memory Efficiency
+- **Selective Reactivity**: Only selected properties trigger re-evaluation
+- **Lazy Evaluation**: State selections computed only when accessed
+- **Automatic Optimization**: Framework handles subscription management
+
+#### Type Safety Advantages
+- **Compile-Time Validation**: TypeScript catches property access errors
+- **IntelliSense Support**: Full auto-completion for state properties
+- **Refactoring Safety**: Automated updates when state structure changes
+
+### 🔧 Debugging & Troubleshooting
+
+#### Common State Access Issues
+```typescript
+// ✅ SOLUTION: Verify context and use appropriate pattern
+// In principle context:
+const value = k.property.select();
+
+// In planning scope:
+const value = d.conceptName.k.property.select();
+```
+
+#### Type Inference Problems
+```typescript
+// If TypeScript can't infer types, ensure proper DECK typing:
+muxium.plan<MyConceptDeck>('operation', ({ stage, conclude }) => [
+  stage(({ d }) => {
+    // Now d.myConcept.k has full type inference
+    const typedValue = d.myConcept.k.property.select();
+  }),
+  conclude()
+]);
+```
+
+### 🎯 Migration Guide from Legacy Patterns
+
+#### From Direct State Access
+```typescript
+// ❌ OLD: Direct state manipulation
+const state = muxium.getState();
+const value = state.concept.property;
+
+// ✅ NEW: DECK K Constant Pattern
+const value = d.concept.k.property.select();
+```
+
+#### From Manual Subscriptions
+```typescript
+// ❌ OLD: Manual subscription management
+const subscription = muxium.subscribe(state => {
+  const value = state.concept.property;
+  // Manual update logic
+});
+
+// ✅ NEW: Automatic reactive selection
+stage(({ d }) => {
+  const value = d.concept.k.property.select();
+  // Automatic reactivity and re-evaluation
+});
+```
+
+**The DECK K Constant Pattern is the foundation of reactive state management in Stratimux v0.2.242+. Master this pattern for efficient, type-safe, and maintainable Stratimux applications.**
+
+## 🧩 Quality Creation Patterns & Best Practices
+
+### 📋 Comprehensive Quality Implementation Guide
+
+**Quality Definition Rules for v0.3.2+:**
+- Always use explicit Quality type definitions (NEVER `typeof` patterns)
+- Import correct APIs: `createQualityCard` or `createQualityCardWithPayload`
+- Use proper type parameter order: `<State, Payload, Deck?>`
+- Extract payloads with `selectPayload<PayloadType>(action)` when needed
+- Follow Shortest Path Principle for optimal performance
+
+### 🎯 Pattern 1: Simple Quality (No Payload)
+
+```typescript
+// File: /concept/qualities/simpleAction.quality.ts
+import { createQualityCard, defaultMethodCreator, type Quality } from 'stratimux';
+import type { MyConceptState } from '../myConcept.concept.js';
+
+export type MyConceptSimpleAction = Quality<MyConceptState>;
+
+export const myConceptSimpleAction = createQualityCard<MyConceptState>({
+  type: 'myConcept simple action',
+  reducer: (state) => {
     return {
-      userId: userState.profile.id,
-      userName: userState.profile.name,
-      totalOrders: orderState.orderList.length,
-      totalSpent: orderState.orderList.reduce((sum, order) => sum + order.total, 0)
+      // ✅ EFFICIENT: Return only changed properties
+      isActive: !state.isActive
     };
-  }
-);
-
-stage(({concepts}) => {
-  const summary = selectSlice(concepts, userOrderSummarySelector);
-  displayUserSummary(summary);
+  },
+  methodCreator: defaultMethodCreator,
 });
 ```
 
-#### Conditional Selectors
+### 🎯 Pattern 2: Payload Quality (With Parameters)
+
 ```typescript
-// Selectors that adapt based on state
-const adaptiveDataSelector = (concepts: Concepts) => {
-  const userRole = selectSlice(concepts, userRoleSelector);
-  
-  switch (userRole) {
-    case 'admin':
-      return selectSlice(concepts, adminDataSelector);
-    case 'user':
-      return selectSlice(concepts, userDataSelector);
-    default:
-      return selectSlice(concepts, publicDataSelector);
-  }
+// File: /concept/qualities/updateProperty.quality.ts
+import { createQualityCardWithPayload, defaultMethodCreator, selectPayload, type Quality } from 'stratimux';
+import type { MyConceptState } from '../myConcept.concept.js';
+import type { MyConceptUpdatePropertyPayload } from './types.js';
+
+export type MyConceptUpdateProperty = Quality<MyConceptState, MyConceptUpdatePropertyPayload>;
+
+export const myConceptUpdateProperty = createQualityCardWithPayload<
+  MyConceptState,
+  MyConceptUpdatePropertyPayload
+>({
+  type: 'myConcept update property',
+  reducer: (state, action) => {
+    // ✅ CORRECT: Extract payload using selectPayload
+    const { propertyName, newValue } = selectPayload<MyConceptUpdatePropertyPayload>(action);
+    
+    return {
+      // ✅ EFFICIENT: Return only changed property
+      [propertyName]: newValue
+    };
+  },
+  methodCreator: defaultMethodCreator,
+});
+```
+
+### 🎯 Pattern 3: Destructured Payload (Alternative Syntax)
+
+```typescript
+// File: /concept/qualities/setData.quality.ts
+import { createQualityCardWithPayload, defaultMethodCreator, type Quality } from 'stratimux';
+import type { MyConceptState } from '../myConcept.concept.js';
+import type { MyConceptSetDataPayload } from './types.js';
+
+export type MyConceptSetData = Quality<MyConceptState, MyConceptSetDataPayload>;
+
+export const myConceptSetData = createQualityCardWithPayload<
+  MyConceptState,
+  MyConceptSetDataPayload
+>({
+  type: 'myConcept set data',
+  reducer: (state, { payload }) => {
+    // ✅ ALTERNATIVE: Destructure payload directly from action
+    const { data, timestamp } = payload;
+    
+    return {
+      data,
+      lastUpdated: timestamp || Date.now()
+    };
+  },
+  methodCreator: defaultMethodCreator,
+});
+```
+
+### 🎯 Pattern 4: Complex Array/Object Updates
+
+```typescript
+// File: /concept/qualities/updateBuffer.quality.ts
+import { createQualityCardWithPayload, defaultMethodCreator, selectPayload, type Quality } from 'stratimux';
+import type { MyConceptState } from '../myConcept.concept.js';
+import type { MyConceptUpdateBufferPayload } from './types.js';
+
+export type MyConceptUpdateBuffer = Quality<MyConceptState, MyConceptUpdateBufferPayload>;
+
+export const myConceptUpdateBuffer = createQualityCardWithPayload<
+  MyConceptState,
+  MyConceptUpdateBufferPayload
+>({
+  type: 'myConcept update buffer',
+  reducer: (state, action) => {
+    const { id, operation, data } = selectPayload<MyConceptUpdateBufferPayload>(action);
+    
+    if (operation === 'add') {
+      return {
+        // ✅ IMMUTABLE: Create new array with added item
+        buffer: [...state.buffer, { id, data, timestamp: Date.now() }]
+      };
+    } else if (operation === 'remove') {
+      return {
+        // ✅ IMMUTABLE: Filter out item by ID
+        buffer: state.buffer.filter(item => item.id !== id)
+      };
+    } else if (operation === 'update') {
+      return {
+        // ✅ IMMUTABLE: Map and update specific item
+        buffer: state.buffer.map(item => 
+          item.id === id 
+            ? { ...item, data, timestamp: Date.now() }
+            : item
+        )
+      };
+    }
+    
+    // No change needed
+    return {};
+  },
+  methodCreator: defaultMethodCreator,
+});
+```
+
+### 🎯 Pattern 5: Advanced Method Creator (Complex Logic)
+
+```typescript
+// File: /concept/qualities/complexOperation.quality.ts
+import { 
+  createQualityCardWithPayload, 
+  createMethodWithState, 
+  selectPayload,
+  strategySuccess,
+  strategyFailed,
+  type Quality 
+} from 'stratimux';
+import type { MyConceptState } from '../myConcept.concept.js';
+import type { MyConceptDeck } from '../myConcept.concept.js';
+import type { MyConceptComplexOperationPayload } from './types.js';
+
+export type MyConceptComplexOperation = Quality<
+  MyConceptState, 
+  MyConceptComplexOperationPayload, 
+  MyConceptDeck
+>;
+
+export const myConceptComplexOperation = createQualityCardWithPayload<
+  MyConceptState,
+  MyConceptComplexOperationPayload,
+  MyConceptDeck
+>({
+  type: 'myConcept complex operation',
+  reducer: (state, action) => {
+    const { targetValue } = selectPayload<MyConceptComplexOperationPayload>(action);
+    
+    return {
+      targetValue,
+      isProcessing: true
+    };
+  },
+  methodCreator: () => createMethodWithState(({ action, state, deck }) => {
+    if (action.strategy) {
+      const { validateOperation } = selectPayload<MyConceptComplexOperationPayload>(action);
+      
+      // Complex validation logic
+      if (validateOperation && state.someProperty > 10) {
+        return strategySuccess(action.strategy);
+      } else {
+        return strategyFailed(action.strategy);
+      }
+    }
+    
+    return action;
+  })
+});
+```
+
+### 🎯 Pattern 6: Performance-Optimized No-State-Change
+
+```typescript
+// File: /concept/qualities/conditionalUpdate.quality.ts
+export const myConceptConditionalUpdate = createQualityCardWithPayload<
+  MyConceptState,
+  MyConceptConditionalUpdatePayload
+>({
+  type: 'myConcept conditional update',
+  reducer: (state, action) => {
+    const { condition, newValue } = selectPayload<MyConceptConditionalUpdatePayload>(action);
+    
+    // ✅ PERFORMANCE: Return empty object when no change needed
+    if (!condition || state.currentValue === newValue) {
+      return {}; // No state listeners notified
+    }
+    
+    return {
+      currentValue: newValue
+    };
+  },
+  methodCreator: defaultMethodCreator,
+});
+```
+
+### 🚨 Critical Anti-Patterns to Avoid
+
+#### ❌ WRONG: Legacy typeof Pattern
+```typescript
+// DON'T DO THIS (causes compilation failures in v0.3.2+)
+const qualities = { actionOne, actionTwo };
+export type MyConceptQualities = typeof qualities;
+```
+
+#### ❌ WRONG: Incorrect API Usage
+```typescript
+// DON'T DO THIS (not public API)
+import { createQuality } from 'stratimux';
+
+// DON'T DO THIS (wrong type parameter order)
+export type MyQuality = Quality<Payload, State>; // ❌ Should be <State, Payload>
+```
+
+#### ❌ WRONG: State Spreading
+```typescript
+// DON'T DO THIS (notifies ALL state listeners)
+return {
+  ...state,           // ❌ INEFFICIENT: Entire state copied
+  changedProp: value  // Only this actually changed
+};
+```
+
+#### ❌ WRONG: Mutating State
+```typescript
+// DON'T DO THIS (breaks immutability)
+state.array.push(newItem);  // ❌ Direct mutation
+return state;               // ❌ Same reference returned
+```
+
+### ✅ Quality Implementation Checklist
+
+Before considering a quality complete, verify:
+- [ ] Uses `createQualityCard` or `createQualityCardWithPayload` APIs
+- [ ] Explicit Quality type export with correct type parameter order
+- [ ] Payload extraction uses `selectPayload<T>(action)` or destructuring
+- [ ] Reducer returns only changed state properties (Shortest Path Principle)
+- [ ] All array/object updates maintain immutability
+- [ ] Import paths use `.js` extensions for TypeScript compliance
+- [ ] Type imports use `type` keyword where appropriate
+- [ ] No `typeof` patterns in type definitions
+
+### 🎯 Quality Type Definition Pattern
+
+```typescript
+// File: /concept/qualities/types.ts
+export type MyConceptActionOnePayload = {
+  property: string;
+  value: number;
 };
 
-stage(({concepts}) => {
-  const data = adaptiveDataSelector(concepts);
-  processRoleBasedData(data);
-});
+export type MyConceptActionTwoPayload = {
+  items: string[];
+  timestamp: number;
+};
+
+// Individual Quality Types
+export type MyConceptActionOne = Quality<MyConceptState, MyConceptActionOnePayload>;
+export type MyConceptActionTwo = Quality<MyConceptState, MyConceptActionTwoPayload>;
+export type MyConceptSimpleAction = Quality<MyConceptState>;
+
+// Combined Qualities Type (for concept definition)
+export type MyConceptQualities = {
+  myConceptActionOne: MyConceptActionOne;
+  myConceptActionTwo: MyConceptActionTwo;
+  myConceptSimpleAction: MyConceptSimpleAction;
+};
 ```
 
-### DECK Interface State Access
+This comprehensive guide ensures your qualities follow Stratimux v0.3.2 best practices and maintain optimal performance through the Shortest Path Principle.
 
-The DECK interface provides the most efficient and type-safe state access method.
+## 🧪 Stratimux Testing Patterns & Asynchronous State Management
 
-#### Direct DECK Access
+### 🎯 Essential Testing Principles
+
+Testing in Stratimux requires understanding the **asynchronous nature** of the framework and proper **stage separation** for state changes. This section documents critical patterns discovered through comprehensive test development.
+
+**Core Testing Foundation**:
+- **Asynchronous State Changes**: Dispatched actions don't immediately update state in the same stage
+- **Stage Separation Required**: Each state change needs `{ iterateStage: true }` and separate validation stage
+- **Planning Scope Timing**: Reactive streams need processing time between stages
+- **Jest Integration**: Specific patterns for Jest + Stratimux with done callback pattern
+
+### ⚡ Asynchronous State Management (CRITICAL)
+
+#### 🚨 The Fundamental Rule: State Changes Are Asynchronous
+
+**CRITICAL**: When you dispatch an action in Stratimux, the state change does **NOT** happen immediately within the same stage. State changes are processed asynchronously through the reactive stream system.
+
 ```typescript
-// Most efficient - direct property access
-stage(({d}) => {
-  const count = d.counter.k.count.select();
-  const userProfile = d.user.k.profile.select();
-  const systemStatus = d.system.k.status.select();
+// ❌ WRONG: Expecting immediate state change in same stage
+stage(({ dispatch, d, stagePlanner }) => {
+  // Dispatch action
+  dispatch(d.concept.e.updateValue({ value: 'new-value' }), { iterateStage: true });
   
-  // Type-safe access with full IntelliSense
-  expect(count).toBe(1);
-  expect(userProfile.name).toBe('John Doe');
-  expect(systemStatus).toBe('online');
-});
+  // ❌ BUG: This will still show OLD state - change hasn't processed yet!
+  const currentValue = d.concept.k.value.select();
+  expect(currentValue).toBe('new-value'); // FAILS - still old value!
+  
+  stagePlanner.conclude();
+})
 ```
 
-#### Nested DECK Access for Muxified Concepts
 ```typescript
-// Access muxified concept state
-stage(({d}) => {
-  // Outer concept state
-  const outerState = d.complexConcept.k.outerProperty.select();
+// ✅ CORRECT: Separate stages for dispatch and validation
+stage(({ dispatch, d, stagePlanner }) => {
+  // Stage 1: Dispatch the action
+  dispatch(d.concept.e.updateValue({ value: 'new-value' }), { 
+    iterateStage: true // Move to next stage after dispatching
+  });
+  stagePlanner.conclude();
+}),
+stage(({ d, stagePlanner }) => {
+  // Stage 2: Validate the state change (now processed)
+  const currentValue = d.concept.k.value.select();
+  expect(currentValue).toBe('new-value'); // ✅ SUCCESS - change processed!
   
-  // Inner muxified concept state
-  const innerState = d.complexConcept.d.innerConcept.k.innerProperty.select();
-  
-  // Both are type-safe and performant
-  processComplexState(outerState, innerState);
-});
+  stagePlanner.conclude();
+})
 ```
 
-### Legacy Selector Patterns
+### 🔄 Stage Separation for State Changes
 
-#### Traditional State Selection
+#### 🎯 Pattern: Dispatch → Iterate → Validate
+
+Every action dispatch that should trigger a state change requires **explicit stage separation**:
+
+1. **Dispatch Stage**: Send action with `{ iterateStage: true }`
+2. **Validation Stage**: Check updated state in separate stage
+
 ```typescript
-// Legacy pattern - still supported but not recommended for new code
-stage(({concepts}) => {
-  // Manual concept lookup
-  const counter = selectState<CounterState>(concepts, counterName);
-  expect(counter?.count).toBe(1);
-  
-  // Manual selector application
-  const count = selectSlice(concepts, counterSelectCount);
-  expect(count).toBe(1);
-});
-```
-
-#### Migration Strategy
-```typescript
-// Gradually migrate from legacy to DECK interface
-stage(({concepts, d}) => {
-  // Legacy approach
-  const legacyCount = selectState<CounterState>(concepts, counterName)?.count;
-  
-  // Modern DECK approach
-  const deckCount = d.counter.k.count.select();
-  
-  // Both should be identical
-  expect(legacyCount).toBe(deckCount);
-  
-  // Prefer DECK interface for new code
-  processCount(deckCount);
-});
-```
-
-### Testing Patterns and Best Practices
-
-Stratimux provides comprehensive testing patterns that ensure reliable application behavior. These patterns are derived from extensive test coverage across the framework's features.
-
-### Basic Test Structure
-
-#### Standard Muxium Test Pattern
-```typescript
-// Real pattern from framework tests
-test('Feature Test Description', (done) => {
-  const muxium = muxification('Test Muxium Name', {
-    counter: createCounterConcept(),
-    experiment: createExperimentConcept()
-  }, {logging: true, storeDialog: true});
-
-  const plan = muxium.plan('Test Plan Name', ({stage, stageO, e__}) => [
-    stageO(() => e__.muxiumKick()), // Initialize muxium
-    
-    stage(({concepts, dispatch, d}) => {
-      // Test setup and initial actions
-      expect(d.counter.k.count.select()).toBe(0);
-      dispatch(d.counter.e.counterAdd(), {iterateStage: true});
-    }),
-    
-    stage(({d}) => {
-      // Verify results
-      expect(d.counter.k.count.select()).toBe(1);
-      
-      // Cleanup
-      setTimeout(() => {
-        plan.conclude();
-        muxium.close();
-        done();
-      }, 50);
-    })
-  ]);
-});
-```
-
-### Strategy Testing Patterns
-
-#### Testing Strategy Execution
-```typescript
-// Real example from strategy.test.ts
-test('Strategy Execution Test', (done) => {
-  const muxium = muxification('Strategy Test', {counter: createCounterConcept()});
-  
-  const plan = muxium.plan('Test Counting Strategy', ({stage, d__}) => [
-    stage(({concepts, dispatch, d}) => {
-      if (selectSlice(concepts, muxiumSelectLastStrategy) === initializeTopic) {
-        const strategy = countingStrategy(d);
-        if (strategy) {
-          dispatch(strategyBegin(strategy), {iterateStage: true});
-        } else {
-          // Strategy creation failed
+// ✅ Complete Example: Data Buffer Update Test
+test('should update data buffer with stage separation', (done) => {
+  try {
+    muxium.plan<ParentDeck>('test data buffer update', ({ stage, conclude }) => [
+      // Stage 1: Dispatch Update
+      stage(({ dispatch, d, stagePlanner }) => {
+        try {
+          dispatch(d.parent.d.interface.e.updateDataBuffer({
+            dataBuffer: 'hello world',
+            position: 11
+          }), { iterateStage: true }); // CRITICAL: iterateStage: true
+          
+          stagePlanner.conclude();
+        } catch (error) {
+          console.error('Dispatch failed:', error);
           expect(false).toBe(true);
           done();
         }
-      }
-    }, {selectors: [d__.muxium.k.lastStrategy]}),
-    
-    stage(({concepts}) => {
-      const muxiumState = getMuxiumState(concepts);
-      if (muxiumState.lastStrategy === countingTopic) {
-        const counter = selectState<CounterState>(concepts, counterName);
-        expect(counter?.count).toBe(1); // Strategy completed successfully
-        done();
-      }
-    })
-  ]);
-});
-```
-
-#### Testing Strategy Failure Paths
-```typescript
-// Test strategy error handling
-test('Strategy Failure Handling', (done) => {
-  const plan = muxium.plan('Test Strategy Failures', ({stage}) => [
-    stage(({dispatch, d}) => {
-      // Dispatch strategy that should fail
-      dispatch(strategyBegin(createFailingStrategy(d)), {
-        iterateStage: true
-      });
-    }),
-    
-    stage(({concepts}) => {
-      const muxiumState = getMuxiumState(concepts);
+      }),
       
-      // Verify failure was handled properly
-      if (muxiumState.lastStrategy === failureHandlingTopic) {
-        expect(muxiumState.badActions.length).toBeGreaterThan(0);
-        done();
-      }
-    })
-  ]);
-});
-```
-
-### Asynchronous Operation Testing
-
-#### Testing Debounced Methods
-```typescript
-// Real pattern from debounceMethods.test.ts
-test('Debounce Method Test', (done) => {
-  jest.setTimeout(30000); // Extend timeout for async operations
-  
-  const plan = muxium.plan('Debounce Test', ({stage}) => [
-    stage(({dispatch, d}) => {
-      // Rapid fire actions - should be debounced
-      dispatch(strategyBegin(experimentDebounceAddOneStrategy(d)));
-      dispatch(strategyBegin(experimentDebounceAddOneStrategy(d)));
-      dispatch(strategyBegin(experimentDebounceAddOneStrategy(d)), {
-        iterateStage: true
-      });
-    }),
-    
-    stage(({concepts}) => {
-      const lastStrategy = selectSlice(concepts, muxiumSelectLastStrategy);
-      
-      if (lastStrategy === experimentDebounceAddOneTopic) {
-        // Wait for debounce to complete
-        setTimeout(() => {
-          const state = selectState<ExperimentState>(concepts, experimentName);
-          expect(state?.id).toBe(1); // Only one execution despite multiple dispatches
-          done();
-        }, 1000);
-      }
-    })
-  ]);
-});
-```
-
-#### Testing Throttled Methods
-```typescript
-// Real pattern from throttleMethods.test.ts
-test('Throttle Method Test', (done) => {
-  const plan = muxium.plan('Throttle Test', ({stage, stageO, e__}) => [
-    stageO(() => e__.muxiumKick()),
-    
-    stage(({concepts, dispatch, d}) => {
-      const experimentState = selectState<ExperimentState>(concepts, experimentName);
-      if (experimentState) {
-        dispatch(strategyBegin(
-          experimentThrottleIterateIdThenAddToData(d, experimentState.id)
-        ), {iterateStage: true});
-      }
-    }),
-    
-    stage(({concepts}) => {
-      const lastStrategy = selectSlice(concepts, muxiumSelectLastStrategy);
-      
-      if (lastStrategy === experimentThrottleIterateIdThenAddToDataTopic) {
-        // Verify throttling worked correctly
-        const experimentState = selectState<ExperimentState>(concepts, experimentName);
-        expect(experimentState?.id).toBeGreaterThanOrEqual(1);
-        
-        setTimeout(() => done(), 1000);
-      }
-    })
-  ]);
-});
-```
-
-### Dynamic Concept Testing
-
-#### Testing Concept Addition
-```typescript
-// Real pattern from addConcepts.test.ts
-test('Add Concepts Test', (done) => {
-  const muxium = muxification('Add Concepts Test', {}, {
-    logging: true, 
-    storeDialog: true, 
-    dynamic: true // Enable dynamic concept management
-  });
-  
-  const plan = muxium.plan('Add Concepts Stage', ({stage, stageO, e__}) => [
-    stageO(() => e__.muxiumKick()),
-    
-    stage(({concepts, dispatch, d, e}) => {
-      expect(Object.keys(d).length).toBe(1); // Only muxium initially
-      
-      dispatch(strategyBegin(
-        addConceptsToAddQueThenBlockStrategy(e, concepts, { 
-          counter: createCounterConcept() 
-        })
-      ), {iterateStage: true});
-    }),
-    
-    stage(({concepts, d}) => {
-      // Verify concept was added
-      let exists = false;
-      forEachConcept(concepts, (concept) => {
-        if (concept.name === counterName) {
-          exists = true;
-        }
-      });
-      
-      expect(exists).toBe(true);
-      expect(Object.keys(d).length).toBe(2); // muxium + counter
-      done();
-    })
-  ]);
-});
-```
-
-#### Testing Concept Removal
-```typescript
-// Real pattern from removeConcepts.test.ts
-test('Remove Concepts Test', (done) => {
-  const muxium = muxification('Remove Concepts Test', {
-    counter: createCounterConcept()
-  }, {logging: true, storeDialog: true, dynamic: true});
-  
-  const plan = muxium.plan('Remove Concepts Stage', ({stage, stageO, e__, k__}) => [
-    stageO(() => e__.muxiumKick()),
-    
-    stage(({concepts, dispatch, e}) => {
-      dispatch(strategyBegin(
-        addConceptsToRemovalQueThenBlockStrategy(e, concepts, {
-          counter: createCounterConcept()
-        })
-      ), {iterateStage: true});
-    }),
-    
-    stage(({concepts, d}) => {
-      const muxiumState = getMuxiumState(concepts);
-      
-      if (muxiumState.lastStrategy === removeConceptsViaQueThenUnblockTopic) {
-        let exists = false;
-        forEachConcept(concepts, (concept => {
-          if (concept.name === counterName) {
-            exists = true;
-          }
-        }));
-        
-        expect(exists).toBe(false); // Concept removed
-        expect(Object.keys(d).length).toBe(1); // Only muxium remains
-        done();
-      }
-    }, { selectors: [k__.lastStrategy] })
-  ]);
-});
-```
-
-### Stage Planner Testing
-
-#### Testing Stage Options
-```typescript
-// Real pattern from stageDispatchOptions.test.ts
-test('Stage Dispatch Options Test', (done) => {
-  let runCount = 0;
-  
-  const sub = muxium.subscribe((concepts) => {
-    const muxiumState = getMuxiumState(concepts);
-    
-    if (muxiumState.badPlans.length > 0) {
-      const badPlan = muxiumState.badPlans[0];
-      const counter = selectState<CounterState>(concepts, counterName);
-      
-      expect(badPlan.stageFailed).toBe(2); // Specific stage failed
-      expect(counter?.count).toBe(2); // State updated correctly before failure
-      
-      sub.unsubscribe();
-      done();
-    }
-  });
-  
-  const plan = muxium.plan('Stage Options Test', ({stage}) => [
-    stage(({dispatch, d}) => {
-      dispatch(d.counter.e.counterAdd(), {iterateStage: true});
-    }),
-    
-    stage(({concepts, dispatch, d}) => {
-      runCount++;
-      
-      // Action runs only once despite multiple stage executions
-      dispatch(d.counter.e.counterAdd(), {runOnce: true});
-      
-      if (selectSlice(concepts, counterSelectCount) === 2) {
-        dispatch(d.counter.e.counterAdd(), {
-          setStage: 2, // Jump to specific stage
-          throttle: 1
-        });
-      }
-    }),
-    
-    stage(({d}) => {
-      // This stage should be reached
-      expect(d.counter.k.count.select()).toBe(3);
-    })
-  ]);
-});
-```
-
-#### Testing Beat Timing
-```typescript
-// Real pattern from stagePlannerBeat.test.ts
-test('Stage Planner Beat Test', (done) => {
-  jest.setTimeout(10000);
-  
-  let timerActive = false;
-  const beat = 105;
-  
-  const plan = muxium.plan('Beat Test', ({stage, stageO, e__}) => [
-    stageO(() => e__.muxiumKick()),
-    
-    stage(({concepts, dispatch, e}) => {
-      timerActive = true;
-      setTimeout(() => { timerActive = false; }, 1000);
-      
-      if (selectSlice(concepts, muxiumSelectOpen)) {
-        dispatch(e.muxiumKick(), {iterateStage: true});
-      }
-    }, {beat}), // Beat controls timing
-    
-    stage(({dispatch, d}) => {
-      dispatch(d.counter.e.counterAdd(), {iterateStage: true});
-    }, {beat}),
-    
-    stage(({concepts, dispatch, d, e}) => {
-      if (!timerActive) {
-        const state = selectState<CounterState>(concepts, counterName);
-        
-        expect(state?.count).toBe(9); // Beat accumulated multiple changes
-        done();
-      } else {
-        dispatch(d.counter.e.counterAdd(), {throttle: 1});
-      }
-    }, {beat})
-  ]);
-});
-```
-
-### Ownership System Testing
-
-#### Testing Ownership Conflicts
-```typescript
-// Real pattern from ownership.test.ts
-test('Ownership Test', (done) => {
-  const plan = muxium.plan('Ownership Testing', ({stage}) => [
-    stage(({concepts, dispatch, d}) => {
-      const muxiumState = getMuxiumState(concepts);
-      
-      if (muxiumState.lastStrategy === ownershipSetOwnerShipModeTopic) {
-        const ownership = selectState<OwnershipState>(concepts, ownershipName);
-        
-        if (ownership) {
-          console.log('Ownership Ledger:', ownership.ownershipLedger);
-          console.log('Pending Actions:', ownership.pendingActions);
+      // Stage 2: Validate State Change
+      stage(({ d, stagePlanner }) => {
+        try {
+          // NOW the state change has been processed
+          const dataBuffer = d.parent.d.interface.k.dataBuffer.select();
+          const position = d.parent.d.interface.k.position.select();
           
-          // Test ownership coordination
-          expect(ownership.ownershipLedger.size).toBeGreaterThanOrEqual(0);
-          expect(ownership.pendingActions.length).toBeGreaterThanOrEqual(0);
+          expect(dataBuffer).toBe('hello world');
+          expect(position).toBe(11);
+          
+          stagePlanner.conclude();
+          setTimeout(() => done(), 100); // Allow reactive stream completion
+        } catch (error) {
+          console.error('Validation failed:', error);
+          expect(false).toBe(true);
+          done();
         }
-        
-        done();
-      }
-    })
-  ]);
-});
-```
-
-### Test Utilities and Helpers
-
-#### Creating Test Concepts
-```typescript
-// Reusable test concept creation
-const createTestConcept = <S, Q>(
-  name: string, 
-  state: S, 
-  qualities: Q
-) => {
-  return createConcept(name, state, qualities, [], [], {
-    test: true // Mark as test concept
-  });
-};
-
-// Use in tests
-const testCounter = createTestConcept(
-  'testCounter',
-  { count: 0 },
-  { increment: createIncrementQuality() }
-);
-```
-
-#### Test Data Generators
-```typescript
-// Generate test data for complex scenarios
-const generateTestData = (complexity: 'simple' | 'complex') => {
-  switch (complexity) {
-    case 'simple':
-      return { items: [1, 2, 3] };
-    case 'complex':
-      return { 
-        items: Array.from({length: 100}, (_, i) => ({
-          id: i,
-          data: `item-${i}`,
-          metadata: { created: Date.now() }
-        }))
-      };
+      }),
+      conclude()
+    ]);
+  } catch (error) {
+    console.error('Test setup failed:', error);
+    expect(false).toBe(true);
+    done();
   }
-};
+});
 ```
 
-#### Async Test Helpers
+#### 🔧 Stage Options Reference
+
 ```typescript
-// Helper for async test timing
-const waitForCondition = async (
-  condition: () => boolean, 
-  timeout: number = 5000
-): Promise<boolean> => {
-  const start = Date.now();
-  
-  while (Date.now() - start < timeout) {
-    if (condition()) {
-      return true;
-    }
-    await new Promise(resolve => setTimeout(resolve, 50));
+// Dispatch patterns for different scenarios
+dispatch(action, { iterateStage: true });  // Move to next stage - for state changes
+dispatch(action, { iterateStage: false }); // Stay in current stage - for side effects
+dispatch(action, {});                      // Empty options - use framework defaults
+```
+
+### ⏱️ Reactive Stream Timing & Planning Scope
+
+#### 🎯 Jest Integration Timing Pattern
+
+Stratimux reactive streams require processing time. The established pattern uses `setTimeout` after `stagePlanner.conclude()`:
+
+```typescript
+// ✅ Reactive Stream Completion Pattern
+stage(({ d, stagePlanner }) => {
+  try {
+    // State validation logic
+    const value = d.concept.k.property.select();
+    expect(value).toBe(expectedValue);
+    
+    stagePlanner.conclude(); // End the planning scope
+    setTimeout(() => done(), 100); // Allow reactive stream to complete
+  } catch (error) {
+    console.error('Validation failed:', error);
+    expect(false).toBe(true);
+    done();
   }
-  
-  return false;
-};
-
-// Use in tests
-test('Async Condition Test', async (done) => {
-  // ... setup ...
-  
-  const success = await waitForCondition(() => 
-    d.counter.k.count.select() === expectedValue
-  );
-  
-  expect(success).toBe(true);
-  done();
-});
-```
-
-### Testing Best Practices
-
-#### 1. Use Descriptive Test Names
-```typescript
-// ✅ Clear test purpose
-test('Counter increments correctly when counterAdd action is dispatched', (done) => {
-  // Test implementation
-});
-
-// ❌ Unclear test purpose
-test('Counter test', (done) => {
-  // Test implementation
-});
-```
-
-#### 2. Extend Timeouts for Async Operations
-```typescript
-describe('Async Operations', () => {
-  jest.setTimeout(30000); // 30 seconds for complex async tests  
-  
-  test('Debounced operations complete correctly', (done) => {
-    // Async test implementation
-  });
-});
-```
-
-#### 3. Clean Up Resources
-```typescript
-// ✅ Proper cleanup
-test('Resource Management Test', (done) => {
-  const muxium = muxification('Test', concepts);
-  
-  const plan = muxium.plan('Test Plan', ({stage}) => [
-    stage(({}) => {
-      // Test logic
-      
-      // Always clean up
-      setTimeout(() => {
-        plan.conclude();
-        muxium.close();
-        done();
-      }, 100);
-    })
-  ]);
-});
-```
-
-#### 4. Test Both Success and Failure Paths
-```typescript
-// Test success path
-test('Operation succeeds with valid input', (done) => {
-  // Test successful operation
-});
-
-// Test failure path
-test('Operation fails gracefully with invalid input', (done) => {
-  // Test error handling
-});
-```
-
-These testing patterns ensure comprehensive coverage of Stratimux applications, from basic functionality to complex asynchronous operations and error scenarios.
-
-## Agent-Specific Usage Patterns and Best Practices
-
-This section provides AI agents with battle-tested patterns for effective Stratimux development, based on real production usage and comprehensive test coverage.
-
-### Drop-In Code Patterns for Agents
-
-#### Pattern 1: Basic Counter Application
-```typescript
-// Complete working counter concept (v0.3.22)
-export type CounterState = { count: number };
-export const counterName = 'counter';
-
-// Required type exports for v0.3.22
-export type CounterAdd = Quality<CounterState>;
-export type CounterSubtract = Quality<CounterState>;
-export type CounterSetCount = Quality<CounterState, CounterSetCountPayload>;
-
-export type CounterQualities = {
-  counterAdd: CounterAdd,
-  counterSubtract: CounterSubtract,
-  counterSetCount: CounterSetCount,
-};
-
-const counterQualities = {
-  counterAdd: createQualityCard<CounterState>({
-    type: 'Counter Add',
-    reducer: (state) => ({ count: state.count + 1 })
-  }),
-  counterSubtract: createQualityCard<CounterState>({
-    type: 'Counter Subtract', 
-    reducer: (state) => ({ count: state.count - 1 })
-  }),
-  counterSetCount: createQualityCardWithPayload<CounterState, CounterSetCountPayload>({
-    type: 'Counter Set Count',
-    reducer: (state, action) => ({ count: action.payload.newCount })
-  })
-};
-
-export const createCounterConcept = () => createConcept<CounterState, CounterQualities>(
-  counterName,
-  { count: 0 },
-  counterQualities
-);
-
-// Usage in muxium
-const muxium = muxification('Counter App', {
-  counter: createCounterConcept()
-});
-
-// Stage planner usage
-const plan = muxium.plan('Counter Plan', ({staging, stage, d}) =>
-  staging(() => [
-    stage(({dispatch, d}) => {
-      dispatch(d.counter.e.counterAdd(), {iterateStage: true});
-    }),
-    stage(({d}) => {
-      expect(d.counter.k.count.select()).toBe(1);
-      plan.conclude();
-    })
-  ])
-);
-```
-
-#### Pattern 2: Async Processing with Controller
-```typescript
-// Async quality with action controller
-export type ProcessingStart = Quality<ProcessingState, ProcessingPayload>;
-
-export const processingStart = createQualityCardWithPayload<ProcessingState, ProcessingPayload>({
-  type: 'Processing Start Async',
-  reducer: (state, action) => ({
-    ...state,
-    status: 'processing',
-    taskId: action.payload.taskId
-  }),
-  methodCreator: () => createAsyncMethod(({controller, action}) => {
-    // Simulate async operation
-    setTimeout(() => {
-      const result = performComplexCalculation(action.payload);
-      
-      // Fire completion action
-      controller.fire(createAction('Processing Complete', {
-        payload: { result, taskId: action.payload.taskId }
-      }));
-    }, 1000);
-  })
-});
-```
-
-#### Pattern 3: Strategy with Data Flow
-```typescript
-// Multi-step strategy pattern
-export const createDataProcessingStrategy = (inputData: DataPayload): ActionStrategy => {
-  const stepTwo = createActionNode(
-    processDataStep2(),
-    {
-      successNode: createActionNode(processDataComplete()),
-      successNotes: { preposition: 'then', denoter: 'Processing Complete' }
-    }
-  );
-
-  return createStrategy({
-    topic: 'Data Processing Pipeline',
-    initialNode: createActionNode(
-      processDataStep1(),
-      {
-        successNode: stepTwo,
-        successNotes: { preposition: 'first', denoter: 'Data Validated' }
-      }
-    ),
-    data: inputData
-  });
-};
-
-// Usage in stage planner
-stage(({dispatch}) => {
-  const strategy = createDataProcessingStrategy({ data: inputData });
-  dispatch(strategyBegin(strategy), {iterateStage: true});
 })
 ```
 
-### Agent Development Guidelines
+#### 🔄 Multi-Stage Planning Flow
 
-#### 1. Always Use v0.3.22 Patterns
 ```typescript
-// ✅ Always export quality types
-export type MyQuality = Quality<StateType, PayloadType?>;
-
-// ✅ Always use explicit quality mapping
-export type MyQualities = {
-  qualityOne: QualityOneType,
-  qualityTwo: QualityTwoType,
-};
-
-// ✅ Prefer createStages for complex plans
-const plan = muxium.plan('My Plan', ({staging, stage}) =>
-  staging(() => {
-    // Compose stages here
-    return stageArray;
-  })
-);
-```
-
-#### 2. State Access Best Practices
-```typescript
-// ✅ Use DECK interface for state access
-stage(({d}) => {
-  const count = d.counter.k.count.select();
-  const user = d.user.k.profile.select();
-});
-
-// ✅ Use selectSlice for computed values
-stage(({concepts}) => {
-  const computedValue = selectSlice(concepts, myComputedSelector);
-});
-
-// ❌ Avoid manual concept lookups
-stage(({concepts}) => {
-  const counter = concepts.find(c => c.name === 'counter'); // Don't do this
-});
-```
-
-#### 3. Error Handling Patterns
-```typescript
-// ✅ Always handle strategy failures
-stage(({concepts, dispatch, d}) => {
-  const muxiumState = getMuxiumState(concepts);
+// ✅ Complex Multi-Stage Test Pattern
+muxium.plan<ConceptDeck>('complex state management test', ({ stage, conclude }) => [
+  // Stage 1: Initial Setup
+  stage(({ dispatch, d, stagePlanner }) => {
+    dispatch(d.concept.e.initializeState({}), { iterateStage: true });
+    stagePlanner.conclude();
+  }),
   
-  // Check for strategy failures
-  if (muxiumState.badPlans.length > 0) {
-    console.log('Strategy failed:', muxiumState.badPlans[0]);
-    dispatch(d.recovery.e.recoveryStart(), {iterateStage: true});
-  }
-});
+  // Stage 2: Validate Initialization
+  stage(({ d, dispatch, stagePlanner }) => {
+    const initialized = d.concept.k.isInitialized.select();
+    expect(initialized).toBe(true);
+    
+    // Trigger next state change
+    dispatch(d.concept.e.processData({ data: 'test' }), { iterateStage: true });
+    stagePlanner.conclude();
+  }),
+  
+  // Stage 3: Validate Processing
+  stage(({ d, stagePlanner }) => {
+    const processedData = d.concept.k.processedData.select();
+    const status = d.concept.k.status.select();
+    
+    expect(processedData).toBe('test');
+    expect(status).toBe('completed');
+    
+    stagePlanner.conclude();
+    setTimeout(() => done(), 100);
+  }),
+  conclude()
+]);
+```
 
-// ✅ Add timeout handling for async operations
-stage(({dispatch, d}) => {
-  dispatch(d.processing.e.processingStart(), {
-    iterateStage: true,
-    agreement: 10000 // 10 second timeout
+### 🧪 Jest Integration Patterns
+
+#### 📋 Complete Test File Template
+
+```typescript
+// File: src/concepts/myConcept/test/myConcept.test.ts
+import { createMyConceptConcept, type MyConceptDeck } from '../myConcept.concept.js';
+import { muxification } from 'stratimux';
+
+describe('My Concept', () => {
+  let muxium: ReturnType<typeof muxification>;
+
+  beforeEach((done) => {
+    const myConceptConcept = createMyConceptConcept();
+    muxium = muxification('My Concept Test', {
+      myConcept: myConceptConcept
+    });
+
+    // Give muxium time to initialize
+    setTimeout(() => done(), 100);
+  });
+
+  afterEach(() => {
+    if (muxium) {
+      muxium.close();
+    }
+  });
+
+  test('should handle state changes with proper stage separation', (done) => {
+    try {
+      muxium.plan<MyConceptDeck>('test state change', ({ stage, conclude }) => [
+        stage(({ dispatch, d, stagePlanner }) => {
+          try {
+            // Dispatch action that changes state
+            dispatch(d.myConcept.e.updateProperty({
+              property: 'newValue'
+            }), { iterateStage: true });
+            
+            stagePlanner.conclude();
+          } catch (error) {
+            console.error('Dispatch failed:', error);
+            expect(false).toBe(true);
+            done();
+          }
+        }),
+        
+        stage(({ d, stagePlanner }) => {
+          try {
+            // Validate state change in separate stage
+            const property = d.myConcept.k.property.select();
+            expect(property).toBe('newValue');
+            
+            stagePlanner.conclude();
+            setTimeout(() => done(), 100);
+          } catch (error) {
+            console.error('Validation failed:', error);
+            expect(false).toBe(true);
+            done();
+          }
+        }),
+        conclude()
+      ]);
+    } catch (error) {
+      console.error('Test setup failed:', error);
+      expect(false).toBe(true);
+      done();
+    }
   });
 });
 ```
 
-#### 4. Testing Patterns for Agents
+### 📋 Complete Testing Implementation Examples
+
+#### 🎯 Example 1: Muxified Concept State Access
+
 ```typescript
-// ✅ Always clean up resources
-test('My Feature Test', (done) => {
-  const muxium = muxification('Test', concepts);
-  
-  const plan = muxium.plan('Test Plan', ({stage}) => [
-    stage(({}) => {
-      // Test logic here
+// Testing state access through muxified concept hierarchy
+test('should access muxified concept state through parent', (done) => {
+  try {
+    muxium.plan<ParentDeck>('test muxified access', ({ stage, conclude }) => [
+      stage(({ d, stagePlanner }) => {
+        try {
+          // Access child concept state through parent concept
+          const childProperty = d.parent.d.childConcept.k.property.select();
+          const anotherProperty = d.parent.d.childConcept.k.anotherProperty.select();
+          
+          expect(typeof childProperty).toBe('string');
+          expect(Array.isArray(anotherProperty)).toBe(true);
+          
+          stagePlanner.conclude();
+          done();
+        } catch (error) {
+          console.error('Muxified access failed:', error);
+          expect(false).toBe(true);
+          done();
+        }
+      }),
+      conclude()
+    ]);
+  } catch (error) {
+    console.error('Test setup failed:', error);
+    expect(false).toBe(true);
+    done();
+  }
+});
+```
+
+#### 🎯 Example 2: Action Dispatch to Muxified Concepts
+
+```typescript
+// Testing action dispatch to child concepts through parent
+test('should dispatch actions to muxified concepts', (done) => {
+  try {
+    muxium.plan<ParentDeck>('test muxified dispatch', ({ stage, conclude }) => [
+      stage(({ dispatch, d, stagePlanner }) => {
+        try {
+          // Dispatch to child concept through parent
+          dispatch(d.parent.d.childConcept.e.updateChildState({
+            newValue: 'test-value',
+            timestamp: Date.now()
+          }), { iterateStage: true });
+          
+          stagePlanner.conclude();
+        } catch (error) {
+          console.error('Muxified dispatch failed:', error);
+          expect(false).toBe(true);
+          done();
+        }
+      }),
       
-      // Always conclude and close
-      setTimeout(() => {
-        plan.conclude();
-        muxium.close();
-        done();
-      }, 100);
-    })
-  ]);
-});
-
-// ✅ Test both success and failure paths
-test('Operation Success', (done) => { /* test success */ });
-test('Operation Failure', (done) => { /* test failure */ });
-```
-
-### Common Agent Pitfalls to Avoid
-
-#### 1. Missing Type Exports (v0.3.22)
-```typescript
-// ❌ Missing type export
-export const myQuality = createQualityCard({...});
-
-// ✅ Include type export
-export type MyQuality = Quality<StateType>;
-export const myQuality = createQualityCard({...});
-```
-
-#### 2. Incorrect Package Usage
-```typescript
-// ❌ Old package name
-import { muxification } from '@phuire/stratimux';
-
-// ✅ New package name (v0.3.22+)
-import { muxification } from 'stratimux';
-```
-
-#### 3. Stage Flow Issues
-```typescript
-// ❌ Missing iterateStage
-stage(({dispatch, d}) => {
-  dispatch(d.counter.e.counterAdd());
-  // Stage will not advance!
-});
-
-// ✅ Proper stage advancement
-stage(({dispatch, d}) => {
-  dispatch(d.counter.e.counterAdd(), {iterateStage: true});
+      stage(({ d, stagePlanner }) => {
+        try {
+          // Validate the dispatch worked through parent access
+          const childValue = d.parent.d.childConcept.k.value.select();
+          const childTimestamp = d.parent.d.childConcept.k.lastUpdated.select();
+          
+          expect(childValue).toBe('test-value');
+          expect(typeof childTimestamp).toBe('number');
+          
+          stagePlanner.conclude();
+          setTimeout(() => done(), 100);
+        } catch (error) {
+          console.error('Muxified validation failed:', error);
+          expect(false).toBe(true);
+          done();
+        }
+      }),
+      conclude()
+    ]);
+  } catch (error) {
+    console.error('Test setup failed:', error);
+    expect(false).toBe(true);
+    done();
+  }
 });
 ```
 
-#### 4. Ownership System Misuse
-```typescript
-// ❌ Adding ownership unnecessarily
-export const simpleQuality = createQualityCard({
-  type: 'Simple Update',
-  reducer: (state) => ({ ...state, updated: true }),
-  keyedSelectors: [someSelector] // Not needed for simple operations
-});
+#### 🎯 Example 3: Complex State Validation Chain
 
-// ✅ Only use ownership when needed
-export const criticalQuality = createQualityCard({
-  type: 'Critical Update',
-  reducer: (state) => ({ ...state, criticalValue: newValue }),
-  keyedSelectors: [criticalSelector] // Only when race conditions are possible
+```typescript
+// Testing complex state changes across multiple actions
+test('should handle complex state validation chain', (done) => {
+  try {
+    muxium.plan<ConceptDeck>('complex validation chain', ({ stage, conclude }) => [
+      // Initialize
+      stage(({ dispatch, d, stagePlanner }) => {
+        dispatch(d.concept.e.initialize({}), { iterateStage: true });
+        stagePlanner.conclude();
+      }),
+      
+      // Validate initialization and trigger processing
+      stage(({ d, dispatch, stagePlanner }) => {
+        const isInitialized = d.concept.k.isInitialized.select();
+        expect(isInitialized).toBe(true);
+        
+        dispatch(d.concept.e.processInput({ input: 'test-data' }), { iterateStage: true });
+        stagePlanner.conclude();
+      }),
+      
+      // Validate processing and trigger completion
+      stage(({ d, dispatch, stagePlanner }) => {
+        const processedInput = d.concept.k.processedInput.select();
+        const status = d.concept.k.status.select();
+        
+        expect(processedInput).toBe('test-data');
+        expect(status).toBe('processing');
+        
+        dispatch(d.concept.e.complete({}), { iterateStage: true });
+        stagePlanner.conclude();
+      }),
+      
+      // Final validation
+      stage(({ d, stagePlanner }) => {
+        const finalStatus = d.concept.k.status.select();
+        const result = d.concept.k.result.select();
+        
+        expect(finalStatus).toBe('completed');
+        expect(result).toBeDefined();
+        
+        stagePlanner.conclude();
+        setTimeout(() => done(), 100);
+      }),
+      conclude()
+    ]);
+  } catch (error) {
+    console.error('Complex test setup failed:', error);
+    expect(false).toBe(true);
+    done();
+  }
 });
 ```
 
-### Agent Quick Reference
+### 🚨 Critical Testing Anti-Patterns
 
-#### Essential Imports (v0.3.22)
+#### ❌ Anti-Pattern 1: Immediate State Validation
 ```typescript
-import { 
-  muxification, 
-  createConcept, 
-  createQualityCard, 
-  createQualityCardWithPayload,
-  Quality,
-  selectState,
-  selectSlice,
-  getMuxiumState
-} from 'stratimux';
+// ❌ WRONG: Checking state immediately after dispatch
+stage(({ dispatch, d }) => {
+  dispatch(d.concept.e.updateValue({ value: 'new' }), {});
+  
+  // BUG: State hasn't updated yet!
+  const value = d.concept.k.value.select();
+  expect(value).toBe('new'); // FAILS
+})
 ```
 
-#### Essential Type Patterns
+#### ❌ Anti-Pattern 2: Missing Stage Iteration
 ```typescript
-// State type
-export type MyState = { property: string };
+// ❌ WRONG: Not using iterateStage for state changes
+stage(({ dispatch, d }) => {
+  dispatch(d.concept.e.updateValue({ value: 'new' }), { iterateStage: false });
+  // State change won't be processed for next stage validation
+})
+```
 
-// Quality types (required exports)
-export type MyQuality = Quality<MyState>;
-export type MyQualityWithPayload = Quality<MyState, PayloadType>;
+#### ❌ Anti-Pattern 3: Async/Await in Tests
+```typescript
+// ❌ WRONG: Using async/await with Stratimux tests
+test('wrong pattern', async () => {
+  // DON'T mix async/await with Stratimux planning scope
+  await muxium.plan(...); // BREAKS
+});
+```
 
-// Qualities mapping (required pattern)
-export type MyQualities = {
-  myQuality: MyQuality,
-  myQualityWithPayload: MyQualityWithPayload,
+#### ❌ Anti-Pattern 4: Missing Reactive Stream Timing
+```typescript
+// ❌ WRONG: Not allowing reactive stream completion
+stage(({ d, stagePlanner }) => {
+  const value = d.concept.k.value.select();
+  expect(value).toBe('expected');
+  
+  stagePlanner.conclude();
+  done(); // Missing setTimeout - can cause timing issues
+})
+```
+
+### ✅ Testing Best Practices Checklist
+
+- [ ] **Use done callback pattern** - Never async/await in Stratimux tests
+- [ ] **Separate dispatch and validation stages** - Each state change needs stage separation
+- [ ] **Use `{ iterateStage: true }`** for actions that change state
+- [ ] **Include `setTimeout(() => done(), 100)`** after final stage for reactive stream completion
+- [ ] **Wrap all operations in try/catch blocks** with proper error handling
+- [ ] **Test concept creation separately** from functionality tests
+- [ ] **Use proper DECK K pattern** for state access: `d.concept.k.property.select()`
+- [ ] **Initialize muxium in beforeEach with timeout** for proper setup
+- [ ] **Close muxium in afterEach** to prevent memory leaks
+- [ ] **Test both individual concepts and muxified compositions**
+- [ ] **Validate state access through proper concept hierarchy**
+- [ ] **Focus on concept functionality, not implementation details**
+
+This comprehensive testing guide ensures reliable, maintainable tests that properly handle Stratimux's asynchronous nature and reactive stream timing requirements.
+
+## 🚀 Critical Reducer Performance Optimization (ESSENTIAL)
+
+### 🎯 The Shortest Path Principle for State Updates
+
+**CRITICAL PERFORMANCE RULE**: Quality reducers should return only the changed state slice, never the entire state object.
+
+This is fundamental to Stratimux's reactive performance - returning partial state objects ensures only relevant subscribers are notified of changes.
+
+### ✅ CORRECT: Partial State Return Pattern
+
+```typescript
+// File: addToBuffer.quality.ts
+export const addToBuffer = createQualityCardWithPayload<
+  MyConceptState,
+  AddToBufferPayload
+>({
+  type: 'add to buffer',
+  reducer: (state, { payload }) => {
+    const { item } = payload;
+    
+    // ✅ CRITICAL: Only return the changed state slice
+    return {
+      buffer: [...state.buffer, item]
+    };
+    // Notice: No spreading of entire state object
+  },
+  methodCreator: defaultMethodCreator,
+});
+```
+
+```typescript
+// File: clearBuffer.quality.ts
+export const clearBuffer = createQualityCard<MyConceptState>({
+  type: 'clear buffer',
+  reducer: (state) => {
+    // ✅ CRITICAL: Only return the changed state slice
+    return {
+      buffer: []
+    };
+    // Notice: Not returning { ...state, buffer: [] }
+  },
+  methodCreator: defaultMethodCreator,
+});
+```
+
+```typescript
+// File: conditionalUpdate.quality.ts
+export const conditionalUpdate = createQualityCardWithPayload<
+  MyConceptState,
+  ConditionalUpdatePayload
+>({
+  type: 'conditional update',
+  reducer: (state, { payload }) => {
+    const { shouldUpdate, newValue } = payload;
+    
+    // ✅ PERFORMANCE: Return empty object when no change needed
+    if (!shouldUpdate || state.currentValue === newValue) {
+      return {}; // No state change, no notifications
+    }
+    
+    // ✅ CRITICAL: Only return the changed property
+    return {
+      currentValue: newValue
+    };
+  },
+  methodCreator: defaultMethodCreator,
+});
+```
+
+### ❌ WRONG: Full State Return Anti-Patterns
+
+```typescript
+// ❌ PERFORMANCE KILLER: Full state spreading
+reducer: (state, { payload }) => {
+  return {
+    ...state,              // ❌ WRONG: Notifies ALL state listeners
+    changedProperty: value // Only this actually changed
+  };
+}
+
+// ❌ PERFORMANCE KILLER: Returning entire state reference
+reducer: (state, { payload }) => {
+  state.property = value;  // ❌ WRONG: Mutation + full state
+  return state;           // ❌ WRONG: Returns entire state object
+}
+
+// ❌ INEFFICIENT: Unnecessary state spread for simple updates
+reducer: (state) => {
+  return {
+    ...state,           // ❌ WRONG: Full state copy
+    isActive: true     // Only this property changed
+  };
+}
+```
+
+### 🔥 Performance Impact Demonstration
+
+```typescript
+// Example concept with multiple state properties
+export type ExampleState = {
+  userProfile: UserProfile;     // Large object
+  notifications: Notification[]; // Large array  
+  shoppingCart: CartItem[];     // Medium array
+  uiPreferences: UIConfig;      // Small object
+  currentPage: string;          // Primitive value
+  isLoading: boolean;           // Primitive value
 };
 
-// Deck type
-export type MyDeck = {
-  myConcept: Concept<MyState, MyQualities>,
+// ✅ EFFICIENT: Only shopping cart listeners are notified
+const addToCart = createQualityCardWithPayload<ExampleState, AddToCartPayload>({
+  type: 'add to cart',
+  reducer: (state, { payload }) => {
+    return {
+      shoppingCart: [...state.shoppingCart, payload.item]
+      // Only shoppingCart selectors receive updates
+    };
+  },
+  methodCreator: defaultMethodCreator,
+});
+
+// ❌ INEFFICIENT: ALL state listeners are notified unnecessarily
+const addToCartBad = createQualityCardWithPayload<ExampleState, AddToCartPayload>({
+  type: 'add to cart bad',
+  reducer: (state, { payload }) => {
+    return {
+      ...state,  // ❌ userProfile, notifications, ALL selectors notified!
+      shoppingCart: [...state.shoppingCart, payload.item]
+    };
+  },
+  methodCreator: defaultMethodCreator,
+});
+```
+
+### 📊 When to Return What
+
+#### Return Partial State Object `{ changedProp: value }`
+- **When**: You're updating one or more specific properties
+- **Effect**: Only selectors watching those properties get notified
+- **Performance**: ✅ Optimal - minimal reactive notifications
+
+#### Return Empty Object `{}`
+- **When**: No state change is needed (condition not met, value unchanged)
+- **Effect**: No selectors are notified of changes
+- **Performance**: ✅ Maximum efficiency - zero reactive notifications
+
+#### Return Full State `{ ...state, changes }`
+- **When**: NEVER in production code (breaks performance paradigm)
+- **Effect**: ALL selectors get notified regardless of what changed
+- **Performance**: ❌ TERRIBLE - causes cascade of unnecessary updates
+
+### 🎯 Complex State Update Patterns
+
+```typescript
+// ✅ CORRECT: Multiple related property updates
+const updateUserSession = createQualityCardWithPayload<UserState, SessionPayload>({
+  type: 'update user session',
+  reducer: (state, { payload }) => {
+    const { userId, sessionToken, expiresAt } = payload;
+    
+    // ✅ Return only the properties that actually changed
+    return {
+      userId,
+      sessionToken, 
+      sessionExpiresAt: expiresAt,
+      lastLoginAt: Date.now()
+    };
+    // Notice: Not spreading the entire state
+  },
+  methodCreator: defaultMethodCreator,
+});
+
+// ✅ CORRECT: Array manipulation with partial return
+const updateItemInArray = createQualityCardWithPayload<MyState, UpdateItemPayload>({
+  type: 'update item in array',
+  reducer: (state, { payload }) => {
+    const { itemId, updates } = payload;
+    
+    const updatedItems = state.items.map(item => 
+      item.id === itemId ? { ...item, ...updates } : item
+    );
+    
+    // ✅ Only return the changed array, not entire state
+    return {
+      items: updatedItems
+    };
+  },
+  methodCreator: defaultMethodCreator,
+});
+```
+
+### 🧠 Memory and Performance Benefits
+
+1. **Reactive Efficiency**: Only relevant component subscriptions update
+2. **Memory Optimization**: Unchanged state branches maintain references 
+3. **Computation Savings**: Derived selectors only recalculate when dependencies change
+4. **Network Efficiency**: State synchronization sends minimal diffs
+5. **Developer Experience**: Clear intent about what actually changed
+
+### 🔧 Debugging Performance Issues
+
+If you're experiencing:
+- Excessive component re-renders
+- Slow UI updates
+- High memory usage
+- Laggy user interactions
+
+**Check your quality reducers** - they should follow the partial state return pattern shown above.
+
+### 📝 Quality Reducer Checklist
+
+Before shipping any quality, verify:
+- [ ] Returns only changed properties (not `{ ...state, changes }`)
+- [ ] Returns `{}` when no change is needed
+- [ ] Maintains immutability for arrays/objects (`[...array]`, `{ ...object }`)
+- [ ] No direct state mutations (`state.prop = value`)
+- [ ] Clear intent about what properties are being updated
+
+**This optimization is critical to Stratimux application performance and should be applied consistently across all quality implementations.**
+
+## 🧠 Strategic State Management & Concept Composition Wisdom
+
+### 🏗️ Designing Effective State Structures
+
+**Golden Rule**: Your state structure should mirror your problem domain, not your UI or implementation details.
+
+#### ✅ Well-Designed State Examples
+
+```typescript
+// Good: Domain-focused state structure
+export type ShoppingCartState = {
+  items: CartItem[];           // Core business data
+  totalAmount: number;         // Computed but cached value
+  discountCode: string | null; // Optional business rule
+  isCalculating: boolean;      // Process state indicator
+  lastModified: Date;          // Audit information
+};
+
+// Good: Clear interface state
+export type InterfaceState = {
+  currentCommand: string;      // User input
+  history: CommandEntry[];     // Interaction history
+  availableCommands: string[]; // Valid options
+  promptSymbol: string;        // Presentation config
+  isProcessing: boolean;       // Process indicator
 };
 ```
 
-#### Stage Planner Template
+#### ❌ Poorly-Designed State Anti-Patterns
+
 ```typescript
-const plan = muxium.plan<MyDeck>('Plan Name', ({staging, stage, stageO, conclude, d}) =>
-  staging(() => [
-    stageO(() => d.muxium.e.muxiumKick()), // Wait for muxium open
-    
-    stage(({dispatch, d}) => {
-      // Main logic
-      dispatch(d.myConcept.e.myAction(), {iterateStage: true});
-    }),
-    
-    stage(({d}) => {
-      // Validation
-      expect(d.myConcept.k.property.select()).toBe(expectedValue);
-    }),
-    
-    conclude() // End the plan
-  ])
-);
+// Bad: UI-focused instead of domain-focused
+export type BadUIState = {
+  modalOpen: boolean;          // UI implementation detail
+  buttonColor: string;         // Presentation concern
+  animationState: string;      // UI animation concern
+  formData: any;               // Untyped business data
+};
+
+// Bad: Mixed concerns and unclear boundaries
+export type BadMixedState = {
+  userData: User;              // User domain
+  apiErrors: ApiError[];       // Network domain  
+  uiPreferences: UIConfig;     // Presentation domain
+  temporaryVariables: any;     // Implementation details
+};
 ```
 
-This reference enables AI agents to implement Stratimux applications effectively using proven patterns and avoiding common pitfalls.
+### 🔗 Concept Composition Strategies
+
+**Principle**: Compose small, focused concepts rather than building monolithic ones.
+
+#### Pattern 1: Feature-Based Composition
+```typescript
+// Each concept handles one domain responsibility
+const muxium = muxification('E-commerce App', {
+  user: createUserConcept(),           // Authentication & user management
+  cart: createShoppingCartConcept(),   // Shopping cart operations
+  products: createProductConcept(),    // Product catalog
+  orders: createOrderConcept(),        // Order processing
+  ui: createUIStateConcept()           // Cross-cutting UI state
+});
+```
+
+#### Pattern 2: Layer-Based Composition  
+```typescript
+// Concepts organized by architectural layer
+const muxium = muxification('Business App', {
+  data: createDataLayerConcept(),      // Data access & persistence
+  business: createBusinessLogicConcept(), // Domain rules & validation
+  service: createServiceLayerConcept(), // External integrations
+  presentation: createPresentationConcept() // UI state & interactions
+});
+```
+
+#### Pattern 3: Using muxifyConcepts for State Decomposition
+```typescript
+// Child concept with decomposable state
+export const createChildConcept = () => {
+  return createConcept<ChildState, ChildQualities>(...);
+};
+
+export const initialChildState = (): ChildState => ({
+  childProperty1: 'default',
+  childProperty2: 0
+});
+
+// Parent concept that incorporates child state
+export type ParentState = {
+  parentProperty: string;
+} & ChildState; // Decompose child state
+
+export const createParentConcept = () => {
+  return muxifyConcepts(
+    [createChildConcept()], // Include child concept
+    createConcept<ParentState, ParentQualities>(
+      'parent',
+      {
+        parentProperty: 'value',
+        ...initialChildState() // Decompose state creator
+      },
+      parentQualities,
+      []
+    )
+  );
+};
+```
+
+### 📐 State Design Best Practices
+
+#### 1. **Normalize Complex Data**
+```typescript
+// ✅ Good: Normalized relationships
+export type ProjectState = {
+  projects: Map<string, Project>;     // Keyed by ID
+  userProjects: Map<string, string[]>; // userID -> projectIDs
+  activeProjectId: string | null;     // Single source of truth
+};
+
+// ❌ Bad: Denormalized duplicate data
+export type BadProjectState = {
+  projects: Project[];                // Array with duplicates
+  userProjects: UserProjectData[];   // Duplicated project data
+  activeProject: Project | null;      // Duplicate of project data
+};
+```
+
+#### 2. **Separate Concerns Clearly**
+```typescript
+// ✅ Good: Clear separation of concerns
+export type DataState = {
+  entities: EntityData;       // Pure business data
+  metadata: DataMetadata;     // Data about the data
+};
+
+export type UIState = {
+  viewMode: 'list' | 'grid';  // View configuration  
+  selectedItems: string[];   // Selection state
+  filters: FilterCriteria;   // Display filters
+};
+
+// ❌ Bad: Mixed data and UI concerns
+export type BadMixedState = {
+  items: Item[];             // Business data
+  selectedItems: string[];   // UI state
+  sortOrder: 'asc' | 'desc'; // UI state
+  lastApiCall: Date;         // Technical metadata
+};
+```
+
+#### 3. **Design for Reactivity**
+```typescript
+// ✅ Good: Properties designed for selective reactivity
+export type ReactiveState = {
+  connectionStatus: 'connected' | 'disconnected'; // Status changes
+  messageCount: number;                           // Counter updates
+  activeUsers: string[];                          // List modifications  
+  lastActivity: Date;                            // Timestamp updates
+};
+
+// Each property can be selectively observed:
+// k.connectionStatus.select() - only reacts to connection changes
+// k.messageCount.select() - only reacts to count changes
+```
+
+#### 4. **🚨 CRITICAL: Avoid Optional Properties in State (KeyedSelector Requirement)**
+```typescript
+// ❌ CRITICAL ERROR: Optional properties break DECK K Constant pattern
+export type BrokenState = {
+  requiredProperty: string;
+  optionalProperty?: string;  // ⚠️ BREAKS KeyedSelector - NOT ACCESSIBLE via k.optionalProperty.select()
+  undefinedProperty: string | undefined; // ⚠️ BREAKS KeyedSelector when undefined
+  htmlTapeBuffer?: BufferArea; // ⚠️ REAL EXAMPLE: Optional HTML buffer breaks state access
+};
+
+// ✅ CORRECT: All state properties must be defined with proper defaults
+export type CorrectState = {
+  requiredProperty: string;
+  alwaysDefinedProperty: string;     // Always has a value
+  arrayProperty: string[];           // Use empty array [] as default
+  objectProperty: Record<string, any>; // Use empty object {} as default
+  nullableProperty: string | null;   // Use null as explicit "empty" state
+  htmlTapeBuffer: BufferArea;        // ✅ FIXED: Always defined, initialized as []
+};
+
+// ✅ CORRECT: Proper state initialization with all properties defined
+export const initialCorrectState = (): CorrectState => ({
+  requiredProperty: '',
+  alwaysDefinedProperty: 'default value',
+  arrayProperty: [],                // Never undefined
+  objectProperty: {},               // Never undefined  
+  nullableProperty: null,           // Explicit null is OK
+  htmlTapeBuffer: [],               // ✅ FIXED: Always defined as empty array
+});
+```
+
+**Why This Matters:**
+- **KeyedSelector Foundation**: The DECK K Constant pattern relies on KeyedSelector system
+- **Undefined Properties Vanish**: Optional (`?`) or undefined properties are not included in KeyedSelector generation
+- **Breaks Reactivity**: `k.optionalProperty.select()` will not exist and cause TypeScript errors
+- **State Access Failure**: Planning scope cannot access undefined properties via DECK patterns
+- **Real-World Impact**: HTML Tape buffer example shows how this breaks actual functionality
+
+**Fix Pattern:**
+1. **Remove all `?` optional markers** from state type definitions
+2. **Provide explicit defaults** in state initializers for all properties
+3. **Use `null` instead of `undefined`** for "empty" states that need to be reactive
+4. **Use empty arrays `[]` and objects `{}`** instead of optional properties
+
+This is a **framework-level requirement** for Stratimux's reactive state system to function correctly.
+
+#### 5. **🚀 CRITICAL: Optimal Reducer Returns (Shortest Path Principle)**
+
+**Performance Rule**: Quality reducers should return **only the changed state slice**, not the entire state object.
+
+```typescript
+// ❌ INEFFICIENT: Returns entire state - notifies ALL state listeners
+export const inefficientQuality = createQualityCardWithPayload<State, Payload>({
+  type: 'inefficient update',
+  reducer: (state, action) => {
+    const payload = selectPayload<Payload>(action);
+    return {
+      ...state,                    // ⚠️ Spreads entire state
+      targetProperty: newValue     // Only this actually changed
+    };
+  }
+});
+
+// ✅ EFFICIENT: Returns only changed slice - notifies ONLY relevant listeners
+export const efficientQuality = createQualityCardWithPayload<State, Payload>({
+  type: 'efficient update',
+  reducer: (state, action) => {
+    const payload = selectPayload<Payload>(action);
+    return {
+      targetProperty: newValue     // ✅ Only returns what changed
+    };
+  }
+});
+```
+
+**Why This Matters:**
+- **Shortest Path Notification**: Stratimux notifies listeners along the shortest path to changed data
+- **Performance Optimization**: Prevents unnecessary re-renders and computations
+- **Precise Reactivity**: Only components watching `targetProperty` get notified, not entire state tree
+- **Scalability**: Critical for applications with complex state and many listeners
+
+**Implementation Pattern:**
+```typescript
+// Instead of spreading state, return only what changed
+return {
+  htmlTapeBuffer: [...state.htmlTapeBuffer, newEntry]  // Only buffer listeners notified
+};
+
+// Not:
+return {
+  ...state,                                           // ALL listeners notified
+  htmlTapeBuffer: [...state.htmlTapeBuffer, newEntry]
+};
+
+
+### 🎯 Composition Integration Patterns
+
+#### Pattern: State Creator Export for Decomposition
+```typescript
+// Interface concept exports its state creator
+export const initialInterfaceState = (): InterfaceState => ({
+  currentCommand: '',
+  history: [],
+  // ... other properties
+});
+
+// Parent concept decomposes this state using spread operator
+export type ParentState = {
+  parentSpecificProperty: string;
+} & InterfaceState;
+
+const initialParentState = (): ParentState => ({
+  parentSpecificProperty: 'value',
+  ...initialInterfaceState() // Decompose state
+});
+```
+
+#### Pattern: DECK Type Composition
+```typescript
+// Individual concept deck types
+export type UserDeck = {
+  user: Concept<UserState, UserQualities>;
+};
+
+export type CartDeck = {
+  cart: Concept<CartState, CartQualities>;
+};
+
+// Composed application deck type
+export type AppDeck = UserDeck & CartDeck & {
+  app: Concept<AppState, AppQualities>;
+};
+
+// Enables type-safe cross-concept communication
+muxium.plan<AppDeck>('cross-concept logic', ({ stage, conclude }) => [
+  stage(({ d }) => {
+    const userId = d.user.k.currentUserId.select();
+    const cartTotal = d.cart.k.totalAmount.select();
+    // Use both in application logic
+  })
+]);
+```
+
+### 🚀 Advanced Composition Wisdom
+
+#### Insight 1: **Vertical vs Horizontal Composition**
+- **Vertical**: Layer-based concepts (data → business → presentation)
+- **Horizontal**: Feature-based concepts (user, cart, orders)
+- **Hybrid**: Most real applications use both patterns
+
+#### Insight 2: **State Ownership Clarity**  
+- Each piece of state should have ONE concept that owns it
+- Other concepts can READ via DECK but shouldn't duplicate
+- Use composition to share state, not duplication
+
+#### Insight 3: **Reactive Boundaries**
+- Design state properties to minimize unnecessary reactivity
+- Group frequently-changing data together
+- Separate stable configuration from dynamic data
+
+This strategic approach to state management and composition ensures your Stratimux applications remain maintainable, performant, and true to the framework's reactive philosophy.
