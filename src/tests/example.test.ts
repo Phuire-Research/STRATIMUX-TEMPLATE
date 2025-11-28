@@ -13,7 +13,7 @@ test('Muxium Counting Strategy Test', (done) => {
   const muxium = muxification('muxiumStrategyTest', {counter: createCounterConcept()}, { logging: true, storeDialog: true });
   muxium.plan<MuxiumDeck & CounterDeck>('Counting Strategy Stage', ({stageO, stage, d__}) =>
     [
-      stageO(() => d__.muxium.e.muxiumKick()),
+      stageO(),
       stage(({dispatch, d, stagePlanner}) => {
         const strategy = countingStrategy(d);
         if (strategy) {
